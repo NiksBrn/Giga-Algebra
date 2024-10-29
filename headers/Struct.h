@@ -2,16 +2,23 @@
 #define GIGA_ALGEBRA_STRUCT_H
 
 struct Node{
-    unsigned char value;
+    char value;
     Node* next;
 
-    Node(unsigned char _value) : value(_value), next(nullptr){};
+    Node(char _value) : value(_value), next(nullptr){};
 };
 
-struct List{
+class List{
+public:
+    List() : first(nullptr), last(nullptr){};
+    ~List() = default;
+    void clear();
+    void push_back(unsigned char value);
+    void push_front(unsigned char value);
+    Node* get_first() const;
+    Node* get_last() const;
+private:
     Node* first;
     Node* last;
-
-    List() : first(nullptr), last(nullptr){};
 };
 #endif //GIGA_ALGEBRA_STRUCT_H
