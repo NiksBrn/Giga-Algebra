@@ -13,3 +13,4 @@ List NaturalNumber::get_num() const{
 void NaturalNumber::clear(){
     Big_int.clear();
 }
+
