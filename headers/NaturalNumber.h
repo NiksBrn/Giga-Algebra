@@ -5,12 +5,13 @@
 
 #include "Struct.h"
 #include "string"
+
+enum Compare { EQUAL, LESS, GREATER };
+  // enum для сравнения EQUAL(0) - равно, LESS(1) - меньше, GREATER(2) - больше
+
 class NaturalNumber {
  public:
   explicit NaturalNumber(std::string s);
-
-  enum Compare { EQUAL, LESS, GREATER };
-  // enum для сравнения EQUAL(0) - равно, LESS(1) - меньше, GREATER(2) - больше
 
   Compare COM_NN_D(const NaturalNumber& other) const;
   // COM_NN_D - сравнение натуральных чисел
