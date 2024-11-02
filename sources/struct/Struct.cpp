@@ -12,7 +12,6 @@ void List::push_back(unsigned char value) {
     last->next = new_node;
     last = new_node;
   }
-  ++size;
 }
 
 void List::push_front(unsigned char value) {
@@ -24,7 +23,6 @@ void List::push_front(unsigned char value) {
     new_node->next = first;
     first = new_node;
   }
-  ++size;
 }
 
 void List::clear() {
@@ -35,5 +33,3 @@ void List::clear() {
     current = next;
   }
 }
-
-long long List::get_size() const {return size;}
