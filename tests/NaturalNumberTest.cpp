@@ -1,149 +1,158 @@
+#include <iostream>
 #include <gtest/gtest.h>
-#include "NaturalNumber.h"
+#include "../headers/NaturalNumber.h"
 
 // Тесты для проверки NZER_N_B()
-TEST(NaturalNumberTests, NZER_N_B) {
-    NaturalNumber n1;
-
+TEST(NZER_N_B,Subtest_1) {
     // Тест для ненулевого числа
-    n1.get_num(12345);
-    EXPECT_TRUE(n1.NZER_N_B());
+    NaturalNumber n("12345");
+    EXPECT_TRUE(n.NZER_N_B());
+}
 
+TEST(NZER_N_B,Subtest_2) {
     // Тест для нулевого числа
-    n1.get_num(0);
-    EXPECT_FALSE(n1.NZER_N_B());
+    NaturalNumber n("0");
+    EXPECT_FALSE(n.NZER_N_B());
 }
 
 // Тесты для проверки COM_NN_D()
-TEST(NaturalNumberTests, COM_NN_D) {
-    NaturalNumber n1, n2;
-
+TEST(COM_NN_D,Subtest_3) {
     // Тест для чисел с одинаковой разрядностью, где второе больше первого
-    n1.get_num(100);
-    n2.get_num(300);
+    NaturalNumber n1("100");
+    NaturalNumber n2("300");
     EXPECT_EQ(n1.COM_NN_D(n2), LESS);
+}
 
+TEST(COM_NN_D,Subtest_4) {
     // Тест для чисел с одинаковой разрядностью, где первое больше второго
-    n1.get_num(478);
-    n2.get_num(420);
+    NaturalNumber n1("478");
+    NaturalNumber n2("420");
     EXPECT_EQ(n1.COM_NN_D(n2), GREATER);
+}
 
+TEST(COM_NN_D,Subtest_5) {
     // Тест для равных чисел с одинаковой разрядностью
-    n1.get_num(666000);
-    n2.get_num(666000);
+    NaturalNumber n1("666000");
+    NaturalNumber n2("666000");
     EXPECT_EQ(n1.COM_NN_D(n2), EQUAL);
+}
 
+TEST(COM_NN_D,Subtest_6) {
     // Тест для чисел с разной разрядностью, где первое больше второго
-    n1.get_num(12456666599);
-    n2.get_num(666599);
+    NaturalNumber n1("12456666599");
+    NaturalNumber n2("666599");
     EXPECT_EQ(n1.COM_NN_D(n2), GREATER);
+}
 
+TEST(COM_NN_D,Subtest_7) {
     // Тест для чисел с разной разрядностью, где второе больше первого
-    n1.get_num(9);
-    n2.get_num(35409);
+    NaturalNumber n1("9");
+    NaturalNumber n2("35409");
     EXPECT_EQ(n1.COM_NN_D(n2), LESS);
 }
 
 // Тесты для проверки ADD_1N_N()
-TEST(NaturalNumberTests, ADD_1N_N) {
-    NaturalNumber n;
-
+TEST(ADD_1N_N,Subtest_8) {
     // Тест для числа без изменения разрядности
-    n.get_num(777);
+    NaturalNumber n("777");
     n.ADD_1N_N();
-    EXPECT_EQ(n.ADD_1N_N(), 778);
+    EXPECT_EQ(n, "778");
+}
 
+TEST(ADD_1N_N,Subtest_9) {
     // Тест для числа со сменой разрядности
-    n.get_num(999);
+    NaturalNumber n("999");
     n.ADD_1N_N();
-    EXPECT_EQ(n.ADD_1N_N(), 1000);
+    EXPECT_EQ(n, "1000");
 }
 
 // Тесты для проверки ADD_NN_N()
-TEST(NaturalNumberTests, ADD_NN_N) {
-    NaturalNumber n1, n2, result;
-
+TEST(ADD_NN_N,Subtest_10) {
     // Тест для чисел без смены разрядности
-    n1.get_num(123);
-    n2.get_num(456);
-    result.ADD_NN_N(n2);
-    EXPECT_EQ(result.ADD_1N_N(), 579);
+    NaturalNumber n1("123");
+    NaturalNumber n2("456");
+    EXPECT_EQ(n1.ADD_NN_N(n2), "579");
+}
 
+TEST(ADD_NN_N,Subtest_11) {
     // Тест для чисел со сменой разрядности
-    n1.get_num(4567356);
-    n2.get_num(8955787);
-    result.ADD_NN_N(n2);
-    EXPECT_EQ(result.ADD_1N_N(), 13523143);
+    NaturalNumber n1("4567356");
+    NaturalNumber n2("8955787");
+    EXPECT_EQ(n1.ADD_NN_N(n2), "13523143");
 }
 
 // Тесты для проверки MUL_ND_N()
-TEST(NaturalNumberTests, MUL_ND_N) {
-    NaturalNumber n;
-
+TEST(MUL_ND_N,Subtest_12) {
     // Тест для двухзначного числа без смены разрядности
-    n.get_num(12);
-    n.MUL_ND_N(3);
-    EXPECT_EQ(n.MUL_ND_N(), 36);
+    NaturalNumber n("12");
+    char c;
+    c=(3); 
+    EXPECT_EQ(n.MUL_ND_N(c), "36");
+}
 
+TEST(MUL_ND_N,Subtest_13) {
     // Тест для двухзначного числа со сменой разрядности
-    n.get_num(35);
-    n.MUL_ND_N(4);
-    EXPECT_EQ(n.MUL_ND_N(), 140);
+    NaturalNumber n("35");
+    char c;
+    c=(4);
+    EXPECT_EQ(n.MUL_ND_N(c), "140");
+}
 
+TEST(MUL_ND_N,Subtest_14) {
     // Тест для однозначного числа со сменой разрядности
-    n.get_num(3);
-    n.MUL_ND_N(4);
-    EXPECT_EQ(n.MUL_ND_N(), 12);
-
+    NaturalNumber n("3");
+    char c;
+    c=(4);
+    EXPECT_EQ(n.MUL_ND_N(c), "12");
+}
+TEST(MUL_ND_N,Subtest_15) {
     // Тест для однозначного числа без смены разрядности
-    n.get_num(3);
-    n.MUL_ND_N(3);
-    EXPECT_EQ(n.MUL_ND_N(), 9);
-
+    NaturalNumber n("3");
+    char c;
+    c=(3);
+    EXPECT_EQ(n.MUL_ND_N(c), "9");
+}
+TEST(MUL_ND_N,Subtest_16) {
     // Тест для умножения на 0
-    n.get_num(12);
-    n.MUL_ND_N(0);
-    EXPECT_EQ(n.MUL_ND_N(), 0);
+    NaturalNumber n("12");
+    char c;
+    c=(0);
+    EXPECT_EQ(n.MUL_ND_N(c), "0");
 }
 
 // Тесты для проверки SUB_NN_N()
-TEST(NaturalNumberTests, SUB_NN_N) {
-    NaturalNumber n1, n2, result;
-
+TEST(SUB_NN_N,Subtest_17) {
     // Тест для разных чисел без смены разрядности
-    n1.get_num(60);
-    n2.get_num(50);
-    result.SUB_NN_N(n2);
-    EXPECT_EQ(result.SUB_NN_N(), 10);
+    NaturalNumber n1("60");
+    NaturalNumber n2("50");
+    EXPECT_EQ(n1.SUB_NN_N(n2), "10");
+}
 
+TEST(SUB_NN_N,Subtest_18) {
     // Тест для разных чисел со сменой разрядности
-    n1.get_num(160);
-    n2.get_num(85);
-    result.SUB_NN_N(n2);
-    EXPECT_EQ(result.SUB_NN_N(), 75);
+    NaturalNumber n1("160");
+    NaturalNumber n2("85");
+    EXPECT_EQ(n1.SUB_NN_N(n2), "75");
 }
 
 // Тесты для проверки MUL_Nk_N()
-TEST(NaturalNumberTests, MUL_Nk_N) {
-    NaturalNumber n1, k;
-
+TEST(MUL_Nk_N,Subtest_19) {
     // Тест для ненулевого числа и 10^k, где k > 0
-    n1.get_num(32);
-    k.get_num(10);
-    EXPECT_TRUE(n1.MUL_Nk_N(k), 320000000000);
-
-    // Тест для нулевого числа
-    n1.get_num(0);
-    k.get_num(100000000000);
-    EXPECT_TRUE(n1.MUL_Nk_N(k), 0);
-
-    // Тест для ненулевого числа и 10^k, где k = 0
-    n1.get_num(6987);
-    k.get_num(1);
-    EXPECT_TRUE(n1.MUL_Nk_N(k), 6987);
+    NaturalNumber n1("32");
+    NaturalNumber k("10");
+    EXPECT_EQ(n1.MUL_Nk_N(k), "320000000000");
 }
 
-int main(int argc, char** argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+TEST(MUL_Nk_N,Subtest_20) {
+    // Тест для нулевого числа
+    NaturalNumber n1("0");
+    NaturalNumber k("100000000000");
+    EXPECT_EQ(n1.MUL_Nk_N(k), "0");
+}
+
+TEST(MUL_Nk_N,Subtest_21) {
+    // Тест для ненулевого числа и 10^k, где k = 0
+    NaturalNumber n1("6987");
+    NaturalNumber k("1");
+    EXPECT_EQ(n1.MUL_Nk_N(k), "6987");
 }
