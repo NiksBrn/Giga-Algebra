@@ -7,10 +7,12 @@
 #include "string"
 
 enum Compare { EQUAL, LESS, GREATER };
-  // enum для сравнения EQUAL(0) - равно, LESS(1) - меньше, GREATER(2) - больше
+// enum для сравнения EQUAL(0) - равно, LESS(1) - меньше, GREATER(2) - больше
 
 class NaturalNumber {
  public:
+  NaturalNumber() = default;
+  
   explicit NaturalNumber(std::string s);
 
   Compare COM_NN_D(const NaturalNumber& other) const;
@@ -104,10 +106,10 @@ class NaturalNumber {
   NaturalNumber& MOD_NN_N(NaturalNumber& num);
   //    MOD_NN_N - остаток от деления
 
-  NaturalNumber& operator %(NaturalNumber& other);
+  NaturalNumber& operator%(NaturalNumber& other);
   //    MOD_NN_N - оператор остатка
 
-  NaturalNumber& operator %=(NaturalNumber& other);
+  NaturalNumber& operator%=(NaturalNumber& other);
   //    MOD_NN_N - оператор остатка
 
   NaturalNumber& GCF_NN_N(NaturalNumber* arr_num);
@@ -120,7 +122,7 @@ class NaturalNumber {
 
   void clear();
 
- private:
+ protected:
   List Big_int;
 };
 
