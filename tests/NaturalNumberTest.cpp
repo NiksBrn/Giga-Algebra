@@ -1,159 +1,145 @@
 #include <gtest/gtest.h>
 #include "NaturalNumber.h"
 
+// Тесты для проверки NZER_N_B()
 TEST(NaturalNumberTests, NZER_N_B) {
-    //ТЕСТ 1: СТАНДАРТНЫЙ ТЕСТ ДЛЯ НЕНУЛЕВОГО ЧИСЛА
     NaturalNumber n1;
-    n1.add(12345);
-    EXPECT_TRUE(n1.NZER_N_B(), true);
 
-    //ТЕСТ 2: СТАНДАРТНЫЙ ТЕСТ ДЛЯ НУЛЕВОГО ЧИСЛА
-    NaturalNumber n1;
-    n1.add(0);
-    EXPECT_TRUE(n1.NZER_N_B(), false);
+    // Тест для ненулевого числа
+    n1.get_num(12345);
+    EXPECT_TRUE(n1.NZER_N_B());
+
+    // Тест для нулевого числа
+    n1.get_num(0);
+    EXPECT_FALSE(n1.NZER_N_B());
 }
 
+// Тесты для проверки COM_NN_D()
 TEST(NaturalNumberTests, COM_NN_D) {
-    //ТЕСТ 1: СТАНДАРТНЫЙ ТЕСТ ДЛЯ ДВУХ ЧИСЕЛ С ОДИНАКОВОЙ РАЗРЯДНОСТЬЮ, ГДЕ ВТОРОЕ БОЛЬШЕ ПЕРВОГО
-    NaturalNumber n1, n2, n3;
-    n1.add(100);
-    n2.add(300);
-    EXPECT_EQ(n1.COM_NN_D(n2),1);
+    NaturalNumber n1, n2;
 
-    //ТЕСТ 2: СТАНДАРТНЫЙ ТЕСТ ДЛЯ ДВУХ ЧИСЕЛ С ОДИНАКОВОЙ РАЗРЯДНОСТЬЮ, ГДЕ ПЕРВОЕ БОЛЬШЕ ВТОРОГО
-    NaturalNumber n1, n2, n3;
-    n1.add(478);
-    n2.add(420);
-    EXPECT_EQ(n1.COM_NN_D(n2), 2);
+    // Тест для чисел с одинаковой разрядностью, где второе больше первого
+    n1.get_num(100);
+    n2.get_num(300);
+    EXPECT_EQ(n1.COM_NN_D(n2), LESS);
 
-    //ТЕСТ 3: СТАНДАРТНЫЙ ТЕСТ ДЛЯ ДВУХ РАВНЫХ ЧИСЕЛ С ОДИНАКОВОЙ РАЗРЯДНОСТЬЮ
-    NaturalNumber n1, n2, n3;
-    n1.add(666000);
-    n2.add(666000);
-    EXPECT_EQ(n1.COM_NN_D(n2), 0);
+    // Тест для чисел с одинаковой разрядностью, где первое больше второго
+    n1.get_num(478);
+    n2.get_num(420);
+    EXPECT_EQ(n1.COM_NN_D(n2), GREATER);
 
-    //ТЕСТ 4: СТАНДАРТНЫЙ ТЕСТ ДЛЯ ДВУХ ЧИСЕЛ С РАЗНОЙ РАЗРЯДНОСТЬЮ, ГДЕ ПЕРВОЕ БОЛЬШЕ ВТОРОГО
-    NaturalNumber n1, n2, n3;
-    n1.add(12456666599);
-    n2.add(666599);
-    EXPECT_EQ(n1.COM_NN_D(n2), 2);
+    // Тест для равных чисел с одинаковой разрядностью
+    n1.get_num(666000);
+    n2.get_num(666000);
+    EXPECT_EQ(n1.COM_NN_D(n2), EQUAL);
 
-    //ТЕСТ 4: СТАНДАРТНЫЙ ТЕСТ ДЛЯ ДВУХ ЧИСЕЛ С РАЗНОЙ РАЗРЯДНОСТЬЮ, ГДЕ ВТОРОЕ БОЛЬШЕ ПЕРВОГО
-    NaturalNumber n1, n2, n3;
-    n1.add(9);
-    n2.add(35409);
-    EXPECT_EQ(n1.COM_NN_D(n2), 1);
+    // Тест для чисел с разной разрядностью, где первое больше второго
+    n1.get_num(12456666599);
+    n2.get_num(666599);
+    EXPECT_EQ(n1.COM_NN_D(n2), GREATER);
+
+    // Тест для чисел с разной разрядностью, где второе больше первого
+    n1.get_num(9);
+    n2.get_num(35409);
+    EXPECT_EQ(n1.COM_NN_D(n2), LESS);
 }
 
+// Тесты для проверки ADD_1N_N()
 TEST(NaturalNumberTests, ADD_1N_N) {
-    ///ТЕСТ 1: СТАНДАРТНЫЙ ТЕСТ ДЛЯ ЧИСЛА СО СМЕНОЙ РАЗРЯДНОСТИ 
     NaturalNumber n;
-    n.add(999);
-    n.ADD_1N_N();
-    EXPECT_EQ(n.get_value(), 10000);
 
-    ///ТЕСТ 1: СТАНДАРТНЫЙ ТЕСТ ДЛЯ ЧИСЛА БЕЗ СМЕНЫ РАЗРЯДНОСТИ 
-    NaturalNumber n;
-    n.add(777);
+    // Тест для числа без изменения разрядности
+    n.get_num(777);
     n.ADD_1N_N();
-    EXPECT_EQ(n.get_value(), 778);
+    EXPECT_EQ(n.ADD_1N_N(), 778);
+
+    // Тест для числа со сменой разрядности
+    n.get_num(999);
+    n.ADD_1N_N();
+    EXPECT_EQ(n.ADD_1N_N(), 1000);
 }
 
+// Тесты для проверки ADD_NN_N()
 TEST(NaturalNumberTests, ADD_NN_N) {
-    ///ТЕСТ 1: СТАНДАРТНЫЙ ТЕСТ ДЛЯ ДВУХ ЧИСЕЛ БЕЗ СМЕНЫ РАЗРЯДНОСТИ
     NaturalNumber n1, n2, result;
-    n1.add(123);
-    n2.add(456);
-    result.ADD_NN_N(n2);
-    EXPECT_EQ(result.get_value(), 579);
 
-    ///ТЕСТ 1: СТАНДАРТНЫЙ ТЕСТ ДЛЯ ДВУХ ЧИСЕЛ СО СМЕНОЙ РАЗРЯДНОСТИ
-    NaturalNumber n1, n2, result;
-    n1.add(4567356);
-    n2.add(8955787);
+    // Тест для чисел без смены разрядности
+    n1.get_num(123);
+    n2.get_num(456);
     result.ADD_NN_N(n2);
-    EXPECT_EQ(result.get_value(), 579);
+    EXPECT_EQ(result.ADD_1N_N(), 579);
+
+    // Тест для чисел со сменой разрядности
+    n1.get_num(4567356);
+    n2.get_num(8955787);
+    result.ADD_NN_N(n2);
+    EXPECT_EQ(result.ADD_1N_N(), 13523143);
 }
 
+// Тесты для проверки MUL_ND_N()
 TEST(NaturalNumberTests, MUL_ND_N) {
-    //ТЕСТ 1: СТАНДАРТНЫЙ СЛУЧАЙ ДЛЯ ДВУЗНАЧНОГО ЧИСЛА БЕЗ СМЕНЫ РАЗРЯДНОСТИ
     NaturalNumber n;
-    n.add(12);
+
+    // Тест для двухзначного числа без смены разрядности
+    n.get_num(12);
     n.MUL_ND_N(3);
-    EXPECT_EQ(n.get_value(), 36);
+    EXPECT_EQ(n.MUL_ND_N(), 36);
 
-    //ТЕСТ 2: СТАНДАРТНЫЙ СЛУЧАЙ ДЛЯ ДВУЗНАЧНОГО ЧИСЛА СО СМЕНОЙ РАЗРЯДНОСТИ
-    NaturalNumber n;
-    n.add(35);
+    // Тест для двухзначного числа со сменой разрядности
+    n.get_num(35);
     n.MUL_ND_N(4);
-    EXPECT_EQ(n.get_value(), 140);
+    EXPECT_EQ(n.MUL_ND_N(), 140);
 
-    //ТЕСТ 3: СТАНДАРТНЫЙ СЛУЧАЙ ДЛЯ ОДНОЗНАЧНОГО ЧИСЛА СО СМЕНОЙ РАЗРЯДНОСТИ
-    NaturalNumber n;
-    n.add(3);
+    // Тест для однозначного числа со сменой разрядности
+    n.get_num(3);
     n.MUL_ND_N(4);
-    EXPECT_EQ(n.get_value(), 12);
+    EXPECT_EQ(n.MUL_ND_N(), 12);
 
-    //ТЕСТ 4: СТАНДАРТНЫЙ СЛУЧАЙ ДЛЯ ОДНОЗНАЧНОГО ЧИСЛА БЕЗ СМЕНЫ РАЗРЯДНОСТИ
-    NaturalNumber n;
-    n.add(3);
+    // Тест для однозначного числа без смены разрядности
+    n.get_num(3);
     n.MUL_ND_N(3);
-    EXPECT_EQ(n.get_value(), 9);
+    EXPECT_EQ(n.MUL_ND_N(), 9);
 
-    //ТЕСТ 5: УМНОЖЕНИЕ НА 0
-    NaturalNumber n;
-    n.add(12);
+    // Тест для умножения на 0
+    n.get_num(12);
     n.MUL_ND_N(0);
-    EXPECT_EQ(n.get_value(), 0);
+    EXPECT_EQ(n.MUL_ND_N(), 0);
 }
 
+// Тесты для проверки SUB_NN_N()
 TEST(NaturalNumberTests, SUB_NN_N) {
-    ///ТЕСТ 1: СТАНДАРТНЫЙ СЛУЧАЙ ДЛЯ РАЗНЫХ ЧИСЕЛ БЕЗ СМЕНЫ РАЗРЯДНОСТИ
     NaturalNumber n1, n2, result;
-    n1.add(60);
-    n2.add(50);
-    result.SUB_NN_N(n2);
-    EXPECT_EQ(result.get_value(), 10);
 
-    ///ТЕСТ 2: СТАНДАРТНЫЙ СЛУЧАЙ ДЛЯ РАЗНЫХ ЧИСЕЛ СО СМЕНОЙ РАЗРЯДНОСТИ
-    NaturalNumber n1, n2, result;
-    n1.add(160);
-    n2.add(85);
+    // Тест для разных чисел без смены разрядности
+    n1.get_num(60);
+    n2.get_num(50);
     result.SUB_NN_N(n2);
-    EXPECT_EQ(result.get_value(), 75);
+    EXPECT_EQ(result.SUB_NN_N(), 10);
 
-    ///ТЕСТ 3: СТАНДАРТНЫЙ СЛУЧАЙ ДЛЯ РАЗНЫХ ЧИСЕЛ СО СМЕНОЙ РАЗРЯДНОСТИ
-    NaturalNumber n1, n2, result;
-    n1.add(160);
-    n2.add(85);
+    // Тест для разных чисел со сменой разрядности
+    n1.get_num(160);
+    n2.get_num(85);
     result.SUB_NN_N(n2);
-    EXPECT_EQ(result.get_value(), 75);
-
-    ///ТЕСТ 3: СТАНДАРТНЫЙ СЛУЧАЙ ДЛЯ РАЗНЫХ ЧИСЕЛ СО СМЕНОЙ РАЗРЯДНОСТИ
-    NaturalNumber n1, n2, result;
-    n1.add(160);
-    n2.add(85);
-    result.SUB_NN_N(n2);
-    EXPECT_EQ(result.get_value(), 75);
+    EXPECT_EQ(result.SUB_NN_N(), 75);
 }
 
+// Тесты для проверки MUL_Nk_N()
 TEST(NaturalNumberTests, MUL_Nk_N) {
-    //ТЕСТ 1: СТАНДАРТНЫЙ ТЕСТ ДЛЯ НЕНУЛЕВОГО ЧИСЛА И 10^K, ГДЕ K > 0
     NaturalNumber n1, k;
-    n1.add(32);
-    k.add(100);
-    EXPECT_TRUE(n1.MUL_Nk_N(k), 3200);
 
-    //ТЕСТ 2: СТАНДАРТНЫЙ ТЕСТ ДЛЯ НУЛЕВОГО ЧИСЛА
-    NaturalNumber n1, k;
-    n1.add(0);
-    k.add(100000000000);
+    // Тест для ненулевого числа и 10^k, где k > 0
+    n1.get_num(32);
+    k.get_num(10);
+    EXPECT_TRUE(n1.MUL_Nk_N(k), 320000000000);
+
+    // Тест для нулевого числа
+    n1.get_num(0);
+    k.get_num(100000000000);
     EXPECT_TRUE(n1.MUL_Nk_N(k), 0);
 
-    //ТЕСТ 3: СТАНДАРТНЫЙ ТЕСТ ДЛЯ НЕНУЛЕВОГО ЧИСЛА И 10^K, ГДЕ K = 0
-    NaturalNumber n1, k;
-    n1.add(6987);
-    k.add(1);
+    // Тест для ненулевого числа и 10^k, где k = 0
+    n1.get_num(6987);
+    k.get_num(1);
     EXPECT_TRUE(n1.MUL_Nk_N(k), 6987);
 }
 
