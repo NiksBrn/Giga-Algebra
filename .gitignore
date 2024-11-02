@@ -3,3 +3,4 @@ build/
 cmake-build-debug/
 main_program
 test_program
+.vscode/
