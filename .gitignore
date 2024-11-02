@@ -2,3 +2,4 @@ build/
 .idea
 cmake-build-debug/
 main_program
+test_program
