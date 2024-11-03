@@ -2,157 +2,172 @@
 #include <gtest/gtest.h>
 #include "../headers/NaturalNumber.h"
 
-// Тесты для проверки NZER_N_B()
-TEST(NZER_N_B,Subtest_1) {
-    // Тест для ненулевого числа
+// Г’ГҐГ±ГІГ» Г¤Г«Гї ГЇГ°Г®ГўГҐГ°ГЄГЁ NZER_N_B()
+TEST(NZER_N_B, Subtest_1) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г­ГҐГ­ГіГ«ГҐГўГ®ГЈГ® Г·ГЁГ±Г«Г 
     NaturalNumber n("12345");
     EXPECT_TRUE(n.NZER_N_B());
 }
 
-TEST(NZER_N_B,Subtest_2) {
-    // Тест для нулевого числа
+TEST(NZER_N_B, Subtest_2) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г­ГіГ«ГҐГўГ®ГЈГ® Г·ГЁГ±Г«Г 
     NaturalNumber n("0");
     EXPECT_FALSE(n.NZER_N_B());
 }
 
-// Тесты для проверки COM_NN_D()
-TEST(COM_NN_D,Subtest_3) {
-    // Тест для чисел с одинаковой разрядностью, где второе больше первого
+// Г’ГҐГ±ГІГ» Г¤Г«Гї ГЇГ°Г®ГўГҐГ°ГЄГЁ COM_NN_D()
+TEST(COM_NN_D, Subtest_3) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г·ГЁГ±ГҐГ« Г± Г®Г¤ГЁГ­Г ГЄГ®ГўГ®Г© Г°Г Г§Г°ГїГ¤Г­Г®Г±ГІГјГѕ, ГЈГ¤ГҐ ГўГІГ®Г°Г®ГҐ ГЎГ®Г«ГјГёГҐ ГЇГҐГ°ГўГ®ГЈГ®
     NaturalNumber n1("100");
-    NaturalNumber n2("300");
-    EXPECT_EQ(n1.COM_NN_D(n2), LESS);
+    NaturalNumber n2("310");
+    
+    ASSERT_EQ(n1.COM_NN_D(n2), LESS);
 }
 
-TEST(COM_NN_D,Subtest_4) {
-    // Тест для чисел с одинаковой разрядностью, где первое больше второго
+TEST(COM_NN_D, Subtest_4) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г·ГЁГ±ГҐГ« Г± Г®Г¤ГЁГ­Г ГЄГ®ГўГ®Г© Г°Г Г§Г°ГїГ¤Г­Г®Г±ГІГјГѕ, ГЈГ¤ГҐ ГЇГҐГ°ГўГ®ГҐ ГЎГ®Г«ГјГёГҐ ГўГІГ®Г°Г®ГЈГ®
     NaturalNumber n1("478");
     NaturalNumber n2("420");
-    EXPECT_EQ(n1.COM_NN_D(n2), GREATER);
+    ASSERT_EQ(n1.COM_NN_D(n2), GREATER);
 }
 
-TEST(COM_NN_D,Subtest_5) {
-    // Тест для равных чисел с одинаковой разрядностью
+TEST(COM_NN_D, Subtest_5) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г°Г ГўГ­Г»Гµ Г·ГЁГ±ГҐГ« Г± Г®Г¤ГЁГ­Г ГЄГ®ГўГ®Г© Г°Г Г§Г°ГїГ¤Г­Г®Г±ГІГјГѕ
     NaturalNumber n1("666000");
     NaturalNumber n2("666000");
-    EXPECT_EQ(n1.COM_NN_D(n2), EQUAL);
+    ASSERT_EQ(n1.COM_NN_D(n2), EQUAL);
 }
 
-TEST(COM_NN_D,Subtest_6) {
-    // Тест для чисел с разной разрядностью, где первое больше второго
+TEST(COM_NN_D, Subtest_6) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г·ГЁГ±ГҐГ« Г± Г°Г Г§Г­Г®Г© Г°Г Г§Г°ГїГ¤Г­Г®Г±ГІГјГѕ, ГЈГ¤ГҐ ГЇГҐГ°ГўГ®ГҐ ГЎГ®Г«ГјГёГҐ ГўГІГ®Г°Г®ГЈГ®
     NaturalNumber n1("12456666599");
     NaturalNumber n2("666599");
-    EXPECT_EQ(n1.COM_NN_D(n2), GREATER);
+    ASSERT_EQ(n1.COM_NN_D(n2), GREATER);
 }
 
-TEST(COM_NN_D,Subtest_7) {
-    // Тест для чисел с разной разрядностью, где второе больше первого
+TEST(COM_NN_D, Subtest_7) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г·ГЁГ±ГҐГ« Г± Г°Г Г§Г­Г®Г© Г°Г Г§Г°ГїГ¤Г­Г®Г±ГІГјГѕ, ГЈГ¤ГҐ ГўГІГ®Г°Г®ГҐ ГЎГ®Г«ГјГёГҐ ГЇГҐГ°ГўГ®ГЈГ®
     NaturalNumber n1("9");
     NaturalNumber n2("35409");
-    EXPECT_EQ(n1.COM_NN_D(n2), LESS);
+    ASSERT_EQ(n1.COM_NN_D(n2), LESS);
 }
 
-// Тесты для проверки ADD_1N_N()
-TEST(ADD_1N_N,Subtest_8) {
-    // Тест для числа без изменения разрядности
-    NaturalNumber n("777");
-    n.ADD_1N_N();
-    EXPECT_EQ(n, "778");
+// Г’ГҐГ±ГІГ» Г¤Г«Гї ГЇГ°Г®ГўГҐГ°ГЄГЁ ADD_1N_N()
+TEST(ADD_1N_N, Subtest_8) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г·ГЁГ±Г«Г  ГЎГҐГ§ ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГї Г°Г Г§Г°ГїГ¤Г­Г®Г±ГІГЁ
+    NaturalNumber n1("777");
+    NaturalNumber n2("778");
+    n1.ADD_1N_N();
+    ASSERT_EQ(n1, n2);
 }
 
-TEST(ADD_1N_N,Subtest_9) {
-    // Тест для числа со сменой разрядности
-    NaturalNumber n("999");
-    n.ADD_1N_N();
-    EXPECT_EQ(n, "1000");
+TEST(ADD_1N_N, Subtest_9) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г·ГЁГ±Г«Г  Г±Г® Г±Г¬ГҐГ­Г®Г© Г°Г Г§Г°ГїГ¤Г­Г®Г±ГІГЁ
+    NaturalNumber n1("999");
+    NaturalNumber n2("1000");
+    n1.ADD_1N_N();
+    ASSERT_EQ(n1, n2);
 }
 
-// Тесты для проверки ADD_NN_N()
-TEST(ADD_NN_N,Subtest_10) {
-    // Тест для чисел без смены разрядности
+// Г’ГҐГ±ГІГ» Г¤Г«Гї ГЇГ°Г®ГўГҐГ°ГЄГЁ ADD_NN_N()
+TEST(ADD_NN_N, Subtest_10) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г·ГЁГ±ГҐГ« ГЎГҐГ§ Г±Г¬ГҐГ­Г» Г°Г Г§Г°ГїГ¤Г­Г®Г±ГІГЁ
     NaturalNumber n1("123");
     NaturalNumber n2("456");
-    EXPECT_EQ(n1.ADD_NN_N(n2), "579");
+    NaturalNumber result("579");
+    ASSERT_EQ(n1.ADD_NN_N(n2), result);
 }
 
-TEST(ADD_NN_N,Subtest_11) {
-    // Тест для чисел со сменой разрядности
+TEST(ADD_NN_N, Subtest_11) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г·ГЁГ±ГҐГ« Г±Г® Г±Г¬ГҐГ­Г®Г© Г°Г Г§Г°ГїГ¤Г­Г®Г±ГІГЁ
     NaturalNumber n1("4567356");
     NaturalNumber n2("8955787");
-    EXPECT_EQ(n1.ADD_NN_N(n2), "13523143");
+    NaturalNumber result("13523143");
+    ASSERT_EQ(n1.ADD_NN_N(n2), result);
 }
 
-// Тесты для проверки MUL_ND_N()
-TEST(MUL_ND_N,Subtest_12) {
-    // Тест для двухзначного числа без смены разрядности
+// Г’ГҐГ±ГІГ» Г¤Г«Гї ГЇГ°Г®ГўГҐГ°ГЄГЁ MUL_ND_N()
+TEST(MUL_ND_N, Subtest_12) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г¤ГўГіГµГ§Г­Г Г·Г­Г®ГЈГ® Г·ГЁГ±Г«Г  ГЎГҐГ§ Г±Г¬ГҐГ­Г» Г°Г Г§Г°ГїГ¤Г­Г®Г±ГІГЁ
     NaturalNumber n("12");
     char c;
-    c=(3); 
-    EXPECT_EQ(n.MUL_ND_N(c), "36");
+    c = (3);
+    NaturalNumber result("36");
+    ASSERT_EQ(n.MUL_ND_N(c), result);
 }
 
-TEST(MUL_ND_N,Subtest_13) {
-    // Тест для двухзначного числа со сменой разрядности
+TEST(MUL_ND_N, Subtest_13) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г¤ГўГіГµГ§Г­Г Г·Г­Г®ГЈГ® Г·ГЁГ±Г«Г  Г±Г® Г±Г¬ГҐГ­Г®Г© Г°Г Г§Г°ГїГ¤Г­Г®Г±ГІГЁ
     NaturalNumber n("35");
     char c;
-    c=(4);
-    EXPECT_EQ(n.MUL_ND_N(c), "140");
+    c = (4);
+    NaturalNumber result("140");
+    ASSERT_EQ(n.MUL_ND_N(c), result);
 }
 
-TEST(MUL_ND_N,Subtest_14) {
-    // Тест для однозначного числа со сменой разрядности
+TEST(MUL_ND_N, Subtest_14) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г®Г¤Г­Г®Г§Г­Г Г·Г­Г®ГЈГ® Г·ГЁГ±Г«Г  Г±Г® Г±Г¬ГҐГ­Г®Г© Г°Г Г§Г°ГїГ¤Г­Г®Г±ГІГЁ
     NaturalNumber n("3");
     char c;
-    c=(4);
-    EXPECT_EQ(n.MUL_ND_N(c), "12");
+    c = (4);
+    NaturalNumber result("12");
+    ASSERT_EQ(n.MUL_ND_N(c), result);
 }
-TEST(MUL_ND_N,Subtest_15) {
-    // Тест для однозначного числа без смены разрядности
+TEST(MUL_ND_N, Subtest_15) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г®Г¤Г­Г®Г§Г­Г Г·Г­Г®ГЈГ® Г·ГЁГ±Г«Г  ГЎГҐГ§ Г±Г¬ГҐГ­Г» Г°Г Г§Г°ГїГ¤Г­Г®Г±ГІГЁ
     NaturalNumber n("3");
     char c;
-    c=(3);
-    EXPECT_EQ(n.MUL_ND_N(c), "9");
+    c = (3);
+    NaturalNumber result("9");
+    ASSERT_EQ(n.MUL_ND_N(c), result);
 }
-TEST(MUL_ND_N,Subtest_16) {
-    // Тест для умножения на 0
+TEST(MUL_ND_N, Subtest_16) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї ГіГ¬Г­Г®Г¦ГҐГ­ГЁГї Г­Г  0
     NaturalNumber n("12");
     char c;
-    c=(0);
-    EXPECT_EQ(n.MUL_ND_N(c), "0");
+    c = (0);
+    NaturalNumber result("0");
+    ASSERT_EQ(n.MUL_ND_N(c), result);
 }
 
-// Тесты для проверки SUB_NN_N()
-TEST(SUB_NN_N,Subtest_17) {
-    // Тест для разных чисел без смены разрядности
+// Г’ГҐГ±ГІГ» Г¤Г«Гї ГЇГ°Г®ГўГҐГ°ГЄГЁ SUB_NN_N()
+TEST(SUB_NN_N, Subtest_17) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г°Г Г§Г­Г»Гµ Г·ГЁГ±ГҐГ« ГЎГҐГ§ Г±Г¬ГҐГ­Г» Г°Г Г§Г°ГїГ¤Г­Г®Г±ГІГЁ
     NaturalNumber n1("60");
     NaturalNumber n2("50");
-    EXPECT_EQ(n1.SUB_NN_N(n2), "10");
+    NaturalNumber result("10");
+    ASSERT_EQ(n1.SUB_NN_N(n2), result);
 }
 
-TEST(SUB_NN_N,Subtest_18) {
-    // Тест для разных чисел со сменой разрядности
+TEST(SUB_NN_N, Subtest_18) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г°Г Г§Г­Г»Гµ Г·ГЁГ±ГҐГ« Г±Г® Г±Г¬ГҐГ­Г®Г© Г°Г Г§Г°ГїГ¤Г­Г®Г±ГІГЁ
     NaturalNumber n1("160");
     NaturalNumber n2("85");
-    EXPECT_EQ(n1.SUB_NN_N(n2), "75");
+    NaturalNumber result("075");
+    ASSERT_EQ(n1.SUB_NN_N(n2), result);
 }
 
-// Тесты для проверки MUL_Nk_N()
-TEST(MUL_Nk_N,Subtest_19) {
-    // Тест для ненулевого числа и 10^k, где k > 0
+// Г’ГҐГ±ГІГ» Г¤Г«Гї ГЇГ°Г®ГўГҐГ°ГЄГЁ MUL_Nk_N()
+TEST(MUL_Nk_N, Subtest_19) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г­ГҐГ­ГіГ«ГҐГўГ®ГЈГ® Г·ГЁГ±Г«Г  ГЁ 10^k, ГЈГ¤ГҐ k > 0
     NaturalNumber n1("32");
-    NaturalNumber k("10");
-    EXPECT_EQ(n1.MUL_Nk_N(k), "320000000000");
+    NaturalNumber k("19");
+    NaturalNumber result("320000000000000000000");
+    ASSERT_EQ(n1.MUL_Nk_N(k), result);
 }
 
-TEST(MUL_Nk_N,Subtest_20) {
-    // Тест для нулевого числа
+TEST(MUL_Nk_N, Subtest_20) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г­ГіГ«ГҐГўГ®ГЈГ® Г·ГЁГ±Г«Г 
     NaturalNumber n1("0");
-    NaturalNumber k("100000000000");
-    EXPECT_EQ(n1.MUL_Nk_N(k), "0");
+    NaturalNumber k("1000");
+    NaturalNumber result("0");
+    ASSERT_EQ(n1.MUL_Nk_N(k), result);
 }
 
-TEST(MUL_Nk_N,Subtest_21) {
-    // Тест для ненулевого числа и 10^k, где k = 0
+TEST(MUL_Nk_N, Subtest_21) {
+    // Г’ГҐГ±ГІ Г¤Г«Гї Г­ГҐГ­ГіГ«ГҐГўГ®ГЈГ® Г·ГЁГ±Г«Г  ГЁ 10^k, ГЈГ¤ГҐ k = 0
     NaturalNumber n1("6987");
     NaturalNumber k("1");
-    EXPECT_EQ(n1.MUL_Nk_N(k), "6987");
+    NaturalNumber result("69870");
+    ASSERT_EQ(n1.MUL_Nk_N(k), result);
 }

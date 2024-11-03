@@ -1,40 +1,79 @@
-#include "../../headers/NaturalNumber.h"
+п»ї#include "../../headers/NaturalNumber.h"
 #include <iostream>
+
+bool NaturalNumber::operator==(const NaturalNumber& other) const{
+    if(COM_NN_D(other) == EQUAL) return true;
+    return false;
+}
+
+bool NaturalNumber::operator!=(const NaturalNumber& other) const{
+    if(COM_NN_D(other) != EQUAL) return true;
+    return false;
+}
+
+bool NaturalNumber::operator>=(const NaturalNumber& other) const{
+    if(COM_NN_D(other) >= EQUAL) return true;
+    return false;
+}
+
+bool NaturalNumber::operator<=(const NaturalNumber& other) const{
+    if(COM_NN_D(other) != EQUAL) return true;
+    return false;
+}
+
+bool NaturalNumber::operator<(const NaturalNumber& other) const{
+    if(COM_NN_D(other) != EQUAL) return true;
+    return false;
+}
+
+bool NaturalNumber::operator>(const NaturalNumber& other) const{
+    if(COM_NN_D(other) != EQUAL) return true;
+    return false;
+}
 
 Compare NaturalNumber::COM_NN_D(const NaturalNumber& other) const
 {
-    Node* next_node1 = Big_int.get_last();//первая цифра первого числа
-    Node* next_node2 = other.Big_int.get_last();//первая цифра второго числа
-
-    while ((next_node1->next!=nullptr) && (next_node2->next!=nullptr)) { //цикл для сравнения всех разрядов обоих чисел
-
-        int num1 = next_node1->value; //значение i-го разряда первого числа
-        int num2 = next_node2->value; //значение i-го разряда второго числа
-
-        if (num1 > num2) { //сравнение двух разрядов
-            return GREATER;
-        }
-        if (num1 < num2) {
-            return LESS;
-        }
-
-        next_node1 = next_node1->next;//сдвиг на следующий разряд первого числа
-        next_node2 = next_node2->next; //сдвиг на следующий разряд второго числа
-
+    Node* next_node1 = Big_int.get_first();//РїРѕСЃР»РµРґРЅСЏСЏ С†РёС„СЂР° РїРµСЂРІРѕРіРѕ С‡РёСЃР»Р°
+    Node* next_node2 = other.Big_int.get_first();//РїРѕСЃР»РµРґРЅСЏСЏ С†РёС„СЂР° РІС‚РѕСЂРѕРіРѕ С‡РёСЃР»Р°
+    
+    int count=0; //РµСЃР»Рё СЂР°Р·СЂСЏРґ РїРµСЂРІРѕРіРѕ С‡РёСЃР»Р° РїСЂРµРІС‹СЃРёР» СЂР°Р·СЂСЏРґ РІС‚РѕСЂРѕРіРѕ, РїРѕР»СѓС‡РёС‚ Р·РЅР°С‡РµРЅРёРµ 1, РёРЅР°С‡Рµ 0
+    
+    int flag=1; //СЂР°РІРµРЅ 1, РїРѕРєР° РЅРµ РѕР±РЅР°СЂСѓР¶РёС‚СЃСЏ СЂР°Р·Р»РёС‡РёРµ РІ СЂР°Р·СЂСЏРґР°С…
+    
+    while((next_node1->next!=nullptr) && (next_node2->next!=nullptr)){
+        int num1=next_node1->value;
+        int num2=next_node2->value;
+        
+    	if (num1>num2){
+    	     flag=0;
+    	     count=1;
+    	}
+    	if (num1<num2){
+    	     flag=0;
+    	     count=0;
+    	}
+    	next_node1=next_node1->next;
+    	next_node2=next_node2->next;
     }
-    if ((next_node1->next != nullptr) && (next_node2->next == nullptr)) { // если разряд второго числа меньше разряда первого
-        return GREATER;
+    if ((next_node1->next!=nullptr)&&(next_node2->next==nullptr)){
+    	return GREATER;
     }
-    if ((next_node1->next == nullptr) && (next_node2->next != nullptr)) { // если разряд второго числа больше разряда первого
-        return LESS;
+    if ((next_node1->next==nullptr)&&(next_node2->next!=nullptr)){
+    	return LESS;
     }
-    return EQUAL; //если числа равны
+    if (flag==1){
+    	return EQUAL;
+    }
+    if(count==1){
+    	return GREATER;
+    }
+    return LESS;
 }
 
 bool NaturalNumber::NZER_N_B()
 {
-    if ((Big_int.get_first()->next == nullptr) && (Big_int.get_first()->value == 0)) {// проверка числа на 0
-        return false; // если число равно 0, то false
+    if ((Big_int.get_first()->next == nullptr) && (Big_int.get_first()->value == 0)) {// РїСЂРѕРІРµСЂРєР° С‡РёСЃР»Р° РЅР° 0
+        return false; // РµСЃР»Рё С‡РёСЃР»Рѕ СЂР°РІРЅРѕ 0, С‚Рѕ false
     }
 
     return true;
@@ -42,20 +81,24 @@ bool NaturalNumber::NZER_N_B()
 
 void NaturalNumber::ADD_1N_N()
 {
-    Node* next_node = Big_int.get_first();//отвечает за сдвиг на следующий разряд числа
+    Node* next_node = Big_int.get_first();//РѕС‚РІРµС‡Р°РµС‚ Р·Р° СЃРґРІРёРі РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·СЂСЏРґ С‡РёСЃР»Р°
 
-    while (next_node->next != nullptr) { // проход по числу, пока переход в следующие разряды не прекратится
+    while (1) { // РїСЂРѕС…РѕРґ РїРѕ С‡РёСЃР»Сѓ, РїРѕРєР° РїРµСЂРµС…РѕРґ РІ СЃР»РµРґСѓСЋС‰РёРµ СЂР°Р·СЂСЏРґС‹ РЅРµ РїСЂРµРєСЂР°С‚РёС‚СЃСЏ
 
-        if (next_node->value == 9) {//если следующий разряд также изменяет следующий
+        if (next_node->value == 9) {//РµСЃР»Рё СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·СЂСЏРґ С‚Р°РєР¶Рµ РёР·РјРµРЅСЏРµС‚ СЃР»РµРґСѓСЋС‰РёР№
+       	    if (next_node->next==nullptr){
+       	        next_node->value = 0;
+       	        break;
+       	    }
             next_node->value = 0;
-            next_node = next_node->next;// перемещение на новый разряд
+            next_node = next_node->next;// РїРµСЂРµРјРµС‰РµРЅРёРµ РЅР° РЅРѕРІС‹Р№ СЂР°Р·СЂСЏРґ
             continue;
         }
 
         next_node->value += 1;
         break;
     }
-    if (next_node->value == 0) { // если разряд числа увеличивается
+    if (next_node->value == 0) { // РµСЃР»Рё СЂР°Р·СЂСЏРґ С‡РёСЃР»Р° СѓРІРµР»РёС‡РёРІР°РµС‚СЃСЏ
         Big_int.push_back(1);
     }
 
@@ -64,25 +107,28 @@ void NaturalNumber::ADD_1N_N()
 
 NaturalNumber& NaturalNumber::ADD_NN_N(const NaturalNumber& other) {
 
-    Node* next_node1 = Big_int.get_first(); //отвечает за сдвиг на следующий разряд первого числа
-    Node* next_node2 = other.Big_int.get_first();//отвечает за сдвиг на следующий разряд второго числа
-    int point = 0; //будет принимать себя излишек, если сумма цифр выйдет за пределы одного разряда
+    Node* next_node1 = Big_int.get_first(); //РѕС‚РІРµС‡Р°РµС‚ Р·Р° СЃРґРІРёРі РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·СЂСЏРґ РїРµСЂРІРѕРіРѕ С‡РёСЃР»Р°
+    Node* next_node2 = other.Big_int.get_first();//РѕС‚РІРµС‡Р°РµС‚ Р·Р° СЃРґРІРёРі РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·СЂСЏРґ РІС‚РѕСЂРѕРіРѕ С‡РёСЃР»Р°
+    int point = 0; //Р±СѓРґРµС‚ РїСЂРёРЅРёРјР°С‚СЊ СЃРµР±СЏ РёР·Р»РёС€РµРє, РµСЃР»Рё СЃСѓРјРјР° С†РёС„СЂ РІС‹Р№РґРµС‚ Р·Р° РїСЂРµРґРµР»С‹ РѕРґРЅРѕРіРѕ СЂР°Р·СЂСЏРґР°
 
-    while ((next_node1->next != nullptr) && (next_node2->next != nullptr)) {
-        int num1 = next_node1->value; // значение соответствующего разряда первого числа
-        int num2 = next_node2->value + point; // значение соответствующего разряда второго числа (плюс единица от предыдущего разряда, если она есть)
-        if (num1 + num2 >= 10) { // если сумма выходит за пределы одного разряда
-            num1 += num2; // сложение разрядов двух чисел
-            num1 -= 10; // вычитание лишнего десятка
-            point = 1; // сохранение лишнего десятка для следущего разряда
+    while (1) {
+        int num1 = next_node1->value; // Р·РЅР°С‡РµРЅРёРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРіРѕ СЂР°Р·СЂСЏРґР° РїРµСЂРІРѕРіРѕ С‡РёСЃР»Р°
+        int num2 = next_node2->value + point; // Р·РЅР°С‡РµРЅРёРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРіРѕ СЂР°Р·СЂСЏРґР° РІС‚РѕСЂРѕРіРѕ С‡РёСЃР»Р° (РїР»СЋСЃ РµРґРёРЅРёС†Р° РѕС‚ РїСЂРµРґС‹РґСѓС‰РµРіРѕ СЂР°Р·СЂСЏРґР°, РµСЃР»Рё РѕРЅР° РµСЃС‚СЊ)
+        if (num1 + num2 >= 10) { // РµСЃР»Рё СЃСѓРјРјР° РІС‹С…РѕРґРёС‚ Р·Р° РїСЂРµРґРµР»С‹ РѕРґРЅРѕРіРѕ СЂР°Р·СЂСЏРґР°
+            num1 += num2; // СЃР»РѕР¶РµРЅРёРµ СЂР°Р·СЂСЏРґРѕРІ РґРІСѓС… С‡РёСЃРµР»
+            num1 -= 10; // РІС‹С‡РёС‚Р°РЅРёРµ Р»РёС€РЅРµРіРѕ РґРµСЃСЏС‚РєР°
+            point = 1; // СЃРѕС…СЂР°РЅРµРЅРёРµ Р»РёС€РЅРµРіРѕ РґРµСЃСЏС‚РєР° РґР»СЏ СЃР»РµРґСѓС‰РµРіРѕ СЂР°Р·СЂСЏРґР°
         }
-        else { // если сумма не выходит за пределы одного разряда
-            num1 += num2; // сложение разрядов двух чисел
-            point = 0; // означает, что следующий разряд не получит десяток от этого разряда
+        else { // РµСЃР»Рё СЃСѓРјРјР° РЅРµ РІС‹С…РѕРґРёС‚ Р·Р° РїСЂРµРґРµР»С‹ РѕРґРЅРѕРіРѕ СЂР°Р·СЂСЏРґР°
+            num1 += num2; // СЃР»РѕР¶РµРЅРёРµ СЂР°Р·СЂСЏРґРѕРІ РґРІСѓС… С‡РёСЃРµР»
+            point = 0; // РѕР·РЅР°С‡Р°РµС‚, С‡С‚Рѕ СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·СЂСЏРґ РЅРµ РїРѕР»СѓС‡РёС‚ РґРµСЃСЏС‚РѕРє РѕС‚ СЌС‚РѕРіРѕ СЂР°Р·СЂСЏРґР°
         }
-        next_node1->value = num1; // итоговое значение суммы разрядов
-        next_node1 = next_node1->next; // переход в следующий разряд первого числа
-        next_node2 = next_node2->next; // переход в следующий разряд второго числа
+        next_node1->value = num1; // РёС‚РѕРіРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ СЃСѓРјРјС‹ СЂР°Р·СЂСЏРґРѕРІ
+        if((next_node1->next == nullptr) && (next_node2->next == nullptr)){
+            break;
+        }
+        next_node1 = next_node1->next; // РїРµСЂРµС…РѕРґ РІ СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·СЂСЏРґ РїРµСЂРІРѕРіРѕ С‡РёСЃР»Р°
+        next_node2 = next_node2->next; // РїРµСЂРµС…РѕРґ РІ СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·СЂСЏРґ РІС‚РѕСЂРѕРіРѕ С‡РёСЃР»Р°
     }
     if ((point == 1) && (next_node1->next == nullptr)) {
         Big_int.push_back(1);
@@ -92,72 +138,78 @@ NaturalNumber& NaturalNumber::ADD_NN_N(const NaturalNumber& other) {
 
 NaturalNumber& NaturalNumber::MUL_ND_N(const char c)
 {
-    if (c == 0) { // если умножение на 0
-        Big_int.get_first()->next = nullptr; // отрываем остальную часть числа
-        Big_int.get_first()->value = 0; // число становится 0
+    if (c == 0) { // РµСЃР»Рё СѓРјРЅРѕР¶РµРЅРёРµ РЅР° 0
+        Big_int.get_first()->next = nullptr; // РѕС‚СЂС‹РІР°РµРј РѕСЃС‚Р°Р»СЊРЅСѓСЋ С‡Р°СЃС‚СЊ С‡РёСЃР»Р°
+        Big_int.get_first()->value = 0; // С‡РёСЃР»Рѕ СЃС‚Р°РЅРѕРІРёС‚СЃСЏ 0
     }
 
-    Node* next_node = Big_int.get_first();//отвечает за сдвиг на следующий разряд числа
-    int point = 0;// содержит в себе значение, оставшееся после умножения предыдущего разряда
+    Node* next_node = Big_int.get_first();//РѕС‚РІРµС‡Р°РµС‚ Р·Р° СЃРґРІРёРі РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·СЂСЏРґ С‡РёСЃР»Р°
+    int point = 0;// СЃРѕРґРµСЂР¶РёС‚ РІ СЃРµР±Рµ Р·РЅР°С‡РµРЅРёРµ, РѕСЃС‚Р°РІС€РµРµСЃСЏ РїРѕСЃР»Рµ СѓРјРЅРѕР¶РµРЅРёСЏ РїСЂРµРґС‹РґСѓС‰РµРіРѕ СЂР°Р·СЂСЏРґР°
 
-    while (next_node != nullptr) { // проход по всему числу
-        if ((next_node->value *= c)+point > 10) { //если произведение выходит за пределы одного разряда
-            int new_point = ((next_node->value *= c) + point) / 10; //значение, выходящее за пределы одного разряда
-            next_node->value = (next_node->value * c) + point - new_point*10; //новое значение разряда
-            point = new_point; // новое значение point
+    while (1) { // РїСЂРѕС…РѕРґ РїРѕ РІСЃРµРјСѓ С‡РёСЃР»Сѓ
+        if ((next_node->value * c)+point > 10) { //РµСЃР»Рё РїСЂРѕРёР·РІРµРґРµРЅРёРµ РІС‹С…РѕРґРёС‚ Р·Р° РїСЂРµРґРµР»С‹ РѕРґРЅРѕРіРѕ СЂР°Р·СЂСЏРґР°
+            int new_point = ((next_node->value * c) + point) / 10; //Р·РЅР°С‡РµРЅРёРµ, РІС‹С…РѕРґСЏС‰РµРµ Р·Р° РїСЂРµРґРµР»С‹ РѕРґРЅРѕРіРѕ СЂР°Р·СЂСЏРґР°
+            next_node->value = (next_node->value * c) + point - new_point*10; //РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ СЂР°Р·СЂСЏРґР°
+            point = new_point; // РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ point
         }
-        else {// если произведение не выходит за пределы одного разряда
-            next_node->value = (next_node->value * c) + point;//новое значение разряда
-            point = 0;//в следующий разряд не переходит остаток от предыдущего
+        else {// РµСЃР»Рё РїСЂРѕРёР·РІРµРґРµРЅРёРµ РЅРµ РІС‹С…РѕРґРёС‚ Р·Р° РїСЂРµРґРµР»С‹ РѕРґРЅРѕРіРѕ СЂР°Р·СЂСЏРґР°
+            next_node->value = (next_node->value * c) + point;//РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ СЂР°Р·СЂСЏРґР°
+            point = 0;//РІ СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·СЂСЏРґ РЅРµ РїРµСЂРµС…РѕРґРёС‚ РѕСЃС‚Р°С‚РѕРє РѕС‚ РїСЂРµРґС‹РґСѓС‰РµРіРѕ
         }
-        next_node = next_node->next;//сдвиг на следующий разряд
+        if(next_node->next == nullptr){
+            break;
+        }
+        next_node = next_node->next;//СЃРґРІРёРі РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·СЂСЏРґ
     }
-    if (point > 0) {//если разряд после произведения повышается
-        Big_int.push_back(point);//повышение разряда
+    if (point > 0) {//РµСЃР»Рё СЂР°Р·СЂСЏРґ РїРѕСЃР»Рµ РїСЂРѕРёР·РІРµРґРµРЅРёСЏ РїРѕРІС‹С€Р°РµС‚СЃСЏ
+        Big_int.push_back(point);//РїРѕРІС‹С€РµРЅРёРµ СЂР°Р·СЂСЏРґР°
     }
     return *this;
 }
 
 NaturalNumber& NaturalNumber::SUB_NN_N(const NaturalNumber& num)
 {
-    int point = 0; // если вычитание выйдет за пределы одного разряда, придётся взять одну цифру из следующего
+    int point = 0; // РµСЃР»Рё РІС‹С‡РёС‚Р°РЅРёРµ РІС‹Р№РґРµС‚ Р·Р° РїСЂРµРґРµР»С‹ РѕРґРЅРѕРіРѕ СЂР°Р·СЂСЏРґР°, РїСЂРёРґС‘С‚СЃСЏ РІР·СЏС‚СЊ РѕРґРЅСѓ С†РёС„СЂСѓ РёР· СЃР»РµРґСѓСЋС‰РµРіРѕ
 
-    Node* next_node1 = Big_int.get_first(); // отвечает за сдвиг на следующий разряд первого числа
-    Node* next_node2 = num.Big_int.get_first();//отвечает за сдвиг на следующий разряд второго числа
+    Node* next_node1 = Big_int.get_first(); // РѕС‚РІРµС‡Р°РµС‚ Р·Р° СЃРґРІРёРі РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·СЂСЏРґ РїРµСЂРІРѕРіРѕ С‡РёСЃР»Р°
+    Node* next_node2 = num.Big_int.get_first();//РѕС‚РІРµС‡Р°РµС‚ Р·Р° СЃРґРІРёРі РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·СЂСЏРґ РІС‚РѕСЂРѕРіРѕ С‡РёСЃР»Р°
 
-    while (next_node2->next!=nullptr) {
+    while (1) {
 
-        int num1 = next_node1->value; //значение i-го разряда первого числа
-        int num2 = next_node2->value + point; //значение i-го разряда второго числа
+        int num1 = next_node1->value; //Р·РЅР°С‡РµРЅРёРµ i-РіРѕ СЂР°Р·СЂСЏРґР° РїРµСЂРІРѕРіРѕ С‡РёСЃР»Р°
+        int num2 = next_node2->value + point; //Р·РЅР°С‡РµРЅРёРµ i-РіРѕ СЂР°Р·СЂСЏРґР° РІС‚РѕСЂРѕРіРѕ С‡РёСЃР»Р°
 
-        if (num1 < num2) { //если значение i-го разряда второго числа больше первого
-            num1 += 10; //разряд первого числа получает 10 от следующего
-            num1 -= num2; //вычитание разрядов
-            point = 1; //будет учитываться в дальнейшем вычитании за взятую ранее десятку
+        if (num1 < num2) { //РµСЃР»Рё Р·РЅР°С‡РµРЅРёРµ i-РіРѕ СЂР°Р·СЂСЏРґР° РІС‚РѕСЂРѕРіРѕ С‡РёСЃР»Р° Р±РѕР»СЊС€Рµ РїРµСЂРІРѕРіРѕ
+            num1 += 10; //СЂР°Р·СЂСЏРґ РїРµСЂРІРѕРіРѕ С‡РёСЃР»Р° РїРѕР»СѓС‡Р°РµС‚ 10 РѕС‚ СЃР»РµРґСѓСЋС‰РµРіРѕ
+            num1 -= num2; //РІС‹С‡РёС‚Р°РЅРёРµ СЂР°Р·СЂСЏРґРѕРІ
+            point = 1; //Р±СѓРґРµС‚ СѓС‡РёС‚С‹РІР°С‚СЊСЃСЏ РІ РґР°Р»СЊРЅРµР№С€РµРј РІС‹С‡РёС‚Р°РЅРёРё Р·Р° РІР·СЏС‚СѓСЋ СЂР°РЅРµРµ РґРµСЃСЏС‚РєСѓ
         }
         else {
-            num1 -= num2; //если значение i-го разряда первого числа равно или больше
+            num1 -= num2; //РµСЃР»Рё Р·РЅР°С‡РµРЅРёРµ i-РіРѕ СЂР°Р·СЂСЏРґР° РїРµСЂРІРѕРіРѕ С‡РёСЃР»Р° СЂР°РІРЅРѕ РёР»Рё Р±РѕР»СЊС€Рµ
             point = 0;
         }
 
-        next_node1->value = num1; //полученная разность
-
-        next_node1 = next_node1->next;//сдвиг на следующий разряд первого числа
-        next_node2 = next_node2->next; //сдвиг на следующий разряд второго числа
+        next_node1->value = num1; //РїРѕР»СѓС‡РµРЅРЅР°СЏ СЂР°Р·РЅРѕСЃС‚СЊ
+	if (next_node2->next==nullptr){
+	    break;
+	}
+        next_node1 = next_node1->next;//СЃРґРІРёРі РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·СЂСЏРґ РїРµСЂРІРѕРіРѕ С‡РёСЃР»Р°
+        next_node2 = next_node2->next; //СЃРґРІРёРі РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·СЂСЏРґ РІС‚РѕСЂРѕРіРѕ С‡РёСЃР»Р°
 
     }
-    if (point == 1) {//если осталась единица, которую надо вычесть из старших разрядов
-        while (next_node1->value == 0) { //поиск, пока не наткнёмся на отличное от 0 число
+    next_node1 = next_node1->next;
+    if (point == 1) {//РµСЃР»Рё РѕСЃС‚Р°Р»Р°СЃСЊ РµРґРёРЅРёС†Р°, РєРѕС‚РѕСЂСѓСЋ РЅР°РґРѕ РІС‹С‡РµСЃС‚СЊ РёР· СЃС‚Р°СЂС€РёС… СЂР°Р·СЂСЏРґРѕРІ
+        while (next_node1->value == 0) { //РїРѕРёСЃРє, РїРѕРєР° РЅРµ РЅР°С‚РєРЅС‘РјСЃСЏ РЅР° РѕС‚Р»РёС‡РЅРѕРµ РѕС‚ 0 С‡РёСЃР»Рѕ
             next_node1->value = 9;
             next_node1=next_node1->next;
         }
-        next_node1->value -= 1; //вычитание единицы
+        next_node1->value -= 1; //РІС‹С‡РёС‚Р°РЅРёРµ РµРґРёРЅРёС†С‹
     }
     
     //Node* check_node = Big_int.get_last();
     //for (int j = 0; j < size1; j++) {
     //    if (check_node->value != 0) {
-    //       break;                         ////удаление незначащих нулей слева направо, надо добавить prev
+    //       break;                         ////СѓРґР°Р»РµРЅРёРµ РЅРµР·РЅР°С‡Р°С‰РёС… РЅСѓР»РµР№ СЃР»РµРІР° РЅР°РїСЂР°РІРѕ, РЅР°РґРѕ РґРѕР±Р°РІРёС‚СЊ prev
     //   }
     //   if (check_node->value == 0) {
     //        check_node->prev = nullptr;
@@ -168,17 +220,20 @@ NaturalNumber& NaturalNumber::SUB_NN_N(const NaturalNumber& num)
 
 NaturalNumber& NaturalNumber::MUL_Nk_N(const NaturalNumber& k)
 {
-    Node* next_node = k.Big_int.get_first(); // отвечает за сдвиг на следующий разряд числа k
-
+    Node* next_node = k.Big_int.get_first(); // РѕС‚РІРµС‡Р°РµС‚ Р·Р° СЃРґРІРёРі РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·СЂСЏРґ С‡РёСЃР»Р° k
+    if((Big_int.get_first()->next == nullptr) && (Big_int.get_first()->value == 0)){
+        return *this;
+    }
     while (1) {
-        Big_int.push_front(0);
-        next_node->value -= 1;
-        if (next_node->value == 0) {
+        if(next_node->value==0){
             if (next_node->next == nullptr) {
                 break;
             }
             next_node=next_node->next;
+            next_node->value += 9;
         }
+        Big_int.push_front(0);
+        next_node->value -= 1;
     }
     return *this;
 }
