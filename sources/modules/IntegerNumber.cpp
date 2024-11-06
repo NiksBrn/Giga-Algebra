@@ -1,9 +1,13 @@
 #include "../../headers/IntegerNumber.h"
 
-IntegerNumber::IntegerNumber(char sign, std::string s) : NaturalNumber(s) {
+// struct start
+
+IntegerNumber::IntegerNumber(char sign, std::string s){
+    number = NaturalNumber(s);
     sign == '-' ? isNegative = true : isNegative = false;
 }
 
+// struct end
 Sign IntegerNumber::POZ_Z_D() const {
   if (isNegative) {
     return NEGATIVE;
@@ -11,6 +15,10 @@ Sign IntegerNumber::POZ_Z_D() const {
     return POSITIVE;  // TODO ZERO
 }
 
-NaturalNumber &IntegerNumber::TRANS_Z_N(){
-  return *dynamic_cast<NaturalNumber *>(this);
+const NaturalNumber& IntegerNumber::get_num() const{
+    return number;
 }
+
+//NaturalNumber &IntegerNumber::TRANS_Z_N(){
+//  return *dynamic_cast<NaturalNumber *>(this);
+//}

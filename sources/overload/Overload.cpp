@@ -14,7 +14,7 @@ std::ostream& operator<<(std::ostream& os, const NaturalNumber& num) {
 std::ostream& operator<<(std::ostream& os, const IntegerNumber& num) {
   char tmp;
   num.POZ_Z_D() == POSITIVE ? tmp = 0 : tmp = '-';
-  return os << tmp << static_cast<NaturalNumber>(num);
+  return os << tmp << num.get_num();
 }
 
 std::ostream& operator<<(std::ostream& os, const RationalNumber& num) {

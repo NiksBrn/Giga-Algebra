@@ -1,6 +1,6 @@
 #include "../../headers/NaturalNumber.h"
 
-//struct start
+// struct start
 
 NaturalNumber::NaturalNumber(std::string s) {
     for(int i = s.size() - 1; i >=0; i--) {
@@ -16,4 +16,4 @@ void NaturalNumber::clear(){
     Big_int.clear();
 }
 
-//struct end
+// struct end

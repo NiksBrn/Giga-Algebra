@@ -8,7 +8,7 @@
 
 enum Sign { ZERO = 0, POSITIVE = 1, NEGATIVE = -1 };
 
-class IntegerNumber : public NaturalNumber{
+class IntegerNumber{
  public:
   IntegerNumber(char sign, std::string s);
 
@@ -44,8 +44,13 @@ class IntegerNumber : public NaturalNumber{
   IntegerNumber &operator%(const IntegerNumber &other) const;
   IntegerNumber &operator%=(const IntegerNumber &other) const;
 
+  const NaturalNumber& get_num() const;
+
+  void clear(){number.clear();};
+
  protected:
   bool isNegative;  // '+' or '-'
+  NaturalNumber number;
 };
 
 #endif  // GIGA_ALGEBRA_POLYNOMIAL_H
