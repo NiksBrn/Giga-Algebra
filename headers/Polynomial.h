@@ -9,8 +9,8 @@
 
 class Polynomial {
  public:
-  Polynomial(NaturalNumber degree, std::vector<RationalNumber> coeffs)
-      : degree(degree), coeffs(coeffs) {}
+  Polynomial(NaturalNumber degree, std::vector<RationalNumber> coeffs);
+ //     : degree(degree), coeffs(coeffs) {}
 
   Polynomial &ADD_PP_P(const Polynomial &other);
   Polynomial &operator+(const Polynomial &other);
@@ -30,7 +30,7 @@ class Polynomial {
 
   RationalNumber &LED_P_Q();
 
-  NaturalNumber &DEG_P_N() { return degree; }
+//  NaturalNumber &DEG_P_N() { return degree; }
 
   RationalNumber &FAC_P_Q();
 
@@ -53,8 +53,7 @@ class Polynomial {
   Polynomial &NMR_P_P();
 
  private:
-  std::vector<RationalNumber> coeffs;
-  NaturalNumber degree;
+
 };
 
 #endif  // GIGA_ALGEBRA_POLYNOMIAL_H
