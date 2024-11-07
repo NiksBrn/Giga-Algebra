@@ -4,3 +4,5 @@ cmake-build-debug/
 main_program
 test_program
 .vscode/
+number1.txt
+number2.txt
