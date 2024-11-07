@@ -10,13 +10,16 @@
 class RationalNumber {
  public:
   RationalNumber(char sign, std::string numerator, std::string denominator)
-      : numerator(sign, numerator), denominator(denominator) {}
+      : numerator(new IntegerNumber(sign, numerator)),
+        denominator(new NaturalNumber(denominator)) {};
 
   RationalNumber(IntegerNumber numerator, NaturalNumber denominator)
-      : numerator(numerator), denominator(denominator) {}
+      : numerator(new IntegerNumber(numerator)),
+        denominator(new NaturalNumber(denominator)) {}
 
   explicit RationalNumber(IntegerNumber numerator)
-      : numerator(numerator), denominator("1") {}
+      : numerator(new IntegerNumber(numerator)),
+        denominator(new NaturalNumber("1")) {}
 
   RationalNumber &RED_Q_Q();
 
@@ -42,15 +45,15 @@ class RationalNumber {
   RationalNumber &operator/(RationalNumber &other);
   RationalNumber &operator/=(RationalNumber &other);
 
-  IntegerNumber &getNumerator() { return numerator; }
-  NaturalNumber &getDenominator() { return denominator; }
+  IntegerNumber &getNumerator() { return *numerator; }
+  NaturalNumber &getDenominator() { return *denominator; }
 
-  const IntegerNumber &getNumerator() const { return numerator; }
-  const NaturalNumber &getDenominator() const { return denominator; }
+  const IntegerNumber &getNumerator() const { return *numerator; }
+  const NaturalNumber &getDenominator() const { return *denominator; }
 
  protected:
-  IntegerNumber numerator;
-  NaturalNumber denominator;
+  IntegerNumber *numerator;
+  NaturalNumber *denominator;
 };
 
 #endif  // GIGA_ALGEBRA_POLYNOMIAL_H

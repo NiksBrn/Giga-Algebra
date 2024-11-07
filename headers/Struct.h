@@ -12,6 +12,8 @@ class List{
 public:
     List() : first(nullptr), last(nullptr){};
     ~List() = default;
+    List(const List& other);
+    List& operator =(const List& other);
     void clear();
     void push_back(unsigned char value);
     void push_front(unsigned char value);

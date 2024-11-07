@@ -11,9 +11,13 @@ enum Compare { EQUAL, LESS, GREATER };
 
 class NaturalNumber {
  public:
-  NaturalNumber() = default;
-  
+  NaturalNumber();
+
   explicit NaturalNumber(std::string s);
+
+  NaturalNumber(const NaturalNumber& other);
+
+  NaturalNumber operator=(const NaturalNumber& other);
 
   Compare COM_NN_D(const NaturalNumber& other) const;
   // COM_NN_D - сравнение натуральных чисел
@@ -39,7 +43,7 @@ class NaturalNumber {
   bool NZER_N_B();
   //    NZER_N_B - проверка на ноль
 
-  void ADD_1N_N();
+  NaturalNumber ADD_1N_N();
   //    ADD_1N_N - инкремент
 
   NaturalNumber& operator++();
@@ -112,18 +116,18 @@ class NaturalNumber {
   NaturalNumber& operator%=(NaturalNumber& other);
   //    MOD_NN_N - оператор остатка
 
-  NaturalNumber& GCF_NN_N(NaturalNumber* arr_num);
+  NaturalNumber& GCF_NN_N(NaturalNumber& arr_num);
   //  GCF_NN_N - НОД натуральных чисел
 
-  NaturalNumber& LCM_NN_N(NaturalNumber* arr_num);
+  NaturalNumber& LCM_NN_N(NaturalNumber& arr_num);
   //  LCM_NN_N - НОК натуральных чисел
 
-  List get_num() const;
+  List &get_num() const;
 
   void clear();
 
  protected:
-  List Big_int;
+  List* Big_int;
 };
 
 #endif  // GIGA_ALGEBRA_NATURALNUMBER_H

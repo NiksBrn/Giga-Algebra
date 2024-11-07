@@ -8,7 +8,7 @@
 
 enum Sign { ZERO = 0, POSITIVE = 1, NEGATIVE = -1 };
 
-class IntegerNumber{
+class IntegerNumber {
  public:
   IntegerNumber(char sign, std::string s);
 
@@ -20,37 +20,40 @@ class IntegerNumber{
 
   IntegerNumber &MUL_ZM_Z();  // Z * (-1)
 
-  IntegerNumber &TRANS_N_Z();  // N -> Z
+  IntegerNumber TRANS_N_Z(const NaturalNumber &n);  // N -> Z
 
-  NaturalNumber &TRANS_Z_N();  // Z -> N
+  NaturalNumber TRANS_Z_N();  // Z -> N
 
-  IntegerNumber &ADD_ZZ_Z(const IntegerNumber &other);  // Z + Z
-  IntegerNumber &operator+(const IntegerNumber &other) const;
-  IntegerNumber &operator+=(const IntegerNumber &other) const;
+  IntegerNumber ADD_ZZ_Z(const IntegerNumber &other);  // Z + Z
+  IntegerNumber operator+(const IntegerNumber &other);
+  IntegerNumber &operator+=(const IntegerNumber &other);
 
-  IntegerNumber &SUB_ZZ_Z(const IntegerNumber &other);  // Z - Z
-  IntegerNumber &operator-(const IntegerNumber &other) const;
-  IntegerNumber &operator-=(const IntegerNumber &other) const;
+  IntegerNumber SUB_ZZ_Z(const IntegerNumber &other);  // Z - Z
+  IntegerNumber operator-(const IntegerNumber &other);
+  IntegerNumber &operator-=(const IntegerNumber &other);
 
-  IntegerNumber &MUL_ZZ_Z(const IntegerNumber &other);  // Z * Z
-  IntegerNumber &operator*(const IntegerNumber &other) const;
-  IntegerNumber &operator*=(const IntegerNumber &other) const;
+  IntegerNumber MUL_ZZ_Z(const IntegerNumber &other);  // Z * Z
+  IntegerNumber operator*(const IntegerNumber &other);
+  IntegerNumber &operator*=(const IntegerNumber &other);
 
-  IntegerNumber &DIV_ZZ_Z(const IntegerNumber &other);  // Z / Z
-  IntegerNumber &operator/(const IntegerNumber &other) const;
-  IntegerNumber &operator/=(const IntegerNumber &other) const;
+  IntegerNumber DIV_ZZ_Z(const IntegerNumber &other);  // Z / Z
+  IntegerNumber operator/(const IntegerNumber &other);
+  IntegerNumber &operator/=(const IntegerNumber &other);
 
-  IntegerNumber &MOD_ZZ_Z(const IntegerNumber &other);  // Z % Z
-  IntegerNumber &operator%(const IntegerNumber &other) const;
-  IntegerNumber &operator%=(const IntegerNumber &other) const;
+  IntegerNumber MOD_ZZ_Z(const IntegerNumber &other);  // Z % Z
+  IntegerNumber operator%(const IntegerNumber &other);
+  IntegerNumber &operator%=(const IntegerNumber &other);
 
-  const NaturalNumber& get_num() const;
+  const NaturalNumber &get_num() const;
 
-  void clear(){number.clear();};
+  void clear() {
+    number->clear();
+    delete number;
+  }
 
  protected:
   bool isNegative;  // '+' or '-'
-  NaturalNumber number;
+  NaturalNumber *number;
 };
 
 #endif  // GIGA_ALGEBRA_POLYNOMIAL_H

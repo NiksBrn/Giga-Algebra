@@ -3,6 +3,28 @@
 Node *List::get_first() const { return first; }
 Node *List::get_last() const { return last; }
 
+
+List::List(const List& other) : first(nullptr), last(nullptr){
+    Node* node = other.get_first();
+    while(node!=nullptr){
+        push_back(node->value);
+        node = node->next;
+    }
+}
+
+List& List::operator =(const List& other){
+    clear();
+    first = nullptr;
+    last = nullptr;
+    List temp(other);
+    Node *node = temp.get_first();
+    while(node!=nullptr){
+        push_back(node->value);
+        node = node->next;
+    }
+    return *this;
+}
+
 void List::push_back(unsigned char value) {
   Node *new_node = new Node(value);
   if (first == nullptr) {
