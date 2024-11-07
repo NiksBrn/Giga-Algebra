@@ -33,43 +33,30 @@ bool NaturalNumber::operator>(const NaturalNumber& other) const {
 }
 
 Compare NaturalNumber::COM_NN_D(const NaturalNumber& other) const {
-  Node* next_node1 = Big_int->get_first();  // последняя цифра первого числа
-  Node* next_node2 = other.Big_int->get_first();  // последняя цифра второго
-                                                  // числа
-
-  int count = 0;  // если разряд первого числа превысил разряд второго, получит
-                  // значение 1, иначе 0
-
-  int flag = 1;  // равен 1, пока не обнаружится различие в разрядах
-
-  while ((next_node1->next != nullptr) && (next_node2->next != nullptr)) {
-    int num1 = next_node1->value;
-    int num2 = next_node2->value;
-
-    if (num1 > num2) {
-      flag = 0;
-      count = 1;
-    }
-    if (num1 < num2) {
-      flag = 0;
-      count = 0;
-    }
-    next_node1 = next_node1->next;
-    next_node2 = next_node2->next;
+  Node* n1 = Big_int->get_first();
+  Node* n2 = other.Big_int->get_first(); // для итерации по числам
+  bool greater = false; // для сравнения
+  bool less = false; // для сравнения
+  while(n1 != nullptr && n2 != nullptr) {
+      if (n1->value > n2->value) { // если первое больше то меняем флаги
+          greater = true;
+          less = false;
+      }
+      if (n1->value < n2->value) { // если первое меньше то меняем флаги
+          greater = false;
+          less = true;
+      }
+      n1 = n1->next;
+      n2 = n2->next; // итерируемся на следующий разряд
   }
-  if ((next_node1->next != nullptr) && (next_node2->next == nullptr)) {
-    return GREATER;
+  if(n1 == nullptr && n2 == nullptr) { // если длины чисел равны
+      if (greater) return GREATER;
+      else if (less) return LESS;
+      else return EQUAL;
+  }else{ // если длины чисел разные
+      if (n1 == nullptr) return LESS;
+      else return GREATER;
   }
-  if ((next_node1->next == nullptr) && (next_node2->next != nullptr)) {
-    return LESS;
-  }
-  if (flag == 1) {
-    return EQUAL;
-  }
-  if (count == 1) {
-    return GREATER;
-  }
-  return LESS;
 }
 
 bool NaturalNumber::NZER_N_B() {
@@ -84,7 +71,6 @@ bool NaturalNumber::NZER_N_B() {
 NaturalNumber NaturalNumber::ADD_1N_N() {
   // отвечает за сдвиг на следующий разряд числа
   NaturalNumber ans = *this;
-  bool overflow = false;
   Node* ans_iter = ans.get_num().get_first();
   while (ans_iter != nullptr &&
          ans_iter->value == 9) {  // проход по числу, пока переход в следующие
