@@ -1,9 +1,10 @@
 # Компилятор и флаги
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall -Iheaders -I/usr/include/gtest
+CXXFLAGS = -std=c++17 -Wall -Iheaders -I/usr/include/gtest -Igenerators
 
 # Директории
 SRC_DIR = sources
+GEN_DIR = generators
 INC_DIR = headers
 OBJ_DIR = build
 TEST_DIR = tests
@@ -16,12 +17,12 @@ TEST_TARGET = test_program
 GTEST_LIBS = -lgtest -lgtest_main -pthread
 
 # Список исходных и объектных файлов для основного исполняемого файла
-SRC_FILES := $(wildcard $(SRC_DIR)/**/*.cpp) main.cpp
-OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(patsubst %.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES)))
+SRC_FILES := $(wildcard $(SRC_DIR)/**/*.cpp) $(wildcard $(GEN_DIR)/*.cpp) main.cpp
+OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(patsubst $(GEN_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(patsubst %.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES))))
 
 # Список исходных и объектных файлов для тестового исполняемого файла
-TEST_SRC_FILES := $(wildcard $(SRC_DIR)/**/*.cpp) $(wildcard $(TEST_DIR)/*.cpp)
-TEST_OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(patsubst $(TEST_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(TEST_SRC_FILES)))
+TEST_SRC_FILES := $(wildcard $(SRC_DIR)/**/*.cpp) $(wildcard $(GEN_DIR)/*.cpp) $(wildcard $(TEST_DIR)/*.cpp)
+TEST_OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(patsubst $(GEN_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(patsubst $(TEST_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(TEST_SRC_FILES))))
 
 # Правило по умолчанию — сборка основного исполняемого файла
 all: $(TARGET)
@@ -41,6 +42,11 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | create_build_dirs
 
 # Компиляция .cpp файлов в .o файлы для main.cpp
 $(OBJ_DIR)/%.o: %.cpp | create_build_dirs
+	mkdir -p $(dir $@)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Компиляция .cpp файлов в .o файлы для generators
+$(OBJ_DIR)/%.o: $(GEN_DIR)/%.cpp | create_build_dirs
 	mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
