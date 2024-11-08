@@ -65,7 +65,6 @@ TEST(ADD_1N_N, Subtest_8) {
     // Òåñò äëÿ ÷èñëà áåç èçìåíåíèÿ ðàçðÿäíîñòè
     NaturalNumber n1("777");
     NaturalNumber n2("778");
-    n1.ADD_1N_N();
     ASSERT_EQ(n1.ADD_1N_N(), n2);
 }
 
@@ -73,8 +72,7 @@ TEST(ADD_1N_N, Subtest_9) {
     // Òåñò äëÿ ÷èñëà ñî ñìåíîé ðàçðÿäíîñòè
     NaturalNumber n1("999");
     NaturalNumber n2("1000");
-    n1.ADD_1N_N();
-    ASSERT_EQ(n1, n2);
+    ASSERT_EQ(n1.ADD_1N_N(), n2);
 }
 
 // Òåñòû äëÿ ïðîâåðêè ADD_NN_N()
@@ -175,7 +173,15 @@ TEST(MUL_Nk_N, Subtest_20) {
 TEST(MUL_Nk_N, Subtest_21) {
     // Òåñò äëÿ íåíóëåâîãî ÷èñëà è 10^k, ãäå k = 0
     NaturalNumber n1("6987");
+    NaturalNumber k("0");
+    NaturalNumber result("6987");
+    ASSERT_EQ(n1.MUL_Nk_N(k), result);
+}
+
+TEST(MUL_Nk_N, Subtest_22) {
+    // Òåñò äëÿ íåíóëåâîãî ÷èñëà è 10^k, ãäå k = 1
+    NaturalNumber n1("43291");
     NaturalNumber k("1");
-    NaturalNumber result("69870");
+    NaturalNumber result("432910");
     ASSERT_EQ(n1.MUL_Nk_N(k), result);
 }
