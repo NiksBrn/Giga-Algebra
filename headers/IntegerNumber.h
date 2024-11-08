@@ -20,9 +20,9 @@ class IntegerNumber {
 
   IntegerNumber &MUL_ZM_Z();  // Z * (-1)
 
-  IntegerNumber TRANS_N_Z(const NaturalNumber &n);  // N -> Z
+  static IntegerNumber TRANS_N_Z(const NaturalNumber &n);  // N -> Z
 
-  NaturalNumber TRANS_Z_N();  // Z -> N
+  static NaturalNumber TRANS_Z_N(const IntegerNumber& n);  // Z -> N
 
   IntegerNumber ADD_ZZ_Z(const IntegerNumber &other);  // Z + Z
   IntegerNumber operator+(const IntegerNumber &other);
