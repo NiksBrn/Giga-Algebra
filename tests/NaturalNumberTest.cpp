@@ -52,13 +52,21 @@ TEST(COM_NN_D, Subtest_7) {
     ASSERT_EQ(n1.COM_NN_D(n2), LESS);
 }
 
+TEST(COM_NN_D, new_1) {
+// Òåñò äëÿ ÷èñåë ñ ðàçíîé ðàçðÿäíîñòüþ, ãäå âòîðîå áîëüøå ïåðâîãî
+NaturalNumber n1("0");
+NaturalNumber n2("9");
+ASSERT_EQ(n1.COM_NN_D(n2), LESS);
+}
+
+
 // Òåñòû äëÿ ïðîâåðêè ADD_1N_N()
 TEST(ADD_1N_N, Subtest_8) {
     // Òåñò äëÿ ÷èñëà áåç èçìåíåíèÿ ðàçðÿäíîñòè
     NaturalNumber n1("777");
     NaturalNumber n2("778");
     n1.ADD_1N_N();
-    ASSERT_EQ(n1, n2);
+    ASSERT_EQ(n1.ADD_1N_N(), n2);
 }
 
 TEST(ADD_1N_N, Subtest_9) {
