@@ -1,3 +1,7 @@
+// project Giga-Algebra
+// Developers: Borivets Savely, Yakushev Peter.
+// Debuggers: Alexander Galkin, Nikita Skobelev
+
 #include "../../headers/NaturalNumber.h"
 
 // struct start

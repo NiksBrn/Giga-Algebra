@@ -1,3 +1,7 @@
+// project Giga-Algebra
+// Developers:
+// Debuggers: Alexander Galkin, Nikita Skobelev
+
 #include "../../headers/Polynomial.h"
 
 Polynomial::Polynomial(std::string& poly) {

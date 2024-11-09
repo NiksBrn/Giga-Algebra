@@ -1,3 +1,7 @@
+// project Giga-Algebra
+// Developers: Zlobin Ivan.
+// Debuggers: Alexander Galkin, Nikita Skobelev
+
 #include "../../headers/IntegerNumber.h"
 
 // struct start
