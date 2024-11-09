@@ -70,7 +70,7 @@ NaturalNumber NaturalNumber::ADD_1N_N() {
   // отвечает за сдвиг на следующий разряд числа
   NaturalNumber ans = *this;
   Node* next_node = ans.get_num().get_first();
-  while (1) {  // проход по числу, пока переход в следующие разряды не прекратится
+  while (next_node != nullptr) {  // проход по числу, пока переход в следующие разряды не прекратится
     if (next_node->value==9){
       next_node->value = 0;
       if(next_node->next==nullptr){
@@ -94,7 +94,7 @@ NaturalNumber NaturalNumber::ADD_NN_N(const NaturalNumber& other) {
   Node* next_node2 =other.get_num().get_first();  // отвечает за сдвиг на следующий разряд второго числа
   int point = 0;  // будет принимать себя излишек, если сумма цифр выйдет за пределы одного разряда
 
-  while (1) {
+  while (next_node1 != nullptr) {
     int num1 =next_node1->value;  // значение соответствующего разряда первого числа
     int num2 = next_node2->value +point;  // значение соответствующего разряда второго числа (плюс
                        // единица от предыдущего разряда, если она есть)
@@ -129,7 +129,7 @@ NaturalNumber NaturalNumber::MUL_ND_N(const char c) {
 
   int point = 0;  // содержит в себе значение, оставшееся после умножения предыдущего разряда
 
-  while (1) {  // проход по всему числу
+  while (next_node != nullptr) {  // проход по всему числу
     if ((next_node->value * c) + point >10) {  // если произведение выходит за пределы одного разряда
       int new_point = ((next_node->value * c) + point) / 10;  // значение, выходящее за пределы одного разряда
       next_node->value = (next_node->value * c) + point - new_point * 10;  // новое значение разряда
@@ -155,7 +155,7 @@ NaturalNumber NaturalNumber::SUB_NN_N(const NaturalNumber& num) {
   int point = 0;  // если вычитание выйдет за пределы одного разряда, придётся взять одну цифру из следующего
   Node* next_node2 =num.Big_int->get_first();  // отвечает за сдвиг на следующий разряд второго числа
 
-  while (1) {
+  while (next_node2 != nullptr) {
     int num1 = next_node1->value;  // значение i-го разряда первого числа
     int num2 = next_node2->value + point;  // значение i-го разряда второго числа
 
@@ -203,7 +203,7 @@ NaturalNumber NaturalNumber::MUL_Nk_N(const NaturalNumber& k) {
   if ((next_node1->next == nullptr) && (next_node1->value == 0)) {
     return ans;
   }
-  while (1) {
+  while (next_node != nullptr) {
     if (next_node->value == 0) {
       if (next_node->next == nullptr) {
         break;
