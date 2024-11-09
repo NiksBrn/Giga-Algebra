@@ -15,10 +15,12 @@ struct NodePolynomial{
 class ListPolynomial{
 public:
     ListPolynomial();
+    ~ListPolynomial() = default;
     NodePolynomial* get_head();
     NodePolynomial* get_tail();
     void push(RationalNumber coefficient, NaturalNumber degree);
     void pop(NodePolynomial* node);
+    void clear();
 private:
     NodePolynomial *head;
     NodePolynomial* tail;

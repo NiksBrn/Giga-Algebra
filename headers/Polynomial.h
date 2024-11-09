@@ -1,17 +1,21 @@
 #ifndef GIGA_ALGEBRA_POLYNOMIAL_H
 #define GIGA_ALGEBRA_POLYNOMIAL_H
 
+#include <iostream>
 #include <string>
 #include <vector>
+#include <regex>
 
 #include "RationalNumber.h"
 #include "Struct.h"
+#include "StructPolynomial.h"
 
+typedef std::tuple<char, std::string, std::string, std::string> Term;
 class Polynomial {
  public:
-  Polynomial(NaturalNumber degree, std::vector<RationalNumber> coeffs);
- //     : degree(degree), coeffs(coeffs) {}
-
+  Polynomial(std::string& poly);
+  void parsePolynomial(const std::string& poly);
+  ListPolynomial &getPolynomial() const;
   Polynomial &ADD_PP_P(const Polynomial &other);
   Polynomial &operator+(const Polynomial &other);
   Polynomial &operator+=(const Polynomial &other);
@@ -53,7 +57,7 @@ class Polynomial {
   Polynomial &NMR_P_P();
 
  private:
-
+    ListPolynomial* polynomial;
 };
 
 #endif  // GIGA_ALGEBRA_POLYNOMIAL_H

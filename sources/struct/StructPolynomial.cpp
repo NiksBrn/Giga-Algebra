@@ -40,7 +40,12 @@ void ListPolynomial::push(RationalNumber coefficient, NaturalNumber degree) {
 
 void ListPolynomial::pop(NodePolynomial *node) {
     NodePolynomial* tmp = node;
-    if (node == head){
+    if(node == head && node == tail){
+        head = nullptr;
+        tail = nullptr;
+        delete tmp;
+    }
+    else if (node == head){
         head = head->next;
         head->prev = nullptr;
         delete tmp;
@@ -62,4 +67,12 @@ NodePolynomial* ListPolynomial::get_head(){
 
 NodePolynomial* ListPolynomial::get_tail(){
     return tail;
+}
+
+void ListPolynomial::clear(){
+    NodePolynomial* tmp = head;
+    while (tmp != nullptr){
+        pop(tmp);
+        tmp = head;
+    }
 }
