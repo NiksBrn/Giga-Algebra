@@ -6,7 +6,7 @@
 // N-8
 NaturalNumber NaturalNumber::MUL_NN_N(const NaturalNumber& other) {
   NaturalNumber result = NaturalNumber("0");
-  Node* cur_node = other.Big_int.get_first();
+  Node* cur_node = other.Big_int->get_first();
   size_t cnt_digit = 0;
   while (cur_node != nullptr) {
     result += (*this * cur_node->value).MUL_Nk_N(NaturalNumber(std::to_string(cnt_digit)));
@@ -15,15 +15,15 @@ NaturalNumber NaturalNumber::MUL_NN_N(const NaturalNumber& other) {
 }
 
 // N-8 oper "*"
-NaturalNumber NaturalNumber::operator*(const NaturalNumber& other) {
-  return MUL_NN_N(other);
-}
-
-// N-8 oper "*="
-NaturalNumber NaturalNumber::operator*=(const NaturalNumber& other) {
-  (*this) = MUL_NN_N(other);
-  return *this;
-}
+//NaturalNumber NaturalNumber::operator*(const NaturalNumber& other) {
+//  return MUL_NN_N(other);
+//}
+//
+//// N-8 oper "*="
+//NaturalNumber NaturalNumber::operator*=(const NaturalNumber& other) {
+//  (*this) = MUL_NN_N(other);
+//  return *this;
+//}
 
 // N-9
 NaturalNumber NaturalNumber::SUB_NDN_N(NaturalNumber& num, char c) { // Возвращает NN
@@ -46,8 +46,8 @@ std::pair<char, NaturalNumber> NaturalNumber::DIV_NN_Dk(NaturalNumber& num) {
     greater_num = num;
     lower_num = *this;
   }
-  Node *gr_node = greater_num.Big_int.get_first();
-  Node *lw_node = lower_num.Big_int.get_first();
+  Node *gr_node = greater_num.Big_int->get_first();
+  Node *lw_node = lower_num.Big_int->get_first();
   NaturalNumber k = NaturalNumber("0");
   while (gr_node->next != nullptr) {
     if (lw_node == nullptr) {
@@ -80,15 +80,15 @@ NaturalNumber NaturalNumber::DIV_NN_N(NaturalNumber& num) {
 }
 
 // N-11 oper "/"
-NaturalNumber NaturalNumber::operator/(NaturalNumber& other) {
-  return DIV_NN_N(other);
-}
-
-// N-11 oper "/="
-NaturalNumber NaturalNumber::operator/=(NaturalNumber& other) {
-  (*this) = DIV_NN_N(other);
-  return *this;
-}
+//NaturalNumber NaturalNumber::operator/(NaturalNumber& other) {
+//  return DIV_NN_N(other);
+//}
+//
+//// N-11 oper "/="
+//NaturalNumber NaturalNumber::operator/=(NaturalNumber& other) {
+//  (*this) = DIV_NN_N(other);
+//  return *this;
+//}
 
 // N-12
 NaturalNumber NaturalNumber::MOD_NN_N(NaturalNumber& num) {
@@ -96,16 +96,16 @@ NaturalNumber NaturalNumber::MOD_NN_N(NaturalNumber& num) {
   return result;
 }
 
-// N-12 oper "%="
-NaturalNumber NaturalNumber::operator%(NaturalNumber& other) {
-  return MOD_NN_N(other);
-}
-
-// N-12 oper "%="
-NaturalNumber NaturalNumber::operator%=(NaturalNumber& other) {
-  (*this) = MOD_NN_N(other);
-  return *this;
-}
+//// N-12 oper "%="
+//NaturalNumber NaturalNumber::operator%(NaturalNumber& other) {
+//  return MOD_NN_N(other);
+//}
+//
+//// N-12 oper "%="
+//NaturalNumber NaturalNumber::operator%=(NaturalNumber& other) {
+//  (*this) = MOD_NN_N(other);
+//  return *this;
+//}
 
 // N-13
 NaturalNumber NaturalNumber::GCF_NN_N(NaturalNumber& arr_num) {

@@ -92,7 +92,7 @@ public:
     //    SUB_NDN_N - Вычитание из натурального другого натурального, умноженного
     //    на цифру для случая с неотрицательным результатом
 
-    std::pair<char, NaturalNumber> DIV_NN_Dk(NaturalNumber& num, int k);
+    std::pair<char, NaturalNumber> DIV_NN_Dk(NaturalNumber& num);
     //    DIV_NN_Dk - Вычисление первой цифры деления большего натурального на
     //    меньшее, домноженное на 10^k,где k - номер позиции этой цифры (номер
     //    считается с нуля)
