@@ -9,7 +9,7 @@ NaturalNumber NaturalNumber::MUL_NN_N(const NaturalNumber& other) {
   Node* cur_node = other.Big_int.get_first();
   size_t cnt_digit = 0;
   while (cur_node != nullptr) {
-    result += (this * cur_node->value).MUL_Nk_N(NaturalNumber(std::to_string(cnt_digit)));
+    result += (*this * cur_node->value).MUL_Nk_N(NaturalNumber(std::to_string(cnt_digit)));
   }
   return result;
 }
