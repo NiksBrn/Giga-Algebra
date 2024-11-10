@@ -14,6 +14,17 @@ NaturalNumber NaturalNumber::MUL_NN_N(const NaturalNumber& other) {
   return result;
 }
 
+// N-8 oper "*"
+NaturalNumber NaturalNumber::operator*(const NaturalNumber& other) {
+  return MUL_NN_N(other);
+}
+
+// N-8 oper "*="
+NaturalNumber NaturalNumber::operator*=(const NaturalNumber& other) {
+  (*this) = MUL_NN_N(other);
+  return *this;
+}
+
 // N-9
 NaturalNumber NaturalNumber::SUB_NDN_N(NaturalNumber& num, char c) { // Возвращает NN
   NaturalNumber result = *this;
@@ -68,10 +79,32 @@ NaturalNumber NaturalNumber::DIV_NN_N(NaturalNumber& num) {
   return result;
 }
 
+// N-11 oper "/"
+NaturalNumber NaturalNumber::operator/(NaturalNumber& other) {
+  return DIV_NN_N(other);
+}
+
+// N-11 oper "/="
+NaturalNumber NaturalNumber::operator/=(NaturalNumber& other) {
+  (*this) = DIV_NN_N(other);
+  return *this;
+}
+
 // N-12
 NaturalNumber NaturalNumber::MOD_NN_N(NaturalNumber& num) {
   NaturalNumber result = (*this) - (*this).DIV_NN_N(num);
   return result;
+}
+
+// N-12 oper "%="
+NaturalNumber NaturalNumber::operator%(NaturalNumber& other) {
+  return MOD_NN_N(other);
+}
+
+// N-12 oper "%="
+NaturalNumber NaturalNumber::operator%=(NaturalNumber& other) {
+  (*this) = MOD_NN_N(other);
+  return *this;
 }
 
 // N-13
@@ -98,4 +131,5 @@ NaturalNumber NaturalNumber::GCF_NN_N(NaturalNumber& arr_num) {
 NaturalNumber NaturalNumber::LCM_NN_N(NaturalNumber& arr_num) {
   NaturalNumber GCF = (*this).GCF_NN_N(arr_num);
   NaturalNumber LCM = (*this).DIV_NN_N(GCF) * (arr_num).DIV_NN_N(GCF);
+  return LCM;
 }
