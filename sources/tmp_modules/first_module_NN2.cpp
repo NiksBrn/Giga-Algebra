@@ -4,7 +4,7 @@
 #include <iostream>
 
 // N-8
-NaturalNumber& NaturalNumber::MUL_NN_N(const NaturalNumber& other) {
+NaturalNumber NaturalNumber::MUL_NN_N(const NaturalNumber& other) {
   NaturalNumber result = NaturalNumber("0");
   Node* cur_node = other.Big_int.get_first();
   size_t cnt_digit = 0;
@@ -15,7 +15,7 @@ NaturalNumber& NaturalNumber::MUL_NN_N(const NaturalNumber& other) {
 }
 
 // N-9
-NaturalNumber& NaturalNumber::SUB_NDN_N(NaturalNumber& num, char c) { // Возвращает NN
+NaturalNumber NaturalNumber::SUB_NDN_N(NaturalNumber& num, char c) { // Возвращает NN
   NaturalNumber result = *this;
   NaturalNumber sub_val = num.MUL_ND_N(c);
   if (result >= sub_val) {
@@ -25,7 +25,7 @@ NaturalNumber& NaturalNumber::SUB_NDN_N(NaturalNumber& num, char c) { // Воз�
 }
 
 // N-10
-char NaturalNumber::DIV_NN_Dk(NaturalNumber& num) {
+std::pair<char, NaturalNumber> NaturalNumber::DIV_NN_Dk(NaturalNumber& num) {
   NaturalNumber greater_num;
   NaturalNumber lower_num;
   if (*this > num) {
@@ -37,36 +37,45 @@ char NaturalNumber::DIV_NN_Dk(NaturalNumber& num) {
   }
   Node *gr_node = greater_num.Big_int.get_first();
   Node *lw_node = lower_num.Big_int.get_first();
+  NaturalNumber k = NaturalNumber("0");
   while (gr_node->next != nullptr) {
     if (lw_node == nullptr) {
       lower_num.MUL_Nk_N(NaturalNumber("1"));
+      k.ADD_1N_N();
     } else {
       lw_node = lw_node->next;
     }
     gr_node = gr_node->next;
   }
   char cnt_subs = 0;
-  while (greater_num.COM_NN_D(lower_num) != LESS) {
+  while (greater_num >= lower_num) {
     greater_num.SUB_NN_N(lower_num);
     cnt_subs++;
   }
-  return cnt_subs;
+  return {cnt_subs, k};
 }
 
 // N-11
 NaturalNumber NaturalNumber::DIV_NN_N(NaturalNumber& num) {
-  NaturalNumber result = *this;
+  NaturalNumber divisible_num = *this;
+  NaturalNumber result;
+  std::pair<char, NaturalNumber> division_result;
+  while (divisible_num >= num) {
+    division_result = divisible_num.DIV_NN_Dk(num);
+    divisible_num = divisible_num.SUB_NDN_N(division_result.second, division_result.first);
+    result.get_num().push_front(division_result.first);
+  }
   return result;
 }
 
 // N-12
-NaturalNumber& NaturalNumber::MOD_NN_N(NaturalNumber& num) {
-//  NaturalNumber result = (*this).SUB_NDN_N();
-//  result = result.SUB_NDN_N()
+NaturalNumber NaturalNumber::MOD_NN_N(NaturalNumber& num) {
+  NaturalNumber result = (*this) - (*this).DIV_NN_N(num);
+  return result;
 }
 
 // N-13
-NaturalNumber& NaturalNumber::GCF_NN_N(NaturalNumber& arr_num) {
+NaturalNumber NaturalNumber::GCF_NN_N(NaturalNumber& arr_num) {
   NaturalNumber greater_num;
   NaturalNumber lower_num;
   if (*this > arr_num) {
@@ -86,7 +95,7 @@ NaturalNumber& NaturalNumber::GCF_NN_N(NaturalNumber& arr_num) {
 }
 
 // N-14
-NaturalNumber& NaturalNumber::LCM_NN_N(NaturalNumber& arr_num) {
+NaturalNumber NaturalNumber::LCM_NN_N(NaturalNumber& arr_num) {
   NaturalNumber GCF = (*this).GCF_NN_N(arr_num);
   NaturalNumber LCM = (*this).DIV_NN_N(GCF) * (arr_num).DIV_NN_N(GCF);
 }
