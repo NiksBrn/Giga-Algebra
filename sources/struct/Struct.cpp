@@ -47,6 +47,25 @@ void List::push_front(unsigned char value) {
   }
 }
 
+void List::del_zero(){
+    Node *tmp = first;
+    Node *run = first;
+    while(run!=nullptr){
+        if(run->value != 0){
+            tmp = run;
+        }
+        run = run->next;
+    }
+    last = tmp;
+    last->next = nullptr;
+    tmp = tmp->next;
+    while(tmp!=nullptr){
+        Node *tmp2 = tmp;
+        tmp = tmp->next;
+        delete tmp2;
+    }
+}
+
 void List::clear() {
   Node *current = first;
   while (current != nullptr) {
