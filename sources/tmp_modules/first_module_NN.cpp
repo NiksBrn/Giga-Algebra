@@ -1,6 +1,6 @@
 ﻿#include <iostream>
-
 #include "../../headers/NaturalNumber.h"
+#include "../../headers/Overload.h"
 
 bool NaturalNumber::operator==(const NaturalNumber& other) const {
   if (COM_NN_D(other) == EQUAL) return true;
@@ -107,14 +107,24 @@ NaturalNumber NaturalNumber::ADD_NN_N(const NaturalNumber& other) {
     cur_node2 = cur_node2->next;
   }
   while (cur_node1 != nullptr) {
-    result.get_num().push_back(cur_node1->value + cur_digit);
+    if (cur_node1->value + cur_digit >= 10) {
+      result.get_num().push_back(0);
+      cur_digit = 1;
+    } else {
+      result.get_num().push_back(cur_node1->value + cur_digit);
+      cur_digit = 0;
+    }
     cur_node1 = cur_node1->next;
-    cur_digit = 0;
   }
   while (cur_node2 != nullptr) {
-    result.get_num().push_back(cur_node2->value + cur_digit);
+    if (cur_node2->value + cur_digit >= 10) {
+      result.get_num().push_back(0);
+      cur_digit = 1;
+    } else {
+      result.get_num().push_back(cur_node2->value + cur_digit);
+      cur_digit = 0;
+    }
     cur_node2 = cur_node2->next;
-    cur_digit = 0;
   }
   if (cur_digit != 0) {
     result.get_num().push_back(cur_digit);
@@ -186,6 +196,7 @@ NaturalNumber NaturalNumber::SUB_NN_N(const NaturalNumber& num) {
   //         check_node->prev = nullptr;
   //   }
   //}
+  ans.get_num().del_zero();
   return ans;
 }
 
