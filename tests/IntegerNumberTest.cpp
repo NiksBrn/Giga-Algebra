@@ -91,6 +91,20 @@ TEST(ADD_ZZ_Z, Subtest_4) {
   ASSERT_EQ(result.ABS_Z_Z(), NaturalNumber("122"));
 }
 
+TEST(ADD_ZZ_Z, Subtest_5_1) {
+    IntegerNumber number('-', "124");
+    IntegerNumber number2('+', "246");
+    auto result = number.ADD_ZZ_Z(number2);
+    ASSERT_EQ(result.POZ_Z_D(), Sign::POSITIVE);
+}
+
+TEST(ADD_ZZ_Z, Subtest_5_2) {
+    IntegerNumber number('-', "124");
+    IntegerNumber number2('+', "246");
+    auto result = number.ADD_ZZ_Z(number2);
+    ASSERT_EQ(result.ABS_Z_Z(), NaturalNumber("122"));
+}
+
 TEST(SUB_ZZ_Z, Subtest_1) {
   IntegerNumber number('-', "123");
   IntegerNumber number2('+', "123");
