@@ -89,64 +89,57 @@ NaturalNumber NaturalNumber::ADD_1N_N() {
 
 
 NaturalNumber NaturalNumber::ADD_NN_N(const NaturalNumber& other) {
-  NaturalNumber ans = *this;
-  Node* next_node1 = ans.get_num().get_first();  // отвечает за сдвиг на следующий разряд первого числа
-  Node* next_node2 =other.get_num().get_first();  // отвечает за сдвиг на следующий разряд второго числа
-  int point = 0;  // будет принимать себя излишек, если сумма цифр выйдет за пределы одного разряда
+  NaturalNumber result;
+  Node* cur_node1 = (*this).get_num().get_first();  // отвечает за сдвиг на следующий разряд первого числа
+  Node* cur_node2 = other.get_num().get_first();  // отвечает за сдвиг на следующий разряд второго числа
 
-  while (next_node1 != nullptr) {
-    int num1 =next_node1->value;  // значение соответствующего разряда первого числа
-    int num2 = next_node2->value +point;  // значение соответствующего разряда второго числа (плюс
-                       // единица от предыдущего разряда, если она есть)
-    if (num1 + num2 >= 10) {  // если сумма выходит за пределы одного разряда
-      num1 += num2;  // сложение разрядов двух чисел
-      num1 -= 10;    // вычитание лишнего десятка
-      point = 1;  // сохранение лишнего десятка для следущего разряда
-    } else {  // если сумма не выходит за пределы одного разряда
-      num1 += num2;  // сложение разрядов двух чисел
-      point = 0;  // означает, что следующий разряд не получит десяток от этого разряда
+  char cur_digit = 0;
+  while (cur_node1 != nullptr && cur_node2 != nullptr) {
+    cur_digit += cur_node1->value + cur_node2->value;
+    if (cur_digit >= 10) {
+      result.get_num().push_back(cur_digit - 10);
+      cur_digit = 1; // В следующий разряд
+    } else {
+      result.get_num().push_back(cur_digit);
+      cur_digit = 0;
     }
-    next_node1->value = num1;  // итоговое значение суммы разрядов
-    if ((next_node1->next == nullptr) || (next_node2->next == nullptr)) {
-      break;
-    }
-    next_node1 = next_node1->next;  // переход в следующий разряд первого числа
-    next_node2 = next_node2->next;  // переход в следующий разряд второго числа
+    cur_node1 = cur_node1->next;
+    cur_node2 = cur_node2->next;
   }
-  if ((point == 1) && (next_node1->next == nullptr)) {
-    ans.get_num().push_back(1);
+  while (cur_node1 != nullptr) {
+    result.get_num().push_back(cur_node1->value + cur_digit);
+    cur_node1 = cur_node1->next;
+    cur_digit = 0;
   }
-  return ans;
+  while (cur_node2 != nullptr) {
+    result.get_num().push_back(cur_node2->value + cur_digit);
+    cur_node2 = cur_node2->next;
+    cur_digit = 0;
+  }
+  if (cur_digit != 0) {
+    result.get_num().push_back(cur_digit);
+  }
+  return result;
 }
 
 NaturalNumber NaturalNumber::MUL_ND_N(const char c) {
-  NaturalNumber ans = *this;
-  Node* next_node = ans.get_num().get_first(); // отвечает за сдвиг на следующий разряд числа
-  if (c == 0) {                            // если умножение на 0
-    next_node->next = nullptr;  // отрываем остальную часть числа
-    next_node->value = 0;  // число становится 0
+  NaturalNumber result;
+  if (!(*this).NZER_N_B() || c == 0) {
+    return NaturalNumber("0");
   }
+  Node* cur_node = (*this).get_num().get_first();  // отвечает за сдвиг на следующий разряд первого числа
 
-  int point = 0;  // содержит в себе значение, оставшееся после умножения предыдущего разряда
-
-  while (next_node != nullptr) {  // проход по всему числу
-    if ((next_node->value * c) + point >10) {  // если произведение выходит за пределы одного разряда
-      int new_point = ((next_node->value * c) + point) / 10;  // значение, выходящее за пределы одного разряда
-      next_node->value = (next_node->value * c) + point - new_point * 10;  // новое значение разряда
-      point = new_point;                  // новое значение point
-    } else {  // если произведение не выходит за пределы одного разряда
-      next_node->value = (next_node->value * c) + point;  // новое значение разряда
-      point = 0;  // в следующий разряд не переходит остаток от предыдущего
-    }
-    if (next_node->next == nullptr) {
-      break;
-    }
-    next_node = next_node->next;  // сдвиг на следующий разряд
+  char cur_digit = 0;
+  while (cur_node != nullptr) {
+    cur_digit += cur_node->value * c;
+    result.get_num().push_back(cur_digit - cur_digit / 10 * 10);
+    cur_digit /= 10;
+    cur_node = cur_node->next;
   }
-  if (point > 0) {  // если разряд после произведения повышается
-    ans.get_num().push_back(point);  // повышение разряда
+  if (cur_digit != 0) {
+    result.get_num().push_back(cur_digit);
   }
-  return ans;
+  return result;
 }
 
 NaturalNumber NaturalNumber::SUB_NN_N(const NaturalNumber& num) {
@@ -198,21 +191,34 @@ NaturalNumber NaturalNumber::SUB_NN_N(const NaturalNumber& num) {
 
 NaturalNumber NaturalNumber::MUL_Nk_N(const NaturalNumber& k) {
   NaturalNumber ans = *this;
-  Node* next_node1 = ans.get_num().get_first(); // отвечает за сдвиг на следующий разряд числа
-  Node* next_node = k.get_num().get_first();  // отвечает за сдвиг на следующий разряд числа k
-  if ((next_node1->next == nullptr) && (next_node1->value == 0)) {
+  if (!ans.NZER_N_B()) {
     return ans;
   }
-  while (next_node != nullptr) {
-    if (next_node->value == 0) {
-      if (next_node->next == nullptr) {
-        break;
-      }
-      next_node = next_node->next;
-      next_node->value += 9;
-    }
+  NaturalNumber i("0");
+  for(i;i.COM_NN_D(k) != EQUAL;i = i.ADD_1N_N()){
     ans.get_num().push_front(0);
-    next_node->value -= 1;
   }
   return ans;
-}
+} //Created by Skobelev Nikita 3383
+
+
+//NaturalNumber NaturalNumber::MUL_Nk_N(const NaturalNumber& k) {
+//  NaturalNumber ans = *this;
+//  Node* next_node1 = ans.get_num().get_first(); // отвечает за сдвиг на следующий разряд числа
+//  Node* next_node = k.get_num().get_first();  // отвечает за сдвиг на следующий разряд числа k
+//  if ((next_node1->next == nullptr) && (next_node1->value == 0)) {
+//    return ans;
+//  }
+//  while (next_node != nullptr) {
+//    if (next_node->value == 0) {
+//      if (next_node->next == nullptr) {
+//        break;
+//      }
+//      next_node = next_node->next;
+//      next_node->value += 9;
+//    }
+//    ans.get_num().push_front(0);
+//    next_node->value -= 1;
+//  }
+//  return ans;
+//}

@@ -7,9 +7,10 @@
 NaturalNumber NaturalNumber::MUL_NN_N(const NaturalNumber& other) {
   NaturalNumber result = NaturalNumber("0");
   Node* cur_node = other.Big_int->get_first();
-  size_t cnt_digit = 0;
+  NaturalNumber digit = NaturalNumber("0");
   while (cur_node != nullptr) {
-    result = result.ADD_NN_N(*this);
+    result = result.ADD_NN_N(((*this).MUL_ND_N(cur_node->value)).MUL_Nk_N(digit));
+    digit = digit.ADD_1N_N();
     cur_node = cur_node->next;
   }
   return result;

@@ -7,7 +7,7 @@
 TEST(MUL_NN_N, Subtest_1) {
   NaturalNumber n1("125");
   NaturalNumber n2("112");
-  NaturalNumber result("32375");
+  NaturalNumber result("14000");
   ASSERT_EQ(n1.MUL_NN_N(n2), result);
 }
 
