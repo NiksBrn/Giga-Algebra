@@ -24,3 +24,15 @@ Polynomial Polynomial::DIV_PP_P(const Polynomial& other) {
   }
   return Polynomial(object);
 }
+
+Polynomial Polynomial::NMR_P_P() {
+  Polynomial Der = (*this).DER_P_P(); // Производная многочлена
+  Polynomial GCF = (*this).GCF_PP_P(Der); // НОД многочлена
+  Polynomial NMR = *this;
+  if (!(GCF.DEG_P_N() == NaturalNumber("0")) || !(GCF.polynomial->get_tail()->coefficient.Trans_Q_Z().POZ_Z_D()==ZERO)) {
+    NMR = (*this).DIV_PP_P(GCF);
+  } else {
+    NMR = GCF;
+  }
+  return NMR;
+}
