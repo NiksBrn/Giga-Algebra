@@ -17,7 +17,6 @@ public:
     void clear();
     void push_back(unsigned char value);
     void push_front(unsigned char value);
-    void del_zero();
     Node* get_first() const;
     Node* get_last() const;
 private:
