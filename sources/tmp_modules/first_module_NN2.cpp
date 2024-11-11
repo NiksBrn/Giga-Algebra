@@ -2,14 +2,17 @@
 
 #include "../../headers/NaturalNumber.h"
 #include <iostream>
+#include "../../headers/Overload.h"
 
 // N-8
 NaturalNumber NaturalNumber::MUL_NN_N(const NaturalNumber& other) {
   NaturalNumber result = NaturalNumber("0");
   Node* cur_node = other.Big_int->get_first();
-  size_t cnt_digit = 0;
+  NaturalNumber digit = NaturalNumber("0");
   while (cur_node != nullptr) {
-    result += (*this * cur_node->value).MUL_Nk_N(NaturalNumber(std::to_string(cnt_digit)));
+    result = result.ADD_NN_N(((*this).MUL_ND_N(cur_node->value)).MUL_Nk_N(digit));
+    digit = digit.ADD_1N_N();
+    cur_node = cur_node->next;
   }
   return result;
 }
@@ -30,37 +33,38 @@ NaturalNumber NaturalNumber::SUB_NDN_N(NaturalNumber& num, char c) { // Возв
   NaturalNumber result = *this;
   NaturalNumber sub_val = num.MUL_ND_N(c);
   if (result >= sub_val) {
-    return result - sub_val;
+    return result.SUB_NN_N(sub_val);
   }
   return *this;
 }
 
 // N-10
 std::pair<char, NaturalNumber> NaturalNumber::DIV_NN_Dk(NaturalNumber& num) {
-  NaturalNumber greater_num;
-  NaturalNumber lower_num;
-  if (*this > num) {
-    greater_num = *this;
-    lower_num = num;
-  } else {
-    greater_num = num;
-    lower_num = *this;
+  if (*this < num) {
+    return {0, NaturalNumber("0")};
   }
+  NaturalNumber greater_num = (*this);
+  NaturalNumber lower_num = num;
   Node *gr_node = greater_num.Big_int->get_first();
   Node *lw_node = lower_num.Big_int->get_first();
   NaturalNumber k = NaturalNumber("0");
   while (gr_node->next != nullptr) {
     if (lw_node == nullptr) {
-      lower_num.MUL_Nk_N(NaturalNumber("1"));
-      k.ADD_1N_N();
+      lower_num = lower_num.MUL_Nk_N(NaturalNumber("1"));
+      k = k.ADD_1N_N();
     } else {
       lw_node = lw_node->next;
     }
     gr_node = gr_node->next;
   }
+  if (greater_num >= lower_num.MUL_Nk_N(NaturalNumber("1"))) {
+    lower_num = lower_num.MUL_Nk_N(NaturalNumber("1"));
+    k = k.ADD_1N_N();
+  }
   char cnt_subs = 0;
   while (greater_num >= lower_num) {
-    greater_num.SUB_NN_N(lower_num);
+    greater_num = greater_num.SUB_NN_N(lower_num);
+    greater_num.get_num().del_zero();
     cnt_subs++;
   }
   return {cnt_subs, k};
@@ -71,10 +75,13 @@ NaturalNumber NaturalNumber::DIV_NN_N(NaturalNumber& num) {
   NaturalNumber divisible_num = *this;
   NaturalNumber result;
   std::pair<char, NaturalNumber> division_result;
+  NaturalNumber sub_num;
   while (divisible_num >= num) {
     division_result = divisible_num.DIV_NN_Dk(num);
-    divisible_num = divisible_num.SUB_NDN_N(division_result.second, division_result.first);
-    result.get_num().push_front(division_result.first);
+    result = result.ADD_NN_N(NaturalNumber(std::to_string(division_result.first)).MUL_Nk_N(division_result.second));
+    sub_num = num.MUL_Nk_N(division_result.second);
+    divisible_num = divisible_num.SUB_NDN_N(sub_num, division_result.first);
+    divisible_num.get_num().del_zero();
   }
   return result;
 }
@@ -92,7 +99,7 @@ NaturalNumber NaturalNumber::DIV_NN_N(NaturalNumber& num) {
 
 // N-12
 NaturalNumber NaturalNumber::MOD_NN_N(NaturalNumber& num) {
-  NaturalNumber result = (*this) - (*this).DIV_NN_N(num);
+  NaturalNumber result = (*this).SUB_NN_N(num.MUL_NN_N((*this).DIV_NN_N(num)));
   return result;
 }
 
@@ -130,6 +137,6 @@ NaturalNumber NaturalNumber::GCF_NN_N(NaturalNumber& arr_num) {
 // N-14
 NaturalNumber NaturalNumber::LCM_NN_N(NaturalNumber& arr_num) {
   NaturalNumber GCF = (*this).GCF_NN_N(arr_num);
-  NaturalNumber LCM = (*this).DIV_NN_N(GCF) * (arr_num).DIV_NN_N(GCF);
+  NaturalNumber LCM = (*this).MUL_NN_N(arr_num.DIV_NN_N(GCF));
   return LCM;
 }
