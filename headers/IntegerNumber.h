@@ -12,6 +12,14 @@ class IntegerNumber {
  public:
   IntegerNumber(char sign, std::string s);
 
+  IntegerNumber(const IntegerNumber &other);
+
+  IntegerNumber &operator=(const IntegerNumber &other);
+
+  ~IntegerNumber() {
+    clear();
+  }
+
   explicit IntegerNumber(const NaturalNumber &n);  // TRANS_Z_N
 
   NaturalNumber &ABS_Z_Z();  // Absolute value
