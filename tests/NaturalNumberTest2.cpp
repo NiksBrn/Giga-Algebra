@@ -98,6 +98,13 @@ TEST(MOD_NN_N, Subtest_1) {
   ASSERT_EQ(n1.MOD_NN_N(n2), result);
 }
 
+TEST(MOD_NN_N, Subtest_2) {
+NaturalNumber n1("663");
+NaturalNumber n2("23472819");
+NaturalNumber result = NaturalNumber("663");
+ASSERT_EQ(n1.MOD_NN_N(n2), result);
+}
+
 // GCF_NN_N Testing
 TEST(GCF_NN_N, Subtest_1) {
   NaturalNumber n1("6226814");
