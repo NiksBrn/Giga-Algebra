@@ -49,7 +49,7 @@ void List::push_front(unsigned char value) {
 
 void List::del_zero(){
     Node *tmp = first;
-    Node *run = first;
+    Node *run = first->next;
     while(run!=nullptr){
         if(run->value != 0){
             tmp = run;
