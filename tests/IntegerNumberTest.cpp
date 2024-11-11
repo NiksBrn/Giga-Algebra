@@ -1,5 +1,5 @@
-#include "/opt/homebrew/include/gmock/gmock.h"
-#include "/opt/homebrew/include/gtest/gtest.h"
+#include <gmock/gmock.h>
+#include <gtest/gtest.h>
 
 #include "../headers/IntegerNumber.h"
 
