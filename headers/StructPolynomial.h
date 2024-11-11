@@ -15,6 +15,8 @@ struct NodePolynomial{
 class ListPolynomial{
 public:
     ListPolynomial();
+    ListPolynomial(ListPolynomial& other);
+    ListPolynomial& operator=(ListPolynomial& other);
     ~ListPolynomial() = default;
     NodePolynomial* get_head();
     NodePolynomial* get_tail();

@@ -5,6 +5,25 @@ ListPolynomial::ListPolynomial(){
     tail = nullptr;
 }
 
+ListPolynomial::ListPolynomial(ListPolynomial& other){
+    NodePolynomial* node = other.head;
+    while(node != nullptr){
+        node = node->next;
+        this->push(node->coefficient, node->degree);
+    }
+}
+ListPolynomial& ListPolynomial::operator=(ListPolynomial& other){
+    clear();
+    head = nullptr;
+    tail = nullptr;
+    NodePolynomial* node = other.head;
+    while(node != nullptr){
+        node = node->next;
+        this->push(node->coefficient, node->degree);
+    }
+    return *this;
+}
+
 void ListPolynomial::push(RationalNumber coefficient, NaturalNumber degree) {
     NodePolynomial* node = new NodePolynomial(coefficient, degree);
     if (head == nullptr) {

@@ -16,10 +16,6 @@ class IntegerNumber {
 
   IntegerNumber &operator=(const IntegerNumber &other);
 
-  ~IntegerNumber() {
-    clear();
-  }
-
   explicit IntegerNumber(const NaturalNumber &n);  // TRANS_Z_N
 
   NaturalNumber &ABS_Z_Z();  // Absolute value

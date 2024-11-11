@@ -9,6 +9,14 @@ Polynomial::Polynomial(std::string& poly) {
     parsePolynomial(poly);
 }
 
+Polynomial::Polynomial(const Polynomial& other){
+    polynomial = new ListPolynomial(*other.polynomial);
+}
+Polynomial& Polynomial::operator=(const Polynomial& other){
+    polynomial = new ListPolynomial(*other.polynomial);
+    return *this;
+}
+
 void Polynomial::parsePolynomial(const std::string& poly) {
     std::vector<Term> terms;
     std::regex term_regex(R"(([+-]?)\s*(\d+)(?:/(\d+))?\s*x(?:\^(\d+))?|([+-]?)\s*(\d+)(?:/(\d+))?)");

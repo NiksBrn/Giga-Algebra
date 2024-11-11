@@ -21,6 +21,10 @@ class RationalNumber {
       : numerator(new IntegerNumber(numerator)),
         denominator(new NaturalNumber("1")) {}
 
+  RationalNumber(const RationalNumber &other );
+
+  RationalNumber& operator=(const RationalNumber &other);
+
   RationalNumber &RED_Q_Q();
 
   bool INT_Q_B();
