@@ -2,7 +2,6 @@
 #define GIGA_ALGEBRA_NATURALNUMBER_H
 
 #include <algorithm>
-
 #include "Struct.h"
 #include "string"
 
@@ -76,7 +75,7 @@ public:
     NaturalNumber& operator*=(const char c);
     //    MUL_ND_N - переопределенный оператор
 
-    NaturalNumber MUL_Nk_N(const NaturalNumber& k);
+    NaturalNumber MUL_Nk_N(const unsigned long long k);
     //    MUL_Nk_N - умножение на 10^k
 
     NaturalNumber MUL_NN_N(const NaturalNumber& other);
@@ -92,7 +91,7 @@ public:
     //    SUB_NDN_N - Вычитание из натурального другого натурального, умноженного
     //    на цифру для случая с неотрицательным результатом
 
-    std::pair<char, NaturalNumber> DIV_NN_Dk(NaturalNumber& num);
+    std::pair<char, unsigned long long> DIV_NN_Dk(NaturalNumber& num);
     //    DIV_NN_Dk - Вычисление первой цифры деления большего натурального на
     //    меньшее, домноженное на 10^k,где k - номер позиции этой цифры (номер
     //    считается с нуля)

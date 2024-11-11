@@ -51,8 +51,8 @@ TEST(SUB_NDN_N, Subtest_1) {
 TEST(DIV_NN_Dk, Subtest_1) {
   NaturalNumber n1("25667");
   NaturalNumber n2("6");
-  std::pair<char, NaturalNumber> DIV_NN_Dk_result = n1.DIV_NN_Dk(n2);
-  std::pair<char, NaturalNumber> result = {4, NaturalNumber("3")};
+  std::pair<char, unsigned long long> DIV_NN_Dk_result = n1.DIV_NN_Dk(n2);
+  std::pair<char, unsigned long long> result = {4, 3};
   ASSERT_EQ(DIV_NN_Dk_result.first, result.first);
   ASSERT_EQ(DIV_NN_Dk_result.second, result.second);
 }
@@ -60,8 +60,8 @@ TEST(DIV_NN_Dk, Subtest_1) {
 TEST(DIV_NN_Dk, Subtest_2) {
   NaturalNumber n1("12000");
   NaturalNumber n2("120");
-  std::pair<char, NaturalNumber> DIV_NN_Dk_result = n1.DIV_NN_Dk(n2);
-  std::pair<char, NaturalNumber> result = {1, NaturalNumber("2")};
+  std::pair<char, unsigned long long> DIV_NN_Dk_result = n1.DIV_NN_Dk(n2);
+  std::pair<char, unsigned long long> result = {1, 2};
   ASSERT_EQ(DIV_NN_Dk_result.first, result.first);
   ASSERT_EQ(DIV_NN_Dk_result.second, result.second);
 }
@@ -69,8 +69,8 @@ TEST(DIV_NN_Dk, Subtest_2) {
 TEST(DIV_NN_Dk, Subtest_3) {
   NaturalNumber n1("43553");
   NaturalNumber n2("12441243");
-  std::pair<char, NaturalNumber> DIV_NN_Dk_result = n1.DIV_NN_Dk(n2);
-  std::pair<char, NaturalNumber> result = {0, NaturalNumber("0")};
+  std::pair<char, unsigned long long> DIV_NN_Dk_result = n1.DIV_NN_Dk(n2);
+  std::pair<char, unsigned long long> result = {0, 0};
   ASSERT_EQ(DIV_NN_Dk_result.first, result.first);
   ASSERT_EQ(DIV_NN_Dk_result.second, result.second);
 }
