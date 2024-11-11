@@ -8,10 +8,10 @@
 NaturalNumber NaturalNumber::MUL_NN_N(const NaturalNumber& other) {
   NaturalNumber result = NaturalNumber("0");
   Node* cur_node = other.Big_int->get_first();
-  NaturalNumber digit = NaturalNumber("0");
+  unsigned long long digit = 0;
   while (cur_node != nullptr) {
     result = result.ADD_NN_N(((*this).MUL_ND_N(cur_node->value)).MUL_Nk_N(digit));
-    digit = digit.ADD_1N_N();
+    digit++;
     cur_node = cur_node->next;
   }
   return result;
@@ -39,27 +39,27 @@ NaturalNumber NaturalNumber::SUB_NDN_N(NaturalNumber& num, char c) { // Возв
 }
 
 // N-10
-std::pair<char, NaturalNumber> NaturalNumber::DIV_NN_Dk(NaturalNumber& num) {
+std::pair<char, unsigned long long> NaturalNumber::DIV_NN_Dk(NaturalNumber& num) {
   if (*this < num) {
-    return {0, NaturalNumber("0")};
+    return {0, 0};
   }
   NaturalNumber greater_num = (*this);
   NaturalNumber lower_num = num;
   Node *gr_node = greater_num.Big_int->get_first();
   Node *lw_node = lower_num.Big_int->get_first();
-  NaturalNumber k = NaturalNumber("0");
+  unsigned long long k = 0;
   while (gr_node->next != nullptr) {
     if (lw_node == nullptr) {
-      lower_num = lower_num.MUL_Nk_N(NaturalNumber("1"));
-      k = k.ADD_1N_N();
+      lower_num = lower_num.MUL_Nk_N(1);
+      k++;
     } else {
       lw_node = lw_node->next;
     }
     gr_node = gr_node->next;
   }
-  if (greater_num >= lower_num.MUL_Nk_N(NaturalNumber("1"))) {
-    lower_num = lower_num.MUL_Nk_N(NaturalNumber("1"));
-    k = k.ADD_1N_N();
+  if (greater_num >= lower_num.MUL_Nk_N(1)) {
+    lower_num = lower_num.MUL_Nk_N(1);
+    k++;
   }
   char cnt_subs = 0;
   while (greater_num >= lower_num) {
@@ -74,7 +74,7 @@ std::pair<char, NaturalNumber> NaturalNumber::DIV_NN_Dk(NaturalNumber& num) {
 NaturalNumber NaturalNumber::DIV_NN_N(NaturalNumber& num) {
   NaturalNumber divisible_num = *this;
   NaturalNumber result;
-  std::pair<char, NaturalNumber> division_result;
+  std::pair<char, unsigned long long> division_result;
   NaturalNumber sub_num;
   while (divisible_num >= num) {
     division_result = divisible_num.DIV_NN_Dk(num);

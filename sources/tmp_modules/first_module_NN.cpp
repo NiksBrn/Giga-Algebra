@@ -153,83 +153,46 @@ NaturalNumber NaturalNumber::MUL_ND_N(const char c) {
 }
 
 NaturalNumber NaturalNumber::SUB_NN_N(const NaturalNumber& num) {
-  NaturalNumber ans = *this;
-  Node* next_node1 = ans.get_num().get_first(); // отвечает за сдвиг на следующий разряд первого числа
-  int point = 0;  // если вычитание выйдет за пределы одного разряда, придётся взять одну цифру из следующего
-  Node* next_node2 =num.Big_int->get_first();  // отвечает за сдвиг на следующий разряд второго числа
+  NaturalNumber result;
+  Node* cur_node1 = (*this).get_num().get_first();  // отвечает за сдвиг на следующий разряд первого числа
+  Node* cur_node2 = num.get_num().get_first();  // отвечает за сдвиг на следующий разряд второго числа
 
-  while (next_node2 != nullptr) {
-    int num1 = next_node1->value;  // значение i-го разряда первого числа
-    int num2 = next_node2->value + point;  // значение i-го разряда второго числа
-
-    if (num1 <num2) {  // если значение i-го разряда второго числа больше первого
-      num1 += 10;  // разряд первого числа получает 10 от следующего
-      num1 -= num2;  // вычитание разрядов
-      point = 1;  // будет учитываться в дальнейшем вычитании за взятую ранее
-                  // десятку
+  int take_one_digit = 0; // Берем единицу из старшего разряда
+  int sub_digit_result; // Разница разрядов
+  while (cur_node2 != nullptr) {
+    sub_digit_result = cur_node1->value - cur_node2->value - take_one_digit;
+    if (sub_digit_result < 0) {
+      take_one_digit = 1;
+      sub_digit_result += 10;
     } else {
-      num1 -= num2;  // если значение i-го разряда первого числа равно или больше
-      point = 0;
+      take_one_digit = 0;
     }
-    next_node1->value = num1;  // полученная разность
-    if (next_node2->next == nullptr) {
-      break;
-    }
-    next_node1 = next_node1->next;  // сдвиг на следующий разряд первого числа
-    next_node2 = next_node2->next;  // сдвиг на следующий разряд второго числа
+    cur_node1 = cur_node1->next;
+    cur_node2 = cur_node2->next;
+    result.get_num().push_back(sub_digit_result);
   }
-  next_node1 = next_node1->next;
-  if (point == 1) {  // если осталась единица, которую надо вычесть из старших разрядов
-    while (next_node1->value == 0) {  // поиск, пока не наткнёмся на отличное от 0 число
-      next_node1->value = 9;
-      next_node1 = next_node1->next;
+  while (cur_node1 != nullptr) {
+    sub_digit_result = cur_node1->value - take_one_digit;
+    if (sub_digit_result < 0) {
+      sub_digit_result += 10;
+      take_one_digit = 1;
+    } else {
+      take_one_digit = 0;
     }
-    next_node1->value -= 1;  // вычитание единицы
+    result.get_num().push_back(sub_digit_result);
+    cur_node1 = cur_node1->next;
   }
-  // Node* check_node = Big_int.get_last();
-  // for (int j = 0; j < size1; j++) {
-  //     if (check_node->value != 0) {
-  //        break;                         ////удаление незначащих нулей слева
-  //        направо, надо добавить prev
-  //    }
-  //    if (check_node->value == 0) {
-  //         check_node->prev = nullptr;
-  //   }
-  //}
-  ans.get_num().del_zero();
-  return ans;
+  result.get_num().del_zero();
+  return result;
 }
 
-NaturalNumber NaturalNumber::MUL_Nk_N(const NaturalNumber& k) {
+NaturalNumber NaturalNumber::MUL_Nk_N(unsigned long long k) {
   NaturalNumber ans = *this;
   if (!ans.NZER_N_B()) {
     return ans;
   }
-  NaturalNumber i("0");
-  for(i;i.COM_NN_D(k) != EQUAL;i = i.ADD_1N_N()){
+  for(unsigned long long i = 0; i < k; i++) {
     ans.get_num().push_front(0);
   }
   return ans;
-} //Created by Skobelev Nikita 3383
-
-
-//NaturalNumber NaturalNumber::MUL_Nk_N(const NaturalNumber& k) {
-//  NaturalNumber ans = *this;
-//  Node* next_node1 = ans.get_num().get_first(); // отвечает за сдвиг на следующий разряд числа
-//  Node* next_node = k.get_num().get_first();  // отвечает за сдвиг на следующий разряд числа k
-//  if ((next_node1->next == nullptr) && (next_node1->value == 0)) {
-//    return ans;
-//  }
-//  while (next_node != nullptr) {
-//    if (next_node->value == 0) {
-//      if (next_node->next == nullptr) {
-//        break;
-//      }
-//      next_node = next_node->next;
-//      next_node->value += 9;
-//    }
-//    ans.get_num().push_front(0);
-//    next_node->value -= 1;
-//  }
-//  return ans;
-//}
+}
