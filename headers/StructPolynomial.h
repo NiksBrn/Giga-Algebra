@@ -22,7 +22,8 @@ public:
     void pop(NodePolynomial* node);
     void clear();
 private:
-    NodePolynomial *head;
-    NodePolynomial* tail;
+// Так как инициализации нет решу сам
+    NodePolynomial *head; // head - это будет старший моном
+    NodePolynomial* tail; // tail- соответственно младший моном (свободный коэффициент)
 };
 #endif //GIGA_ALGEBRA_STRUCTPOLYNOMIAL_H

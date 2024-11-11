@@ -13,6 +13,8 @@
 typedef std::tuple<char, std::string, std::string, std::string> Term;
 class Polynomial {
  public:
+ // нужна инициализация с помощью ListPolynomial
+  Polynomial(ListPolynomial* polynomial);
   Polynomial(std::string& poly);
   void parsePolynomial(const std::string& poly);
   ListPolynomial &getPolynomial() const;
@@ -34,7 +36,7 @@ class Polynomial {
 
   RationalNumber &LED_P_Q();
 
-//  NaturalNumber &DEG_P_N() { return degree; }
+  NaturalNumber &DEG_P_N();
 
   RationalNumber &FAC_P_Q();
 
