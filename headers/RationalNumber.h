@@ -25,27 +25,27 @@ class RationalNumber {
 
   RationalNumber& operator=(const RationalNumber &other);
 
-  RationalNumber &RED_Q_Q();
+  RationalNumber RED_Q_Q();
 
   bool INT_Q_B();
 
-  RationalNumber &Trans_Z_Q(IntegerNumber &z);
+  RationalNumber Trans_Z_Q(IntegerNumber &z);
 
-  IntegerNumber &Trans_Q_Z();
+  IntegerNumber Trans_Q_Z();
 
-  RationalNumber &ADD_QQ_Q(RationalNumber &other);
+  RationalNumber ADD_QQ_Q(RationalNumber &other);
   RationalNumber &operator+(RationalNumber &other);
   RationalNumber &operator+=(RationalNumber &other);
 
-  RationalNumber &SUB_QQ_Q(RationalNumber &other);
+  RationalNumber SUB_QQ_Q(RationalNumber &other);
   RationalNumber &operator-(RationalNumber &other);
   RationalNumber &operator-=(RationalNumber &other);
 
-  RationalNumber &MUL_QQ_Q(RationalNumber &other);
+  RationalNumber MUL_QQ_Q(RationalNumber &other);
   RationalNumber &operator*(RationalNumber &other);
   RationalNumber &operator*=(RationalNumber &other);
 
-  RationalNumber &DIV_QQ_Q(RationalNumber &other);
+  RationalNumber DIV_QQ_Q(RationalNumber &other);
   RationalNumber &operator/(RationalNumber &other);
   RationalNumber &operator/=(RationalNumber &other);
 

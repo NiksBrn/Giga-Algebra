@@ -30,5 +30,7 @@ void NaturalNumber::clear() {
   Big_int->clear();
   delete Big_int;
 }
-
+//architect Nikita Skobelev
 // struct end
+
+so

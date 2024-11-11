@@ -14,7 +14,7 @@ std::ostream& operator<<(std::ostream& os, const NaturalNumber& num) {
 }
 
 std::ostream& operator<<(std::ostream& os, const IntegerNumber& num) {
-  if (num.POZ_Z_D() != POSITIVE) {
+  if (num.POZ_Z_D() != POSITIVE && num.POZ_Z_D() != ZERO) {
     return os << "-" << num.get_num();
   }
   return os << num.get_num();
