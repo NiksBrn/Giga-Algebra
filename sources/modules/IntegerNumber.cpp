@@ -23,13 +23,13 @@ const NaturalNumber& IntegerNumber::get_num() const{
     return *number;
 }
 
-IntegerNumber IntegerNumber::TRANS_N_Z(const NaturalNumber &n) {
-    return IntegerNumber(n);
-}
-
-NaturalNumber IntegerNumber::TRANS_Z_N(const IntegerNumber &n) {
-    return *n.number;
-}
+//IntegerNumber IntegerNumber::TRANS_N_Z(const NaturalNumber &n) {
+//    return IntegerNumber(n);
+//}
+//
+//NaturalNumber IntegerNumber::TRANS_Z_N(const IntegerNumber &n) {
+//    return *n.number;
+//}
 
 //NaturalNumber &IntegerNumber::TRANS_Z_N(){
 //  return *dynamic_cast<NaturalNumber *>(this);
