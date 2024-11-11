@@ -1,7 +1,7 @@
 #include "../../headers/Polynomial.h"
 
 Polynomial &Polynomial::ADD_PP_P(const Polynomial &other){
-  ListPolynomial* newPol;
+  ListPolynomial* newPol = new ListPolynomial();
   NodePolynomial* tmp1 = polynomial->get_tail();
   NodePolynomial* tmp2 = other.polynomial->get_tail();
   while (tmp1 != nullptr && tmp2 != nullptr){
@@ -20,7 +20,7 @@ Polynomial &Polynomial::ADD_PP_P(const Polynomial &other){
 }
 
 Polynomial &Polynomial::SUB_PP_P(const Polynomial &other){
-  ListPolynomial* newPol;
+  ListPolynomial* newPol = new ListPolynomial();
   NodePolynomial* tmp1 = polynomial->get_tail();
   NodePolynomial* tmp2 = other.polynomial->get_tail();
   while (tmp1 != nullptr && tmp2 != nullptr){
@@ -39,7 +39,7 @@ Polynomial &Polynomial::SUB_PP_P(const Polynomial &other){
 }
 
 Polynomial &Polynomial::MUL_PQ_P(const RationalNumber &other){
-  ListPolynomial* newPol;
+  ListPolynomial* newPol = new ListPolynomial();
   NodePolynomial* tmp = polynomial->get_tail();
   while (tmp != nullptr){
     newPol->push(tmp->coefficient.MUL_QQ_Q((RationalNumber &)other), tmp->degree);
@@ -50,7 +50,7 @@ Polynomial &Polynomial::MUL_PQ_P(const RationalNumber &other){
 }
 
 Polynomial &Polynomial::MUL_Pxk_P(const NaturalNumber &other){
-  ListPolynomial* newPol;
+  ListPolynomial* newPol = new ListPolynomial();
   NodePolynomial* tmp = polynomial->get_tail();
   while (tmp != nullptr){
     newPol->push(tmp->coefficient, tmp->degree.ADD_NN_N(other));
@@ -85,7 +85,7 @@ RationalNumber &Polynomial::FAC_P_Q(){
 }
 
 Polynomial &Polynomial::DER_P_P(){
-  ListPolynomial* newPol;
+  ListPolynomial* newPol = new ListPolynomial();
   RationalNumber k('+', "0", "1");
   NodePolynomial* tmp = polynomial->get_tail();
   while(tmp != nullptr) {
@@ -100,7 +100,7 @@ Polynomial &Polynomial::DER_P_P(){
 }
 
 Polynomial &Polynomial::MUL_PP_P(const Polynomial &other){
-  ListPolynomial* intermediate;
+  ListPolynomial* intermediate = new ListPolynomial();
   NaturalNumber maxDegree("0");
   NodePolynomial* tmp1 = polynomial->get_tail();
   NodePolynomial* tmp2 = other.polynomial->get_tail();
