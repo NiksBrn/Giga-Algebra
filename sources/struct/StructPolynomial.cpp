@@ -33,6 +33,12 @@ void ListPolynomial::push(RationalNumber coefficient, NaturalNumber degree) {
         bool flag = true;
         NodePolynomial* tmp = head;
         while (tmp != nullptr) {
+            if(tmp->degree.COM_NN_D(node->degree) == EQUAL){
+                tmp->coefficient = tmp->coefficient.ADD_QQ_Q(node->coefficient);
+                delete node;
+                flag = false;
+                break;
+            }
             if(tmp->degree.COM_NN_D(node->degree) == LESS){
                 if(tmp == head){
                     node->next = tmp;

@@ -32,5 +32,3 @@ void NaturalNumber::clear() {
 }
 //architect Nikita Skobelev
 // struct end
-
-so
