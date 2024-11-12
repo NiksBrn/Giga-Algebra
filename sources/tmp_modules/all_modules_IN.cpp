@@ -67,9 +67,7 @@ IntegerNumber IntegerNumber::ADD_ZZ_Z(const IntegerNumber &other) {
   if (number.COM_NN_D(other_number) == Compare::LESS) {  // сравниваем числа
     *object.number =
         other_number.SUB_NN_N(number);  // вычитаем из второго первое
-    if (other.POZ_Z_D() == Sign::NEGATIVE) {
-      object.MUL_ZM_Z();
-    }
+    object.MUL_ZM_Z(); // смена знака
   } else {
     *object.number =
         number.SUB_NN_N(other_number);  // вычитаем из первого второе

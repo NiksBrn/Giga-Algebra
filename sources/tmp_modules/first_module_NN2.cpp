@@ -73,7 +73,7 @@ std::pair<char, unsigned long long> NaturalNumber::DIV_NN_Dk(NaturalNumber& num)
 // N-11
 NaturalNumber NaturalNumber::DIV_NN_N(NaturalNumber& num) {
   NaturalNumber divisible_num = *this;
-  NaturalNumber result;
+  NaturalNumber result = NaturalNumber("0");
   std::pair<char, unsigned long long> division_result;
   NaturalNumber sub_num;
   while (divisible_num >= num) {
@@ -81,7 +81,6 @@ NaturalNumber NaturalNumber::DIV_NN_N(NaturalNumber& num) {
     result = result.ADD_NN_N(NaturalNumber(std::to_string(division_result.first)).MUL_Nk_N(division_result.second));
     sub_num = num.MUL_Nk_N(division_result.second);
     divisible_num = divisible_num.SUB_NDN_N(sub_num, division_result.first);
-    divisible_num.get_num().del_zero();
   }
   return result;
 }
