@@ -36,7 +36,7 @@ class Polynomial {
 
   RationalNumber LED_P_Q();
 
-//  NaturalNumber &DEG_P_N() { return degree; }
+  NaturalNumber &DEG_P_N() { return polynomial->get_head()->degree;}
 
   RationalNumber FAC_P_Q();
 
