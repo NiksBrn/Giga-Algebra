@@ -3,11 +3,8 @@ debug/NaturalNumber.o
 debug/RationalNumber.o
 debug/Polynomial.o
 debug/Overload.o
-debug/IntegerNumber.o
-debug/NaturalNumber.o
-debug/RationalNumber.o
-debug/Polynomial.o
 debug/Struct.o
 debug/main.o
 debug/mainwindow.o
+debug/StructPolynomial.o
 debug/moc_mainwindow.o

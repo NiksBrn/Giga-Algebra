@@ -129,4 +129,17 @@ protected:
     List* Big_int;
 };
 
+
+constexpr const char* CompareToString(Compare cmp) noexcept {
+    switch (cmp) {
+    case EQUAL:
+        return "EQUAL";
+    case GREATER:
+        return "GREATER";
+    case LESS:
+        return "LESS";
+    }
+    return "ERROR";
+}
+
 #endif  // GIGA_ALGEBRA_NATURALNUMBER_H

@@ -41,15 +41,69 @@ constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers::string
     "MainWindow",
     "on_tabWidget_tabBarClicked",
     "",
-    "index"
+    "index",
+    "on_pushButton_15_clicked",
+    "on_COM_NN_D_BUTTON_clicked",
+    "on_NZER_N_B_BUTTON_clicked",
+    "on_ADD_1N_N_BUTTON_clicked",
+    "on_ADD_NN_N_BUTTON_clicked",
+    "on_SUB_NN_N_BUTTON_clicked",
+    "on_MOD_NN_N_BUTTON_clicked",
+    "on_DIV_NN_N_BUTTON_clicked",
+    "on_GCF_NN_N_BUTTON_clicked",
+    "on_LCM_NN_N_BUTTON_clicked",
+    "on_DIV_NN_Dk_BUTTON_clicked",
+    "on_SUB_NDN_N_BUTTON_clicked",
+    "on_MUL_ND_N_BUTTON_clicked",
+    "on_MUL_Nk_N_BUTTON_clicked",
+    "on_MUL_NN_N_BUTTON_clicked",
+    "on_actionOpen_Input_File_triggered",
+    "on_actionChoose_Output_File_triggered",
+    "write_natural_result",
+    "NaturalNumber",
+    "a",
+    "write_integer_result",
+    "IntegerNumber",
+    "write_rational_result",
+    "RationalNumber",
+    "write_polynomial_result",
+    "Polynomial",
+    "on_actionOpen_Input2_File_triggered"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
-    uint offsetsAndSizes[8];
+    uint offsetsAndSizes[62];
     char stringdata0[11];
     char stringdata1[27];
     char stringdata2[1];
     char stringdata3[6];
+    char stringdata4[25];
+    char stringdata5[27];
+    char stringdata6[27];
+    char stringdata7[27];
+    char stringdata8[27];
+    char stringdata9[27];
+    char stringdata10[27];
+    char stringdata11[27];
+    char stringdata12[27];
+    char stringdata13[27];
+    char stringdata14[28];
+    char stringdata15[28];
+    char stringdata16[27];
+    char stringdata17[27];
+    char stringdata18[27];
+    char stringdata19[35];
+    char stringdata20[38];
+    char stringdata21[21];
+    char stringdata22[14];
+    char stringdata23[2];
+    char stringdata24[21];
+    char stringdata25[14];
+    char stringdata26[22];
+    char stringdata27[15];
+    char stringdata28[24];
+    char stringdata29[11];
+    char stringdata30[36];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSMainWindowENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -58,12 +112,66 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(0, 10),  // "MainWindow"
         QT_MOC_LITERAL(11, 26),  // "on_tabWidget_tabBarClicked"
         QT_MOC_LITERAL(38, 0),  // ""
-        QT_MOC_LITERAL(39, 5)   // "index"
+        QT_MOC_LITERAL(39, 5),  // "index"
+        QT_MOC_LITERAL(45, 24),  // "on_pushButton_15_clicked"
+        QT_MOC_LITERAL(70, 26),  // "on_COM_NN_D_BUTTON_clicked"
+        QT_MOC_LITERAL(97, 26),  // "on_NZER_N_B_BUTTON_clicked"
+        QT_MOC_LITERAL(124, 26),  // "on_ADD_1N_N_BUTTON_clicked"
+        QT_MOC_LITERAL(151, 26),  // "on_ADD_NN_N_BUTTON_clicked"
+        QT_MOC_LITERAL(178, 26),  // "on_SUB_NN_N_BUTTON_clicked"
+        QT_MOC_LITERAL(205, 26),  // "on_MOD_NN_N_BUTTON_clicked"
+        QT_MOC_LITERAL(232, 26),  // "on_DIV_NN_N_BUTTON_clicked"
+        QT_MOC_LITERAL(259, 26),  // "on_GCF_NN_N_BUTTON_clicked"
+        QT_MOC_LITERAL(286, 26),  // "on_LCM_NN_N_BUTTON_clicked"
+        QT_MOC_LITERAL(313, 27),  // "on_DIV_NN_Dk_BUTTON_clicked"
+        QT_MOC_LITERAL(341, 27),  // "on_SUB_NDN_N_BUTTON_clicked"
+        QT_MOC_LITERAL(369, 26),  // "on_MUL_ND_N_BUTTON_clicked"
+        QT_MOC_LITERAL(396, 26),  // "on_MUL_Nk_N_BUTTON_clicked"
+        QT_MOC_LITERAL(423, 26),  // "on_MUL_NN_N_BUTTON_clicked"
+        QT_MOC_LITERAL(450, 34),  // "on_actionOpen_Input_File_trig..."
+        QT_MOC_LITERAL(485, 37),  // "on_actionChoose_Output_File_t..."
+        QT_MOC_LITERAL(523, 20),  // "write_natural_result"
+        QT_MOC_LITERAL(544, 13),  // "NaturalNumber"
+        QT_MOC_LITERAL(558, 1),  // "a"
+        QT_MOC_LITERAL(560, 20),  // "write_integer_result"
+        QT_MOC_LITERAL(581, 13),  // "IntegerNumber"
+        QT_MOC_LITERAL(595, 21),  // "write_rational_result"
+        QT_MOC_LITERAL(617, 14),  // "RationalNumber"
+        QT_MOC_LITERAL(632, 23),  // "write_polynomial_result"
+        QT_MOC_LITERAL(656, 10),  // "Polynomial"
+        QT_MOC_LITERAL(667, 35)   // "on_actionOpen_Input2_File_tri..."
     },
     "MainWindow",
     "on_tabWidget_tabBarClicked",
     "",
-    "index"
+    "index",
+    "on_pushButton_15_clicked",
+    "on_COM_NN_D_BUTTON_clicked",
+    "on_NZER_N_B_BUTTON_clicked",
+    "on_ADD_1N_N_BUTTON_clicked",
+    "on_ADD_NN_N_BUTTON_clicked",
+    "on_SUB_NN_N_BUTTON_clicked",
+    "on_MOD_NN_N_BUTTON_clicked",
+    "on_DIV_NN_N_BUTTON_clicked",
+    "on_GCF_NN_N_BUTTON_clicked",
+    "on_LCM_NN_N_BUTTON_clicked",
+    "on_DIV_NN_Dk_BUTTON_clicked",
+    "on_SUB_NDN_N_BUTTON_clicked",
+    "on_MUL_ND_N_BUTTON_clicked",
+    "on_MUL_Nk_N_BUTTON_clicked",
+    "on_MUL_NN_N_BUTTON_clicked",
+    "on_actionOpen_Input_File_triggered",
+    "on_actionChoose_Output_File_triggered",
+    "write_natural_result",
+    "NaturalNumber",
+    "a",
+    "write_integer_result",
+    "IntegerNumber",
+    "write_rational_result",
+    "RationalNumber",
+    "write_polynomial_result",
+    "Polynomial",
+    "on_actionOpen_Input2_File_triggered"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -75,7 +183,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+      23,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -83,10 +191,54 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   20,    2, 0x08,    1 /* Private */,
+       1,    1,  152,    2, 0x08,    1 /* Private */,
+       4,    0,  155,    2, 0x08,    3 /* Private */,
+       5,    0,  156,    2, 0x08,    4 /* Private */,
+       6,    0,  157,    2, 0x08,    5 /* Private */,
+       7,    0,  158,    2, 0x08,    6 /* Private */,
+       8,    0,  159,    2, 0x08,    7 /* Private */,
+       9,    0,  160,    2, 0x08,    8 /* Private */,
+      10,    0,  161,    2, 0x08,    9 /* Private */,
+      11,    0,  162,    2, 0x08,   10 /* Private */,
+      12,    0,  163,    2, 0x08,   11 /* Private */,
+      13,    0,  164,    2, 0x08,   12 /* Private */,
+      14,    0,  165,    2, 0x08,   13 /* Private */,
+      15,    0,  166,    2, 0x08,   14 /* Private */,
+      16,    0,  167,    2, 0x08,   15 /* Private */,
+      17,    0,  168,    2, 0x08,   16 /* Private */,
+      18,    0,  169,    2, 0x08,   17 /* Private */,
+      19,    0,  170,    2, 0x08,   18 /* Private */,
+      20,    0,  171,    2, 0x08,   19 /* Private */,
+      21,    1,  172,    2, 0x08,   20 /* Private */,
+      24,    1,  175,    2, 0x08,   22 /* Private */,
+      26,    1,  178,    2, 0x08,   24 /* Private */,
+      28,    1,  181,    2, 0x08,   26 /* Private */,
+      30,    0,  184,    2, 0x08,   28 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Int,    3,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 22,   23,
+    QMetaType::Void, 0x80000000 | 25,   23,
+    QMetaType::Void, 0x80000000 | 27,   23,
+    QMetaType::Void, 0x80000000 | 29,   23,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -102,7 +254,55 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<MainWindow, std::true_type>,
         // method 'on_tabWidget_tabBarClicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'on_pushButton_15_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_COM_NN_D_BUTTON_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_NZER_N_B_BUTTON_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_ADD_1N_N_BUTTON_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_ADD_NN_N_BUTTON_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_SUB_NN_N_BUTTON_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_MOD_NN_N_BUTTON_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_DIV_NN_N_BUTTON_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_GCF_NN_N_BUTTON_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_LCM_NN_N_BUTTON_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_DIV_NN_Dk_BUTTON_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_SUB_NDN_N_BUTTON_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_MUL_ND_N_BUTTON_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_MUL_Nk_N_BUTTON_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_MUL_NN_N_BUTTON_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_actionOpen_Input_File_triggered'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_actionChoose_Output_File_triggered'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'write_natural_result'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<NaturalNumber, std::false_type>,
+        // method 'write_integer_result'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<IntegerNumber, std::false_type>,
+        // method 'write_rational_result'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<RationalNumber, std::false_type>,
+        // method 'write_polynomial_result'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<Polynomial, std::false_type>,
+        // method 'on_actionOpen_Input2_File_triggered'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
 } };
@@ -114,6 +314,28 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         (void)_t;
         switch (_id) {
         case 0: _t->on_tabWidget_tabBarClicked((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 1: _t->on_pushButton_15_clicked(); break;
+        case 2: _t->on_COM_NN_D_BUTTON_clicked(); break;
+        case 3: _t->on_NZER_N_B_BUTTON_clicked(); break;
+        case 4: _t->on_ADD_1N_N_BUTTON_clicked(); break;
+        case 5: _t->on_ADD_NN_N_BUTTON_clicked(); break;
+        case 6: _t->on_SUB_NN_N_BUTTON_clicked(); break;
+        case 7: _t->on_MOD_NN_N_BUTTON_clicked(); break;
+        case 8: _t->on_DIV_NN_N_BUTTON_clicked(); break;
+        case 9: _t->on_GCF_NN_N_BUTTON_clicked(); break;
+        case 10: _t->on_LCM_NN_N_BUTTON_clicked(); break;
+        case 11: _t->on_DIV_NN_Dk_BUTTON_clicked(); break;
+        case 12: _t->on_SUB_NDN_N_BUTTON_clicked(); break;
+        case 13: _t->on_MUL_ND_N_BUTTON_clicked(); break;
+        case 14: _t->on_MUL_Nk_N_BUTTON_clicked(); break;
+        case 15: _t->on_MUL_NN_N_BUTTON_clicked(); break;
+        case 16: _t->on_actionOpen_Input_File_triggered(); break;
+        case 17: _t->on_actionChoose_Output_File_triggered(); break;
+        case 18: _t->write_natural_result((*reinterpret_cast< std::add_pointer_t<NaturalNumber>>(_a[1]))); break;
+        case 19: _t->write_integer_result((*reinterpret_cast< std::add_pointer_t<IntegerNumber>>(_a[1]))); break;
+        case 20: _t->write_rational_result((*reinterpret_cast< std::add_pointer_t<RationalNumber>>(_a[1]))); break;
+        case 21: _t->write_polynomial_result((*reinterpret_cast< std::add_pointer_t<Polynomial>>(_a[1]))); break;
+        case 22: _t->on_actionOpen_Input2_File_triggered(); break;
         default: ;
         }
     }
@@ -138,13 +360,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 23;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 23)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        _id -= 23;
     }
     return _id;
 }

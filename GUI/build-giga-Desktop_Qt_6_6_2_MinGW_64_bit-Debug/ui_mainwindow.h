@@ -10,6 +10,7 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QAction>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
@@ -19,12 +20,15 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
+#include <QtWidgets/QTextBrowser>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -32,14 +36,18 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionOpen_Input_File;
+    QAction *actionChoose_Output_File;
+    QAction *actionOpen_Input2_File;
     QWidget *centralwidget;
-    QWidget *gridLayoutWidget_3;
-    QGridLayout *gridLayout_2;
-    QSpacerItem *horizontalSpacer_9;
     QTabWidget *tabWidget;
     QWidget *Naturalw;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout_3;
+    QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer_10;
+    QLabel *label;
+    QTextBrowser *NATURAL_OUTPUT;
     QGridLayout *gridLayout;
     QSpacerItem *horizontalSpacer_6;
     QPushButton *SUB_NN_N_BUTTON;
@@ -53,7 +61,7 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QPushButton *SUB_NDN_N_BUTTON;
     QSpacerItem *horizontalSpacer_2;
-    QSpinBox *spinBox;
+    QSpinBox *SUB_NDN_N_D;
     QPushButton *NZER_N_B_BUTTON;
     QPushButton *ADD_1N_N_BUTTON;
     QPushButton *DIV_NN_N_BUTTON;
@@ -66,16 +74,12 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QPushButton *MUL_ND_N_BUTTON;
     QSpacerItem *horizontalSpacer_3;
-    QSpinBox *spinBox_2;
+    QSpinBox *MUL_ND_N_D;
     QHBoxLayout *horizontalLayout_2;
-    QLineEdit *NATURAL_INPUT1;
+    QTextEdit *NATURAL_INPUT1;
+    QLabel *NaturalOperation;
     QSpacerItem *horizontalSpacer;
-    QLineEdit *NATURAL_INPUT2;
-    QHBoxLayout *horizontalLayout;
-    QSpacerItem *horizontalSpacer_10;
-    QLabel *label;
-    QLabel *NATURAL_OUTPUT;
-    QSpacerItem *verticalSpacer;
+    QTextEdit *NATURAL_INPUT2;
     QWidget *Integerw;
     QWidget *gridLayoutWidget_4;
     QGridLayout *gridLayout_4;
@@ -100,22 +104,19 @@ public:
     QPushButton *MOD_ZZ_Z_BUTTON;
     QPushButton *ABS_Z_N_BUTTON;
     QHBoxLayout *horizontalLayout_7;
-    QLineEdit *INTEGER_INPUT1;
+    QTextEdit *INTEGER_INPUT1;
     QSpacerItem *horizontalSpacer_18;
-    QLineEdit *INTEGER_OUTPUT2;
+    QTextEdit *INTEGER_INPUT2;
     QHBoxLayout *horizontalLayout_8;
     QSpacerItem *horizontalSpacer_19;
     QLabel *label_2;
-    QLabel *INTEGER_OUTPUT;
+    QTextBrowser *INTEGER_OUTPUT;
     QSpacerItem *verticalSpacer_3;
     QWidget *Rationalw;
     QWidget *gridLayoutWidget_5;
     QGridLayout *gridLayout_6;
     QGridLayout *gridLayout_9;
-    QLineEdit *RATIONAL_INPUT_NUMERATOR1;
-    QLineEdit *RATIONAL_INPUT_NUMERATOR2;
     QFrame *line_2;
-    QLineEdit *RATIONAL_INPUT_DENOMINATOR2;
     QFrame *line;
     QSpacerItem *horizontalSpacer_24;
     QHBoxLayout *horizontalLayout_11;
@@ -125,12 +126,15 @@ public:
     QSpacerItem *horizontalSpacer_30;
     QLineEdit *RATIONAL_INPUT_SIGN1;
     QSpacerItem *horizontalSpacer_26;
-    QLineEdit *RATIONAL_INPUT_DENOMINATOR1;
     QSpacerItem *horizontalSpacer_27;
     QSpacerItem *horizontalSpacer_25;
     QSpacerItem *horizontalSpacer_23;
     QSpacerItem *horizontalSpacer_28;
     QSpacerItem *horizontalSpacer_31;
+    QTextEdit *RATIONAL_INPUT_NUMERATOR1;
+    QTextEdit *RATIONAL_INPUT_NUMERATOR2;
+    QTextEdit *RATIONAL_INPUT_DENOMINATOR1;
+    QTextEdit *RATIONAL_INPUT_DENOMINATOR2;
     QGridLayout *gridLayout_7;
     QPushButton *SUB_QQ_Q_BUTTON;
     QPushButton *DIV_QQ_Q_BUTTON;
@@ -150,24 +154,24 @@ public:
     QSpacerItem *horizontalSpacer_35;
     QLabel *label_3;
     QGridLayout *gridLayout_8;
-    QFrame *line_3;
-    QSpacerItem *horizontalSpacer_32;
-    QLabel *RATIONAL_OUTPUT_NUMERATOR;
-    QLabel *RATIONAL_OUTPUT_DENOMINATOR;
+    QTextBrowser *RATIONAL_OUTPUT_NUMERATOR;
+    QSpacerItem *horizontalSpacer_33;
     QHBoxLayout *horizontalLayout_14;
     QSpacerItem *horizontalSpacer_34;
     QLabel *RATIONAL_OUTPUT_SIGN;
-    QSpacerItem *horizontalSpacer_33;
+    QSpacerItem *horizontalSpacer_32;
+    QFrame *line_3;
+    QTextBrowser *RATIONAL_OUTPUT_DENOMINATOR;
     QWidget *Polynomialw;
-    QSpacerItem *verticalSpacer_2;
-    QMenuBar *menubar;
     QStatusBar *statusbar;
+    QMenuBar *menubar;
+    QMenu *menuOpen_Input_File;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(800, 600);
+        MainWindow->resize(724, 785);
         QPalette palette;
         QBrush brush(QColor(0, 0, 0, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -245,20 +249,17 @@ public:
         icon.addFile(QString::fromUtf8("C:/Users/pitek/OneDrive/\320\230\320\267\320\276\320\261\321\200\320\260\320\266\320\265\320\275\320\270\321\217/icos/asdfg.ico"), QSize(), QIcon::Normal, QIcon::Off);
         MainWindow->setWindowIcon(icon);
         MainWindow->setWindowOpacity(1.000000000000000);
+        actionOpen_Input_File = new QAction(MainWindow);
+        actionOpen_Input_File->setObjectName("actionOpen_Input_File");
+        actionChoose_Output_File = new QAction(MainWindow);
+        actionChoose_Output_File->setObjectName("actionChoose_Output_File");
+        actionOpen_Input2_File = new QAction(MainWindow);
+        actionOpen_Input2_File->setObjectName("actionOpen_Input2_File");
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        gridLayoutWidget_3 = new QWidget(centralwidget);
-        gridLayoutWidget_3->setObjectName("gridLayoutWidget_3");
-        gridLayoutWidget_3->setGeometry(QRect(10, 0, 1041, 721));
-        gridLayout_2 = new QGridLayout(gridLayoutWidget_3);
-        gridLayout_2->setObjectName("gridLayout_2");
-        gridLayout_2->setContentsMargins(0, 0, 0, 0);
-        horizontalSpacer_9 = new QSpacerItem(10, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        gridLayout_2->addItem(horizontalSpacer_9, 0, 1, 1, 1);
-
-        tabWidget = new QTabWidget(gridLayoutWidget_3);
+        tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName("tabWidget");
+        tabWidget->setGeometry(QRect(0, 0, 720, 731));
         QSizePolicy sizePolicy(QSizePolicy::Policy::Maximum, QSizePolicy::Policy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -280,6 +281,30 @@ public:
         gridLayout_3->setObjectName("gridLayout_3");
         gridLayout_3->setSizeConstraint(QLayout::SetNoConstraint);
         gridLayout_3->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName("horizontalLayout");
+        horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_10);
+
+        label = new QLabel(gridLayoutWidget);
+        label->setObjectName("label");
+        QFont font;
+        font.setPointSize(14);
+        label->setFont(font);
+
+        horizontalLayout->addWidget(label);
+
+        NATURAL_OUTPUT = new QTextBrowser(gridLayoutWidget);
+        NATURAL_OUTPUT->setObjectName("NATURAL_OUTPUT");
+        NATURAL_OUTPUT->setMinimumSize(QSize(600, 0));
+        NATURAL_OUTPUT->setSizeIncrement(QSize(0, 0));
+
+        horizontalLayout->addWidget(NATURAL_OUTPUT);
+
+
+        gridLayout_3->addLayout(horizontalLayout, 2, 0, 1, 1);
+
         gridLayout = new QGridLayout();
         gridLayout->setObjectName("gridLayout");
         horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
@@ -290,11 +315,11 @@ public:
         SUB_NN_N_BUTTON->setObjectName("SUB_NN_N_BUTTON");
         SUB_NN_N_BUTTON->setMinimumSize(QSize(80, 60));
         SUB_NN_N_BUTTON->setMaximumSize(QSize(16777215, 60));
-        QFont font;
-        font.setFamilies({QString::fromUtf8("Segoe UI")});
-        font.setPointSize(20);
-        font.setBold(true);
-        SUB_NN_N_BUTTON->setFont(font);
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("Segoe UI")});
+        font1.setPointSize(20);
+        font1.setBold(true);
+        SUB_NN_N_BUTTON->setFont(font1);
 
         gridLayout->addWidget(SUB_NN_N_BUTTON, 6, 1, 1, 1);
 
@@ -302,9 +327,7 @@ public:
         COM_NN_D_BUTTON->setObjectName("COM_NN_D_BUTTON");
         COM_NN_D_BUTTON->setMinimumSize(QSize(20, 60));
         COM_NN_D_BUTTON->setMaximumSize(QSize(16777215, 60));
-        QFont font1;
-        font1.setPointSize(14);
-        COM_NN_D_BUTTON->setFont(font1);
+        COM_NN_D_BUTTON->setFont(font);
 
         gridLayout->addWidget(COM_NN_D_BUTTON, 3, 2, 1, 1);
 
@@ -312,7 +335,7 @@ public:
         MOD_NN_N_BUTTON->setObjectName("MOD_NN_N_BUTTON");
         MOD_NN_N_BUTTON->setMinimumSize(QSize(80, 60));
         MOD_NN_N_BUTTON->setMaximumSize(QSize(16777215, 60));
-        MOD_NN_N_BUTTON->setFont(font1);
+        MOD_NN_N_BUTTON->setFont(font);
 
         gridLayout->addWidget(MOD_NN_N_BUTTON, 3, 3, 1, 1);
 
@@ -339,7 +362,7 @@ public:
         GCF_NN_N_BUTTON->setObjectName("GCF_NN_N_BUTTON");
         GCF_NN_N_BUTTON->setMinimumSize(QSize(80, 60));
         GCF_NN_N_BUTTON->setMaximumSize(QSize(16777215, 60));
-        GCF_NN_N_BUTTON->setFont(font1);
+        GCF_NN_N_BUTTON->setFont(font);
 
         gridLayout->addWidget(GCF_NN_N_BUTTON, 4, 3, 1, 1);
 
@@ -347,7 +370,7 @@ public:
         DIV_NN_Dk_BUTTON->setObjectName("DIV_NN_Dk_BUTTON");
         DIV_NN_Dk_BUTTON->setMinimumSize(QSize(160, 60));
         DIV_NN_Dk_BUTTON->setMaximumSize(QSize(16777215, 60));
-        DIV_NN_Dk_BUTTON->setFont(font1);
+        DIV_NN_Dk_BUTTON->setFont(font);
 
         gridLayout->addWidget(DIV_NN_Dk_BUTTON, 6, 2, 1, 1);
 
@@ -368,14 +391,14 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_2);
 
-        spinBox = new QSpinBox(gridLayoutWidget);
-        spinBox->setObjectName("spinBox");
-        spinBox->setMinimumSize(QSize(30, 60));
-        spinBox->setMaximumSize(QSize(16777215, 60));
-        spinBox->setFont(font1);
-        spinBox->setMaximum(9);
+        SUB_NDN_N_D = new QSpinBox(gridLayoutWidget);
+        SUB_NDN_N_D->setObjectName("SUB_NDN_N_D");
+        SUB_NDN_N_D->setMinimumSize(QSize(30, 60));
+        SUB_NDN_N_D->setMaximumSize(QSize(16777215, 60));
+        SUB_NDN_N_D->setFont(font);
+        SUB_NDN_N_D->setMaximum(9);
 
-        horizontalLayout_3->addWidget(spinBox);
+        horizontalLayout_3->addWidget(SUB_NDN_N_D);
 
 
         gridLayout->addLayout(horizontalLayout_3, 5, 2, 1, 1);
@@ -384,7 +407,7 @@ public:
         NZER_N_B_BUTTON->setObjectName("NZER_N_B_BUTTON");
         NZER_N_B_BUTTON->setMinimumSize(QSize(80, 60));
         NZER_N_B_BUTTON->setMaximumSize(QSize(16777215, 60));
-        NZER_N_B_BUTTON->setFont(font1);
+        NZER_N_B_BUTTON->setFont(font);
 
         gridLayout->addWidget(NZER_N_B_BUTTON, 4, 2, 1, 1);
 
@@ -400,7 +423,7 @@ public:
         DIV_NN_N_BUTTON->setObjectName("DIV_NN_N_BUTTON");
         DIV_NN_N_BUTTON->setMinimumSize(QSize(80, 60));
         DIV_NN_N_BUTTON->setMaximumSize(QSize(16777215, 60));
-        DIV_NN_N_BUTTON->setFont(font1);
+        DIV_NN_N_BUTTON->setFont(font);
 
         gridLayout->addWidget(DIV_NN_N_BUTTON, 2, 3, 1, 1);
 
@@ -507,7 +530,7 @@ public:
         LCM_NN_N_BUTTON->setObjectName("LCM_NN_N_BUTTON");
         LCM_NN_N_BUTTON->setMinimumSize(QSize(80, 60));
         LCM_NN_N_BUTTON->setMaximumSize(QSize(16777215, 60));
-        LCM_NN_N_BUTTON->setFont(font1);
+        LCM_NN_N_BUTTON->setFont(font);
 
         gridLayout->addWidget(LCM_NN_N_BUTTON, 5, 3, 1, 1);
 
@@ -533,71 +556,44 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer_3);
 
-        spinBox_2 = new QSpinBox(gridLayoutWidget);
-        spinBox_2->setObjectName("spinBox_2");
-        spinBox_2->setMinimumSize(QSize(30, 60));
-        spinBox_2->setMaximumSize(QSize(16777215, 60));
-        spinBox_2->setFont(font1);
+        MUL_ND_N_D = new QSpinBox(gridLayoutWidget);
+        MUL_ND_N_D->setObjectName("MUL_ND_N_D");
+        MUL_ND_N_D->setMinimumSize(QSize(30, 60));
+        MUL_ND_N_D->setMaximumSize(QSize(16777215, 60));
+        MUL_ND_N_D->setFont(font);
+        MUL_ND_N_D->setMaximum(9);
 
-        horizontalLayout_4->addWidget(spinBox_2);
+        horizontalLayout_4->addWidget(MUL_ND_N_D);
 
 
         gridLayout->addLayout(horizontalLayout_4, 2, 2, 1, 1);
 
 
-        gridLayout_3->addLayout(gridLayout, 4, 0, 1, 1);
+        gridLayout_3->addLayout(gridLayout, 3, 0, 1, 1);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName("horizontalLayout_2");
-        NATURAL_INPUT1 = new QLineEdit(gridLayoutWidget);
+        NATURAL_INPUT1 = new QTextEdit(gridLayoutWidget);
         NATURAL_INPUT1->setObjectName("NATURAL_INPUT1");
-        NATURAL_INPUT1->setMaximumSize(QSize(16777215, 30));
-        NATURAL_INPUT1->setFont(font1);
 
         horizontalLayout_2->addWidget(NATURAL_INPUT1);
+
+        NaturalOperation = new QLabel(gridLayoutWidget);
+        NaturalOperation->setObjectName("NaturalOperation");
+
+        horizontalLayout_2->addWidget(NaturalOperation);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer);
 
-        NATURAL_INPUT2 = new QLineEdit(gridLayoutWidget);
+        NATURAL_INPUT2 = new QTextEdit(gridLayoutWidget);
         NATURAL_INPUT2->setObjectName("NATURAL_INPUT2");
-        NATURAL_INPUT2->setMaximumSize(QSize(16777215, 30));
-        NATURAL_INPUT2->setFont(font1);
 
         horizontalLayout_2->addWidget(NATURAL_INPUT2);
 
 
         gridLayout_3->addLayout(horizontalLayout_2, 0, 0, 1, 1);
-
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName("horizontalLayout");
-        horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer_10);
-
-        label = new QLabel(gridLayoutWidget);
-        label->setObjectName("label");
-        label->setFont(font1);
-
-        horizontalLayout->addWidget(label);
-
-        NATURAL_OUTPUT = new QLabel(gridLayoutWidget);
-        NATURAL_OUTPUT->setObjectName("NATURAL_OUTPUT");
-        NATURAL_OUTPUT->setMinimumSize(QSize(320, 30));
-        NATURAL_OUTPUT->setMaximumSize(QSize(16777215, 30));
-        NATURAL_OUTPUT->setAutoFillBackground(true);
-        NATURAL_OUTPUT->setFrameShape(QFrame::WinPanel);
-        NATURAL_OUTPUT->setFrameShadow(QFrame::Sunken);
-
-        horizontalLayout->addWidget(NATURAL_OUTPUT);
-
-
-        gridLayout_3->addLayout(horizontalLayout, 2, 0, 1, 1);
-
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Fixed);
-
-        gridLayout_3->addItem(verticalSpacer, 3, 0, 1, 1);
 
         tabWidget->addTab(Naturalw, QString());
         Integerw = new QWidget();
@@ -615,7 +611,7 @@ public:
         TRANS_N_Z_BUTTON->setObjectName("TRANS_N_Z_BUTTON");
         TRANS_N_Z_BUTTON->setMinimumSize(QSize(20, 60));
         TRANS_N_Z_BUTTON->setMaximumSize(QSize(16777215, 60));
-        TRANS_N_Z_BUTTON->setFont(font1);
+        TRANS_N_Z_BUTTON->setFont(font);
 
         gridLayout_5->addWidget(TRANS_N_Z_BUTTON, 3, 2, 1, 1);
 
@@ -714,7 +710,7 @@ public:
 
         lcdNumber = new QLCDNumber(gridLayoutWidget_4);
         lcdNumber->setObjectName("lcdNumber");
-        lcdNumber->setFont(font1);
+        lcdNumber->setFont(font);
         lcdNumber->setDigitCount(2);
         lcdNumber->setProperty("intValue", QVariant(-1));
 
@@ -735,7 +731,7 @@ public:
         POZ_Z_D_BUTTON->setObjectName("POZ_Z_D_BUTTON");
         POZ_Z_D_BUTTON->setMinimumSize(QSize(80, 60));
         POZ_Z_D_BUTTON->setMaximumSize(QSize(16777215, 60));
-        POZ_Z_D_BUTTON->setFont(font1);
+        POZ_Z_D_BUTTON->setFont(font);
 
         gridLayout_5->addWidget(POZ_Z_D_BUTTON, 5, 2, 1, 1);
 
@@ -745,7 +741,7 @@ public:
         TRANS_Z_N_BUTTON->setObjectName("TRANS_Z_N_BUTTON");
         TRANS_Z_N_BUTTON->setMinimumSize(QSize(80, 60));
         TRANS_Z_N_BUTTON->setMaximumSize(QSize(16777215, 60));
-        TRANS_Z_N_BUTTON->setFont(font1);
+        TRANS_Z_N_BUTTON->setFont(font);
 
         horizontalLayout_5->addWidget(TRANS_Z_N_BUTTON);
 
@@ -756,7 +752,7 @@ public:
         DIV_ZZ_Z_BUTTON->setObjectName("DIV_ZZ_Z_BUTTON");
         DIV_ZZ_Z_BUTTON->setMinimumSize(QSize(80, 60));
         DIV_ZZ_Z_BUTTON->setMaximumSize(QSize(16777215, 60));
-        DIV_ZZ_Z_BUTTON->setFont(font1);
+        DIV_ZZ_Z_BUTTON->setFont(font);
 
         gridLayout_5->addWidget(DIV_ZZ_Z_BUTTON, 3, 3, 1, 1);
 
@@ -764,7 +760,7 @@ public:
         SUB_ZZ_Z_BUTTON->setObjectName("SUB_ZZ_Z_BUTTON");
         SUB_ZZ_Z_BUTTON->setMinimumSize(QSize(80, 60));
         SUB_ZZ_Z_BUTTON->setMaximumSize(QSize(16777215, 60));
-        SUB_ZZ_Z_BUTTON->setFont(font);
+        SUB_ZZ_Z_BUTTON->setFont(font1);
 
         gridLayout_5->addWidget(SUB_ZZ_Z_BUTTON, 5, 1, 1, 1);
 
@@ -784,7 +780,7 @@ public:
         MOD_ZZ_Z_BUTTON->setObjectName("MOD_ZZ_Z_BUTTON");
         MOD_ZZ_Z_BUTTON->setMinimumSize(QSize(80, 60));
         MOD_ZZ_Z_BUTTON->setMaximumSize(QSize(16777215, 60));
-        MOD_ZZ_Z_BUTTON->setFont(font1);
+        MOD_ZZ_Z_BUTTON->setFont(font);
 
         gridLayout_5->addWidget(MOD_ZZ_Z_BUTTON, 4, 3, 1, 1);
 
@@ -792,7 +788,7 @@ public:
         ABS_Z_N_BUTTON->setObjectName("ABS_Z_N_BUTTON");
         ABS_Z_N_BUTTON->setMinimumSize(QSize(20, 60));
         ABS_Z_N_BUTTON->setMaximumSize(QSize(16777215, 60));
-        ABS_Z_N_BUTTON->setFont(font1);
+        ABS_Z_N_BUTTON->setFont(font);
 
         gridLayout_5->addWidget(ABS_Z_N_BUTTON, 2, 2, 1, 1);
 
@@ -801,10 +797,8 @@ public:
 
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setObjectName("horizontalLayout_7");
-        INTEGER_INPUT1 = new QLineEdit(gridLayoutWidget_4);
+        INTEGER_INPUT1 = new QTextEdit(gridLayoutWidget_4);
         INTEGER_INPUT1->setObjectName("INTEGER_INPUT1");
-        INTEGER_INPUT1->setMaximumSize(QSize(16777215, 30));
-        INTEGER_INPUT1->setFont(font1);
 
         horizontalLayout_7->addWidget(INTEGER_INPUT1);
 
@@ -812,12 +806,10 @@ public:
 
         horizontalLayout_7->addItem(horizontalSpacer_18);
 
-        INTEGER_OUTPUT2 = new QLineEdit(gridLayoutWidget_4);
-        INTEGER_OUTPUT2->setObjectName("INTEGER_OUTPUT2");
-        INTEGER_OUTPUT2->setMaximumSize(QSize(16777215, 30));
-        INTEGER_OUTPUT2->setFont(font1);
+        INTEGER_INPUT2 = new QTextEdit(gridLayoutWidget_4);
+        INTEGER_INPUT2->setObjectName("INTEGER_INPUT2");
 
-        horizontalLayout_7->addWidget(INTEGER_OUTPUT2);
+        horizontalLayout_7->addWidget(INTEGER_INPUT2);
 
 
         gridLayout_4->addLayout(horizontalLayout_7, 0, 0, 1, 1);
@@ -830,20 +822,13 @@ public:
 
         label_2 = new QLabel(gridLayoutWidget_4);
         label_2->setObjectName("label_2");
-        label_2->setFont(font1);
+        label_2->setFont(font);
 
         horizontalLayout_8->addWidget(label_2);
 
-        INTEGER_OUTPUT = new QLabel(gridLayoutWidget_4);
+        INTEGER_OUTPUT = new QTextBrowser(gridLayoutWidget_4);
         INTEGER_OUTPUT->setObjectName("INTEGER_OUTPUT");
-        INTEGER_OUTPUT->setMinimumSize(QSize(320, 0));
-        INTEGER_OUTPUT->setMaximumSize(QSize(16777215, 30));
-        QFont font4;
-        font4.setPointSize(7);
-        INTEGER_OUTPUT->setFont(font4);
-        INTEGER_OUTPUT->setAutoFillBackground(true);
-        INTEGER_OUTPUT->setFrameShape(QFrame::WinPanel);
-        INTEGER_OUTPUT->setFrameShadow(QFrame::Sunken);
+        INTEGER_OUTPUT->setMinimumSize(QSize(600, 0));
 
         horizontalLayout_8->addWidget(INTEGER_OUTPUT);
 
@@ -859,35 +844,19 @@ public:
         Rationalw->setObjectName("Rationalw");
         gridLayoutWidget_5 = new QWidget(Rationalw);
         gridLayoutWidget_5->setObjectName("gridLayoutWidget_5");
-        gridLayoutWidget_5->setGeometry(QRect(0, 0, 711, 512));
+        gridLayoutWidget_5->setGeometry(QRect(0, 0, 711, 614));
         gridLayout_6 = new QGridLayout(gridLayoutWidget_5);
         gridLayout_6->setObjectName("gridLayout_6");
         gridLayout_6->setSizeConstraint(QLayout::SetNoConstraint);
         gridLayout_6->setContentsMargins(0, 0, 0, 0);
         gridLayout_9 = new QGridLayout();
         gridLayout_9->setObjectName("gridLayout_9");
-        RATIONAL_INPUT_NUMERATOR1 = new QLineEdit(gridLayoutWidget_5);
-        RATIONAL_INPUT_NUMERATOR1->setObjectName("RATIONAL_INPUT_NUMERATOR1");
-
-        gridLayout_9->addWidget(RATIONAL_INPUT_NUMERATOR1, 0, 2, 1, 1);
-
-        RATIONAL_INPUT_NUMERATOR2 = new QLineEdit(gridLayoutWidget_5);
-        RATIONAL_INPUT_NUMERATOR2->setObjectName("RATIONAL_INPUT_NUMERATOR2");
-
-        gridLayout_9->addWidget(RATIONAL_INPUT_NUMERATOR2, 0, 5, 1, 1);
-
         line_2 = new QFrame(gridLayoutWidget_5);
         line_2->setObjectName("line_2");
         line_2->setFrameShape(QFrame::HLine);
         line_2->setFrameShadow(QFrame::Sunken);
 
         gridLayout_9->addWidget(line_2, 1, 5, 1, 1);
-
-        RATIONAL_INPUT_DENOMINATOR2 = new QLineEdit(gridLayoutWidget_5);
-        RATIONAL_INPUT_DENOMINATOR2->setObjectName("RATIONAL_INPUT_DENOMINATOR2");
-        RATIONAL_INPUT_DENOMINATOR2->setMinimumSize(QSize(250, 0));
-
-        gridLayout_9->addWidget(RATIONAL_INPUT_DENOMINATOR2, 2, 5, 1, 1);
 
         line = new QFrame(gridLayoutWidget_5);
         line->setObjectName("line");
@@ -941,12 +910,6 @@ public:
 
         gridLayout_9->addItem(horizontalSpacer_26, 0, 1, 1, 1);
 
-        RATIONAL_INPUT_DENOMINATOR1 = new QLineEdit(gridLayoutWidget_5);
-        RATIONAL_INPUT_DENOMINATOR1->setObjectName("RATIONAL_INPUT_DENOMINATOR1");
-        RATIONAL_INPUT_DENOMINATOR1->setMinimumSize(QSize(250, 0));
-
-        gridLayout_9->addWidget(RATIONAL_INPUT_DENOMINATOR1, 2, 2, 1, 1);
-
         horizontalSpacer_27 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         gridLayout_9->addItem(horizontalSpacer_27, 0, 4, 1, 1);
@@ -967,6 +930,26 @@ public:
 
         gridLayout_9->addItem(horizontalSpacer_31, 0, 3, 1, 1);
 
+        RATIONAL_INPUT_NUMERATOR1 = new QTextEdit(gridLayoutWidget_5);
+        RATIONAL_INPUT_NUMERATOR1->setObjectName("RATIONAL_INPUT_NUMERATOR1");
+
+        gridLayout_9->addWidget(RATIONAL_INPUT_NUMERATOR1, 0, 2, 1, 1);
+
+        RATIONAL_INPUT_NUMERATOR2 = new QTextEdit(gridLayoutWidget_5);
+        RATIONAL_INPUT_NUMERATOR2->setObjectName("RATIONAL_INPUT_NUMERATOR2");
+
+        gridLayout_9->addWidget(RATIONAL_INPUT_NUMERATOR2, 0, 5, 1, 1);
+
+        RATIONAL_INPUT_DENOMINATOR1 = new QTextEdit(gridLayoutWidget_5);
+        RATIONAL_INPUT_DENOMINATOR1->setObjectName("RATIONAL_INPUT_DENOMINATOR1");
+
+        gridLayout_9->addWidget(RATIONAL_INPUT_DENOMINATOR1, 2, 2, 1, 1);
+
+        RATIONAL_INPUT_DENOMINATOR2 = new QTextEdit(gridLayoutWidget_5);
+        RATIONAL_INPUT_DENOMINATOR2->setObjectName("RATIONAL_INPUT_DENOMINATOR2");
+
+        gridLayout_9->addWidget(RATIONAL_INPUT_DENOMINATOR2, 2, 5, 1, 1);
+
 
         gridLayout_6->addLayout(gridLayout_9, 0, 0, 1, 1);
 
@@ -976,7 +959,7 @@ public:
         SUB_QQ_Q_BUTTON->setObjectName("SUB_QQ_Q_BUTTON");
         SUB_QQ_Q_BUTTON->setMinimumSize(QSize(80, 60));
         SUB_QQ_Q_BUTTON->setMaximumSize(QSize(16777215, 60));
-        SUB_QQ_Q_BUTTON->setFont(font);
+        SUB_QQ_Q_BUTTON->setFont(font1);
 
         gridLayout_7->addWidget(SUB_QQ_Q_BUTTON, 4, 1, 1, 1);
 
@@ -984,7 +967,7 @@ public:
         DIV_QQ_Q_BUTTON->setObjectName("DIV_QQ_Q_BUTTON");
         DIV_QQ_Q_BUTTON->setMinimumSize(QSize(80, 60));
         DIV_QQ_Q_BUTTON->setMaximumSize(QSize(16777215, 60));
-        DIV_QQ_Q_BUTTON->setFont(font1);
+        DIV_QQ_Q_BUTTON->setFont(font);
 
         gridLayout_7->addWidget(DIV_QQ_Q_BUTTON, 3, 3, 1, 1);
 
@@ -1059,7 +1042,7 @@ public:
         INT_Q_B_BUTTON->setObjectName("INT_Q_B_BUTTON");
         INT_Q_B_BUTTON->setMinimumSize(QSize(20, 60));
         INT_Q_B_BUTTON->setMaximumSize(QSize(16777215, 60));
-        INT_Q_B_BUTTON->setFont(font1);
+        INT_Q_B_BUTTON->setFont(font);
 
         gridLayout_7->addWidget(INT_Q_B_BUTTON, 2, 2, 1, 1);
 
@@ -1067,7 +1050,7 @@ public:
         RED_Q_Q_BUTTON->setObjectName("RED_Q_Q_BUTTON");
         RED_Q_Q_BUTTON->setMinimumSize(QSize(20, 60));
         RED_Q_Q_BUTTON->setMaximumSize(QSize(16777215, 60));
-        RED_Q_Q_BUTTON->setFont(font1);
+        RED_Q_Q_BUTTON->setFont(font);
 
         gridLayout_7->addWidget(RED_Q_Q_BUTTON, 2, 3, 1, 1);
 
@@ -1081,7 +1064,7 @@ public:
         TRANS_Z_Q_BUTTON->setObjectName("TRANS_Z_Q_BUTTON");
         TRANS_Z_Q_BUTTON->setMinimumSize(QSize(80, 60));
         TRANS_Z_Q_BUTTON->setMaximumSize(QSize(16777215, 60));
-        TRANS_Z_Q_BUTTON->setFont(font1);
+        TRANS_Z_Q_BUTTON->setFont(font);
 
         horizontalLayout_10->addWidget(TRANS_Z_Q_BUTTON);
 
@@ -1096,7 +1079,7 @@ public:
         TRANS_Q_Z_BUTTON->setObjectName("TRANS_Q_Z_BUTTON");
         TRANS_Q_Z_BUTTON->setMinimumSize(QSize(80, 60));
         TRANS_Q_Z_BUTTON->setMaximumSize(QSize(16777215, 60));
-        TRANS_Q_Z_BUTTON->setFont(font1);
+        TRANS_Q_Z_BUTTON->setFont(font);
 
         gridLayout_7->addWidget(TRANS_Q_Z_BUTTON, 4, 2, 1, 1);
 
@@ -1135,44 +1118,20 @@ public:
 
         label_3 = new QLabel(gridLayoutWidget_5);
         label_3->setObjectName("label_3");
-        label_3->setFont(font1);
+        label_3->setFont(font);
 
         horizontalLayout_13->addWidget(label_3);
 
         gridLayout_8 = new QGridLayout();
         gridLayout_8->setObjectName("gridLayout_8");
-        line_3 = new QFrame(gridLayoutWidget_5);
-        line_3->setObjectName("line_3");
-        line_3->setFrameShape(QFrame::HLine);
-        line_3->setFrameShadow(QFrame::Sunken);
-
-        gridLayout_8->addWidget(line_3, 3, 2, 1, 1);
-
-        horizontalSpacer_32 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        gridLayout_8->addItem(horizontalSpacer_32, 2, 0, 1, 1);
-
-        RATIONAL_OUTPUT_NUMERATOR = new QLabel(gridLayoutWidget_5);
+        RATIONAL_OUTPUT_NUMERATOR = new QTextBrowser(gridLayoutWidget_5);
         RATIONAL_OUTPUT_NUMERATOR->setObjectName("RATIONAL_OUTPUT_NUMERATOR");
-        RATIONAL_OUTPUT_NUMERATOR->setMinimumSize(QSize(250, 0));
-        RATIONAL_OUTPUT_NUMERATOR->setMaximumSize(QSize(16777215, 30));
-        RATIONAL_OUTPUT_NUMERATOR->setFont(font4);
-        RATIONAL_OUTPUT_NUMERATOR->setAutoFillBackground(true);
-        RATIONAL_OUTPUT_NUMERATOR->setFrameShape(QFrame::WinPanel);
-        RATIONAL_OUTPUT_NUMERATOR->setFrameShadow(QFrame::Sunken);
 
-        gridLayout_8->addWidget(RATIONAL_OUTPUT_NUMERATOR, 2, 2, 1, 1);
+        gridLayout_8->addWidget(RATIONAL_OUTPUT_NUMERATOR, 3, 2, 1, 1);
 
-        RATIONAL_OUTPUT_DENOMINATOR = new QLabel(gridLayoutWidget_5);
-        RATIONAL_OUTPUT_DENOMINATOR->setObjectName("RATIONAL_OUTPUT_DENOMINATOR");
-        RATIONAL_OUTPUT_DENOMINATOR->setMinimumSize(QSize(250, 0));
-        RATIONAL_OUTPUT_DENOMINATOR->setMaximumSize(QSize(16777215, 30));
-        RATIONAL_OUTPUT_DENOMINATOR->setFont(font4);
-        RATIONAL_OUTPUT_DENOMINATOR->setAutoFillBackground(true);
-        RATIONAL_OUTPUT_DENOMINATOR->setFrameShape(QFrame::WinPanel);
-        RATIONAL_OUTPUT_DENOMINATOR->setFrameShadow(QFrame::Sunken);
+        horizontalSpacer_33 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
-        gridLayout_8->addWidget(RATIONAL_OUTPUT_DENOMINATOR, 4, 2, 1, 1);
+        gridLayout_8->addItem(horizontalSpacer_33, 6, 0, 1, 1);
 
         horizontalLayout_14 = new QHBoxLayout();
         horizontalLayout_14->setObjectName("horizontalLayout_14");
@@ -1189,11 +1148,23 @@ public:
         horizontalLayout_14->addWidget(RATIONAL_OUTPUT_SIGN);
 
 
-        gridLayout_8->addLayout(horizontalLayout_14, 3, 0, 1, 1);
+        gridLayout_8->addLayout(horizontalLayout_14, 4, 0, 1, 1);
 
-        horizontalSpacer_33 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+        horizontalSpacer_32 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
-        gridLayout_8->addItem(horizontalSpacer_33, 4, 0, 1, 1);
+        gridLayout_8->addItem(horizontalSpacer_32, 3, 0, 1, 1);
+
+        line_3 = new QFrame(gridLayoutWidget_5);
+        line_3->setObjectName("line_3");
+        line_3->setFrameShape(QFrame::HLine);
+        line_3->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_8->addWidget(line_3, 4, 2, 1, 1);
+
+        RATIONAL_OUTPUT_DENOMINATOR = new QTextBrowser(gridLayoutWidget_5);
+        RATIONAL_OUTPUT_DENOMINATOR->setObjectName("RATIONAL_OUTPUT_DENOMINATOR");
+
+        gridLayout_8->addWidget(RATIONAL_OUTPUT_DENOMINATOR, 6, 2, 1, 1);
 
 
         horizontalLayout_13->addLayout(gridLayout_8);
@@ -1205,25 +1176,26 @@ public:
         Polynomialw = new QWidget();
         Polynomialw->setObjectName("Polynomialw");
         tabWidget->addTab(Polynomialw, QString());
-
-        gridLayout_2->addWidget(tabWidget, 0, 0, 1, 1);
-
-        verticalSpacer_2 = new QSpacerItem(20, 10, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
-
-        gridLayout_2->addItem(verticalSpacer_2, 1, 0, 1, 1);
-
         MainWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 21));
-        MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
+        menubar = new QMenuBar(MainWindow);
+        menubar->setObjectName("menubar");
+        menubar->setGeometry(QRect(0, 0, 724, 21));
+        menuOpen_Input_File = new QMenu(menubar);
+        menuOpen_Input_File->setObjectName("menuOpen_Input_File");
+        MainWindow->setMenuBar(menubar);
+
+        menubar->addAction(menuOpen_Input_File->menuAction());
+        menuOpen_Input_File->addAction(actionOpen_Input_File);
+        menuOpen_Input_File->addAction(actionOpen_Input2_File);
+        menuOpen_Input_File->addSeparator();
+        menuOpen_Input_File->addAction(actionChoose_Output_File);
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -1232,6 +1204,10 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        actionOpen_Input_File->setText(QCoreApplication::translate("MainWindow", "Open Input File", nullptr));
+        actionChoose_Output_File->setText(QCoreApplication::translate("MainWindow", "Choose Output File", nullptr));
+        actionOpen_Input2_File->setText(QCoreApplication::translate("MainWindow", "Open Input2 File", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "RESULT:", nullptr));
 #if QT_CONFIG(whatsthis)
         SUB_NN_N_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (SUB_NN_N)", nullptr));
 #endif // QT_CONFIG(whatsthis)
@@ -1289,8 +1265,7 @@ public:
         MUL_ND_N_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", "D (MUL_ND_N)", nullptr));
 #endif // QT_CONFIG(whatsthis)
         MUL_ND_N_BUTTON->setText(QCoreApplication::translate("MainWindow", "*", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "RESULT:", nullptr));
-        NATURAL_OUTPUT->setText(QString());
+        NaturalOperation->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(Naturalw), QCoreApplication::translate("MainWindow", "Natural Numbers", nullptr));
 #if QT_CONFIG(whatsthis)
         TRANS_N_Z_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (COM_NN_D)", nullptr));
@@ -1334,7 +1309,6 @@ public:
 #endif // QT_CONFIG(whatsthis)
         ABS_Z_N_BUTTON->setText(QCoreApplication::translate("MainWindow", "ABS()", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "RESULT:", nullptr));
-        INTEGER_OUTPUT->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(Integerw), QCoreApplication::translate("MainWindow", "Integer Numbers", nullptr));
 #if QT_CONFIG(whatsthis)
         SUB_QQ_Q_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (SUB_NN_N)", nullptr));
@@ -1370,11 +1344,10 @@ public:
 #endif // QT_CONFIG(whatsthis)
         ADD_QQ_Q_BUTTON->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "RESULT:", nullptr));
-        RATIONAL_OUTPUT_NUMERATOR->setText(QString());
-        RATIONAL_OUTPUT_DENOMINATOR->setText(QString());
         RATIONAL_OUTPUT_SIGN->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(Rationalw), QCoreApplication::translate("MainWindow", "Rational Numbers", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(Polynomialw), QCoreApplication::translate("MainWindow", "Polynomial", nullptr));
+        menuOpen_Input_File->setTitle(QCoreApplication::translate("MainWindow", "Choose files", nullptr));
     } // retranslateUi
 
 };
