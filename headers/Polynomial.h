@@ -13,10 +13,11 @@
 typedef std::tuple<char, std::string, std::string, std::string> Term;
 class Polynomial {
  public:
-  Polynomial(std::string& poly);
+  Polynomial(std::string poly);
+  Polynomial(ListPolynomial& poly);
   Polynomial(const Polynomial& other);
   Polynomial& operator=(const Polynomial& other);
-  void parsePolynomial(const std::string& poly);
+  void parsePolynomial(std::string poly);
   ListPolynomial &getPolynomial() const;
   Polynomial ADD_PP_P(const Polynomial &other);
   Polynomial &operator+(const Polynomial &other);

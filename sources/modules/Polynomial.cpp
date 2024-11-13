@@ -4,7 +4,7 @@
 
 #include "../../headers/Polynomial.h"
 
-Polynomial::Polynomial(std::string& poly) {
+Polynomial::Polynomial(std::string poly) {
     polynomial = new ListPolynomial;
     parsePolynomial(poly);
 }
@@ -17,7 +17,11 @@ Polynomial& Polynomial::operator=(const Polynomial& other){
     return *this;
 }
 
-void Polynomial::parsePolynomial(const std::string& poly) {
+Polynomial::Polynomial(ListPolynomial& poly){
+    polynomial = new ListPolynomial(poly);
+}
+
+void Polynomial::parsePolynomial(std::string poly) {
     std::vector<Term> terms;
     std::regex term_regex(R"(([+-]?)\s*(\d+)(?:/(\d+))?\s*x(?:\^(\d+))?|([+-]?)\s*(\d+)(?:/(\d+))?)");
     auto terms_begin = std::sregex_iterator(poly.begin(), poly.end(), term_regex);
