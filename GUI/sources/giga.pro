@@ -10,9 +10,7 @@ SOURCES += \
     ../../sources/struct/Struct.cpp                 \
     main.cpp                                        \
     mainwindow.cpp                                  \
-    ../../sources/struct/StructPolynomial.cpp       \
-    ../../sources/tmp_modules/P_modules_DIV_PP_P.cpp\
-    ../../sources/tmp_modules/all_mdules_P.cpp
+    ../../sources/struct/StructPolynomial.cpp
 
 HEADERS += \
     ../../headers/IntegerNumber.h                   \

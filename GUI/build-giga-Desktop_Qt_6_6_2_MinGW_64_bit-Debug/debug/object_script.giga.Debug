@@ -7,6 +7,4 @@ debug/Struct.o
 debug/main.o
 debug/mainwindow.o
 debug/StructPolynomial.o
-debug/P_modules_DIV_PP_P.o
-debug/all_mdules_P.o
 debug/moc_mainwindow.o

@@ -13,6 +13,7 @@ NaturalNumber::NaturalNumber(std::string s) {
   for (int i = s.size() - 1; i >= 0; i--) {
     Big_int->push_back(s[i] - '0');
   }
+  Big_int->del_zero();
 }
 
 NaturalNumber::NaturalNumber(const NaturalNumber& other) {
@@ -185,25 +186,32 @@ NaturalNumber NaturalNumber::MUL_ND_N(const char c) {
 
 NaturalNumber NaturalNumber::SUB_NN_N(const NaturalNumber& num) {
     NaturalNumber result;
-    Node* cur_node1 = (*this).get_num().get_first();  // отвечает за сдвиг на следующий разряд первого числа
-    Node* cur_node2 = num.get_num().get_first();  // отвечает за сдвиг на следующий разряд второго числа
+    Node *greater_node;
+    Node *lower_node;
+    if (*this > num) {
+        greater_node = (*this).get_num().get_first();  // отвечает за сдвиг на следующий разряд первого числа
+        lower_node = num.get_num().get_first();  // отвечает за сдвиг на следующий разряд второго числа
+    } else {
+        greater_node = num.get_num().get_first();  // отвечает за сдвиг на следующий разряд первого числа
+        lower_node = (*this).get_num().get_first();  // отвечает за сдвиг на следующий разряд второго числа
+    }
 
     int take_one_digit = 0; // Берем единицу из старшего разряда
     int sub_digit_result; // Разница разрядов
-    while (cur_node2 != nullptr) {
-        sub_digit_result = cur_node1->value - cur_node2->value - take_one_digit;
+    while (lower_node != nullptr) {
+        sub_digit_result = greater_node->value - lower_node->value - take_one_digit;
         if (sub_digit_result < 0) {
             take_one_digit = 1;
             sub_digit_result += 10;
         } else {
             take_one_digit = 0;
         }
-        cur_node1 = cur_node1->next;
-        cur_node2 = cur_node2->next;
+        greater_node = greater_node->next;
+        lower_node = lower_node->next;
         result.get_num().push_back(sub_digit_result);
     }
-    while (cur_node1 != nullptr) {
-        sub_digit_result = cur_node1->value - take_one_digit;
+    while (greater_node != nullptr) {
+        sub_digit_result = greater_node->value - take_one_digit;
         if (sub_digit_result < 0) {
             sub_digit_result += 10;
             take_one_digit = 1;
@@ -211,7 +219,7 @@ NaturalNumber NaturalNumber::SUB_NN_N(const NaturalNumber& num) {
             take_one_digit = 0;
         }
         result.get_num().push_back(sub_digit_result);
-        cur_node1 = cur_node1->next;
+        greater_node = greater_node->next;
     }
     result.get_num().del_zero();
     return result;

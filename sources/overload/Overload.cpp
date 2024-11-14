@@ -49,12 +49,12 @@ void WriteMD(const Polynomial& num) {
       tmp->coefficient = tmp->coefficient.RED_Q_Q();
     if (tmp->next != nullptr)
       file << "(\\frac{" << tmp->coefficient.getNumerator() << "}{"
-           << tmp->coefficient.getDenominator() << "}" << "x^" << tmp->degree
-           << ')' << " + ";
+           << tmp->coefficient.getDenominator() << "}" << "x^{" << tmp->degree
+           << "})" << " + ";
     else
       file << "(\\frac{" << tmp->coefficient.getNumerator() << "}{"
-           << tmp->coefficient.getDenominator() << "}" << "x^" << tmp->degree
-           << ')';
+           << tmp->coefficient.getDenominator() << "}" << "x^{" << tmp->degree
+           << "})";
     tmp = tmp->next;
   }
   file << "$";

@@ -82,10 +82,18 @@ void MainWindow::on_pushButton_15_clicked() {
             break;
         }
         case 11: {
+            if(second == NaturalNumber("0")){
+                ui->NATURAL_OUTPUT->setText("Division by zero");
+                break;
+            }
             write_natural_result(first.DIV_NN_N(second));
             break;
         }
         case 12: {
+            if(second == NaturalNumber("0")){
+                ui->NATURAL_OUTPUT->setText("Division by zero");
+                break;
+            }
             write_natural_result(first.MOD_NN_N(second));
             break;
         }
@@ -412,7 +420,7 @@ void MainWindow::on_pushButton_18_clicked()
         break;
     }
     case 2: {
-        // write_polynomial_result(first.NMR_P_P());
+        write_polynomial_result(first.NMR_P_P());
         break;
     }
     case 3: {
@@ -424,7 +432,7 @@ void MainWindow::on_pushButton_18_clicked()
         break;
     }
     case 5: {
-        // write_polynomial_result(first.GCF_PP_P(second));
+        write_polynomial_result(first.GCF_PP_P(second));
         break;
     }
     case 6: {
@@ -470,16 +478,16 @@ void MainWindow::on_pushButton_18_clicked()
         break;
     }
     case 11:{
-        // write_polynomial_result(first.DIV_PP_P(second));
+        write_polynomial_result(first.DIV_PP_P(second));
         break;
     }
     case 12:{
-        long long k = std::stoll(ui->POLYNOMIAL_INPUT2->toPlainText().toStdString());
-        // write_polynomial_result(first.MUL_Pxk_P(k));
+        NaturalNumber k(ui->POLYNOMIAL_INPUT2->toPlainText().toStdString());
+        write_polynomial_result(first.MUL_Pxk_P(k));
         break;
     }
     case 13:{
-        // write_polynomial_result(first.MOD_PP_P(second));
+        write_polynomial_result(first.MOD_PP_P(second));
         break;
     }
     default: {
@@ -830,11 +838,63 @@ void MainWindow::on_actionOpen_Input_File_triggered()
     }
     std::string s;
     std::ifstream in(input_file_name_);
-    in>>s;
+    getline(in, s);
     if(s.size()<1000){
-        ui->NATURAL_INPUT1->setText(QString::fromStdString(s));
+        switch(ui->tabWidget->currentIndex()){
+        case 0:
+        {
+            ui->NATURAL_INPUT1->setText(QString::fromStdString(s));
+            break;
+        }
+        case 1:
+        {
+            ui->INTEGER_INPUT1->setText(QString::fromStdString(s));
+            break;
+        }
+        case 2:{
+            char sign = '+';
+            if(s[0] == '-') sign = '-';
+            s = s.substr(s.find('+')+1);
+            ui->RATIONAL_INPUT_NUMERATOR1->setText(QChar(sign) + QString::fromStdString(s.substr(0, s.find("/"))));
+            std::string s2;
+            if(s.find("/")==std::string::npos) s2 = "1";
+            else s2 = s.substr(s.find('/')+1);
+            ui->RATIONAL_INPUT_DENOMINATOR1->setText(QString::fromStdString(s2));
+            break;
+        }
+        case 3:
+        {
+            ui->POLYNOMIAL_INPUT1->setText(QString::fromStdString(s));
+            break;
+        }
+        default:
+        {break;}
+        }
     }else{
-        ui->NATURAL_INPUT1->setText("Number readed from file and because of size can't be shown");
+        switch(ui->tabWidget->currentIndex()){
+        case 0:
+        {
+            ui->NATURAL_INPUT1->setText("Number readed from file and because of size can't be shown");
+            break;
+        }
+        case 1:
+        {
+            ui->INTEGER_INPUT1->setText("Number readed from file and because of size can't be shown");
+            break;
+        }
+        case 2:
+        {
+            ui->RATIONAL_INPUT_NUMERATOR1->setText("Number readed from file and because of size can't be shown");
+            break;
+        }
+        case 3:
+        {
+            ui->POLYNOMIAL_INPUT1->setText("Number readed from file and because of size can't be shown");
+            break;
+        }
+        default:
+        {break;}
+        }
         input_ = true;
     }
 }
@@ -847,11 +907,64 @@ void MainWindow::on_actionOpen_Input2_File_triggered()
     }
     std::string s;
     std::ifstream in(input2_file_name_);
-    in>>s;
+    getline(in, s);
     if(s.size()<1000){
-        ui->NATURAL_INPUT2->setText(QString::fromStdString(s));
+        switch(ui->tabWidget->currentIndex()){
+        case 0:
+        {
+            ui->NATURAL_INPUT2->setText(QString::fromStdString(s));
+            break;
+        }
+        case 1:
+        {
+            ui->INTEGER_INPUT2->setText(QString::fromStdString(s));
+            break;
+        }
+        case 2:
+        {
+            char sign = '+';
+            if(s[0] == '-') sign = '-';
+            s = s.substr(s.find('+')+1);
+            ui->RATIONAL_INPUT_NUMERATOR2->setText(QChar(sign) + QString::fromStdString(s.substr(0, s.find("/"))));
+            std::string s2;
+            if(s.find("/")==std::string::npos) s2 = "1";
+            else s2 = s.substr(s.find('/')+1);
+            ui->RATIONAL_INPUT_DENOMINATOR2->setText(QString::fromStdString(s2));
+            break;
+        }
+        case 3:
+        {
+            ui->POLYNOMIAL_INPUT2->setText(QString::fromStdString(s));
+            break;
+        }
+        default:
+        {break;}
+        }
     }else{
-        ui->NATURAL_INPUT2->setText("Number readed from file and because of size can't be shown");
+        switch(ui->tabWidget->currentIndex()){
+        case 0:
+        {
+            ui->NATURAL_INPUT2->setText("Number readed from file and because of size can't be shown");
+            break;
+        }
+        case 1:
+        {
+            ui->INTEGER_INPUT2->setText("Number readed from file and because of size can't be shown");
+            break;
+        }
+        case 2:
+        {
+            ui->RATIONAL_INPUT_NUMERATOR2->setText("Number readed from file and because of size can't be shown");
+            break;
+        }
+        case 3:
+        {
+            ui->POLYNOMIAL_INPUT2->setText("Number readed from file and because of size can't be shown");
+            break;
+        }
+        default:
+        {break;}
+        }
         input_2_ = true;
     }
 }
@@ -949,6 +1062,7 @@ void MainWindow::write_polynomial_result(Polynomial a){
         ui->POLYNOMIAL_OUTPUT->setText("Number so big that was writen into file ./output.txt");
         std::ofstream out(output_file_name_);
         out<<a;
+        WriteMD(a);
     }
 }
 
