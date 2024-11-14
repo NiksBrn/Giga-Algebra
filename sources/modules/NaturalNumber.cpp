@@ -64,30 +64,30 @@ bool NaturalNumber::operator>(const NaturalNumber& other) const {
 }
 
 Compare NaturalNumber::COM_NN_D(const NaturalNumber& other) const {
-    Node* n1 = Big_int->get_first();
-    Node* n2 = other.Big_int->get_first(); // для итерации по числам
-    bool greater = false; // для сравнения
-    bool less = false; // для сравнения
-    while(n1 != nullptr && n2 != nullptr) {
-        if (n1->value > n2->value) { // если первое больше то меняем флаги
-            greater = true;
-            less = false;
-        }
-        if (n1->value < n2->value) { // если первое меньше то меняем флаги
-            greater = false;
-            less = true;
-        }
-        n1 = n1->next;
-        n2 = n2->next; // итерируемся на следующий разряд
+  Node* n1 = Big_int->get_first();
+  Node* n2 = other.Big_int->get_first(); // для итерации по числам
+  bool greater = false; // для сравнения
+  bool less = false; // для сравнения
+  while(n1 != nullptr && n2 != nullptr) {
+    if (n1->value > n2->value) { // если первое больше то меняем флаги
+      greater = true;
+      less = false;
     }
-    if(n1 == nullptr && n2 == nullptr) { // если длины чисел равны
-        if (greater) return GREATER;
-        else if (less) return LESS;
-        else return EQUAL;
-    }else{ // если длины чисел разные
-        if (n1 == nullptr) return LESS;
-        else return GREATER;
+    if (n1->value < n2->value) { // если первое меньше то меняем флаги
+      greater = false;
+      less = true;
     }
+    n1 = n1->next;
+    n2 = n2->next; // итерируемся на следующий разряд
+  }
+  if(n1 == nullptr && n2 == nullptr) { // если длины чисел равны
+    if (greater) return GREATER;
+    else if (less) return LESS;
+    else return EQUAL;
+  }else{ // если длины чисел разные
+    if (n1 == nullptr) return LESS;
+    else return GREATER;
+  }
 }
 
 bool NaturalNumber::NZER_N_B() {
@@ -185,25 +185,32 @@ NaturalNumber NaturalNumber::MUL_ND_N(const char c) {
 
 NaturalNumber NaturalNumber::SUB_NN_N(const NaturalNumber& num) {
     NaturalNumber result;
-    Node* cur_node1 = (*this).get_num().get_first();  // отвечает за сдвиг на следующий разряд первого числа
-    Node* cur_node2 = num.get_num().get_first();  // отвечает за сдвиг на следующий разряд второго числа
+    Node *greater_node;
+    Node *lower_node;
+    if (*this > num) {
+      greater_node = (*this).get_num().get_first();  // отвечает за сдвиг на следующий разряд первого числа
+      lower_node = num.get_num().get_first();  // отвечает за сдвиг на следующий разряд второго числа
+    } else {
+      greater_node = num.get_num().get_first();  // отвечает за сдвиг на следующий разряд первого числа
+      lower_node = (*this).get_num().get_first();  // отвечает за сдвиг на следующий разряд второго числа
+    }
 
     int take_one_digit = 0; // Берем единицу из старшего разряда
     int sub_digit_result; // Разница разрядов
-    while (cur_node2 != nullptr) {
-        sub_digit_result = cur_node1->value - cur_node2->value - take_one_digit;
+    while (lower_node != nullptr) {
+        sub_digit_result = greater_node->value - lower_node->value - take_one_digit;
         if (sub_digit_result < 0) {
             take_one_digit = 1;
             sub_digit_result += 10;
         } else {
             take_one_digit = 0;
         }
-        cur_node1 = cur_node1->next;
-        cur_node2 = cur_node2->next;
+        greater_node = greater_node->next;
+        lower_node = lower_node->next;
         result.get_num().push_back(sub_digit_result);
     }
-    while (cur_node1 != nullptr) {
-        sub_digit_result = cur_node1->value - take_one_digit;
+    while (greater_node != nullptr) {
+        sub_digit_result = greater_node->value - take_one_digit;
         if (sub_digit_result < 0) {
             sub_digit_result += 10;
             take_one_digit = 1;
@@ -211,7 +218,7 @@ NaturalNumber NaturalNumber::SUB_NN_N(const NaturalNumber& num) {
             take_one_digit = 0;
         }
         result.get_num().push_back(sub_digit_result);
-        cur_node1 = cur_node1->next;
+        greater_node = greater_node->next;
     }
     result.get_num().del_zero();
     return result;
