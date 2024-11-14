@@ -22,7 +22,6 @@ Polynomial::Polynomial(ListPolynomial* poly){
 }
 
 void Polynomial::parsePolynomial(std::string poly) {
-    std::vector<Term> terms;
     std::regex term_regex(R"(([+-]?)\s*(\d*)(?:/(\d+))?\s*x(?:\^(\d+))?|([+-]?)\s*(\d+)(?:/(\d+))?)");
     auto terms_begin = std::sregex_iterator(poly.begin(), poly.end(), term_regex);
     auto terms_end = std::sregex_iterator();
