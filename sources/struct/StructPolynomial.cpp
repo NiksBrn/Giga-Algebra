@@ -8,8 +8,8 @@ ListPolynomial::ListPolynomial(){
 ListPolynomial::ListPolynomial(ListPolynomial& other){
     NodePolynomial* node = other.head;
     while(node != nullptr){
-        node = node->next;
         this->push(node->coefficient, node->degree);
+        node = node->next;
     }
 }
 ListPolynomial& ListPolynomial::operator=(ListPolynomial& other){
@@ -18,10 +18,14 @@ ListPolynomial& ListPolynomial::operator=(ListPolynomial& other){
     tail = nullptr;
     NodePolynomial* node = other.head;
     while(node != nullptr){
-        node = node->next;
         this->push(node->coefficient, node->degree);
+        node = node->next;
     }
     return *this;
+}
+
+ListPolynomial::~ListPolynomial(){
+  clear();
 }
 
 void ListPolynomial::push(RationalNumber coefficient, NaturalNumber degree) {
@@ -100,4 +104,16 @@ void ListPolynomial::clear(){
         pop(tmp);
         tmp = head;
     }
+}
+
+void ListPolynomial::balance() {
+  NodePolynomial* tmp = head;
+  while (tmp != nullptr) {
+    if (tmp->coefficient.getNumerator().POZ_Z_D() == ZERO) {
+      pop(tmp);
+      tmp = head;
+    } else {
+      tmp = tmp->next;
+    }
+  }
 }

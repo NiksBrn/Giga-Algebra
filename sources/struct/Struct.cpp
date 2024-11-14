@@ -25,6 +25,10 @@ List& List::operator =(const List& other){
     return *this;
 }
 
+List::~List() {
+  clear();
+}
+
 void List::push_back(unsigned char value) {
   Node *new_node = new Node(value);
   if (first == nullptr) {

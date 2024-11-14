@@ -17,8 +17,8 @@ Polynomial& Polynomial::operator=(const Polynomial& other){
     return *this;
 }
 
-Polynomial::Polynomial(ListPolynomial& poly){
-    polynomial = new ListPolynomial(poly);
+Polynomial::Polynomial(ListPolynomial* poly){
+    polynomial = poly;
 }
 
 void Polynomial::parsePolynomial(std::string poly) {

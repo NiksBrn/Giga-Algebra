@@ -11,7 +11,7 @@ struct Node{
 class List{
 public:
     List() : first(nullptr), last(nullptr){};
-    ~List() = default;
+    ~List();
     List(const List& other);
     List& operator =(const List& other);
     void clear();
