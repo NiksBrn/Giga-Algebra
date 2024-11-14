@@ -10,6 +10,8 @@ enum Sign { ZERO = 0, POSITIVE = 1, NEGATIVE = -1 };
 
 class IntegerNumber {
  public:
+  IntegerNumber() = default;
+
   IntegerNumber(char sign, std::string s);
 
   IntegerNumber(const IntegerNumber &other);
@@ -59,5 +61,17 @@ class IntegerNumber {
   bool isNegative;  // '+' or '-'
   NaturalNumber *number;
 };
+
+constexpr const char* SignToString(Sign sgn) noexcept {
+    switch (sgn) {
+    case ZERO:
+        return "ZERO";
+    case POSITIVE:
+        return "POSITIVE";
+    case NEGATIVE:
+        return "NEGATIVE";
+    }
+    return "ERROR";
+}
 
 #endif  // GIGA_ALGEBRA_POLYNOMIAL_H

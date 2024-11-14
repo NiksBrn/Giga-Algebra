@@ -105,6 +105,7 @@ public:
     QPushButton *ABS_Z_N_BUTTON;
     QHBoxLayout *horizontalLayout_7;
     QTextEdit *INTEGER_INPUT1;
+    QLabel *INTEGER_OPERATION;
     QSpacerItem *horizontalSpacer_18;
     QTextEdit *INTEGER_INPUT2;
     QHBoxLayout *horizontalLayout_8;
@@ -802,6 +803,11 @@ public:
 
         horizontalLayout_7->addWidget(INTEGER_INPUT1);
 
+        INTEGER_OPERATION = new QLabel(gridLayoutWidget_4);
+        INTEGER_OPERATION->setObjectName("INTEGER_OPERATION");
+
+        horizontalLayout_7->addWidget(INTEGER_OPERATION);
+
         horizontalSpacer_18 = new QSpacerItem(40, 20, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Minimum);
 
         horizontalLayout_7->addItem(horizontalSpacer_18);
@@ -1195,7 +1201,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -1308,6 +1314,7 @@ public:
         ABS_Z_N_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (COM_NN_D)", nullptr));
 #endif // QT_CONFIG(whatsthis)
         ABS_Z_N_BUTTON->setText(QCoreApplication::translate("MainWindow", "ABS()", nullptr));
+        INTEGER_OPERATION->setText(QString());
         label_2->setText(QCoreApplication::translate("MainWindow", "RESULT:", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(Integerw), QCoreApplication::translate("MainWindow", "Integer Numbers", nullptr));
 #if QT_CONFIG(whatsthis)
