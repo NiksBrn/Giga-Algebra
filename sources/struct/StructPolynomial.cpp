@@ -5,7 +5,7 @@ ListPolynomial::ListPolynomial(){
     tail = nullptr;
 }
 
-ListPolynomial::ListPolynomial(ListPolynomial& other){
+ListPolynomial::ListPolynomial(ListPolynomial& other): head(nullptr), tail(nullptr){
     NodePolynomial* node = other.head;
     while(node != nullptr){
         this->push(node->coefficient, node->degree);
