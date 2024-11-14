@@ -195,6 +195,13 @@ TEST(SUB_NN_N, Subtest_4) {
   ASSERT_EQ(n1.SUB_NN_N(n2), result);
 }
 
+TEST(SUB_NN_N, Subtest_5) {
+  NaturalNumber n1("1");
+  NaturalNumber n2("999999");
+  NaturalNumber result("999998");
+  ASSERT_EQ(n1.SUB_NN_N(n2), result);
+}
+
 // Òåñòû äëÿ ïðîâåðêè MUL_Nk_N()
 TEST(MUL_Nk_N, Subtest_1) {
   // Òåñò äëÿ íåíóëåâîãî ÷èñëà è 10^k, ãäå k > 0
