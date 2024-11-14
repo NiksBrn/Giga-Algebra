@@ -17,12 +17,13 @@ public:
     ListPolynomial();
     ListPolynomial(ListPolynomial& other);
     ListPolynomial& operator=(ListPolynomial& other);
-    ~ListPolynomial() = default;
+    ~ListPolynomial();
     NodePolynomial* get_head();
     NodePolynomial* get_tail();
     void push(RationalNumber coefficient, NaturalNumber degree);
     void pop(NodePolynomial* node);
     void clear();
+    void balance();
 private:
     NodePolynomial *head;
     NodePolynomial* tail;

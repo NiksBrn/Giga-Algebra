@@ -1,5 +1,5 @@
 #include "../../headers/Polynomial.h"
-
+/*
 Polynomial Polynomial::DIV_PP_P(const Polynomial& other) {
   ListPolynomial* object = new ListPolynomial();
   NaturalNumber maxDegree("0");
@@ -35,4 +35,4 @@ Polynomial Polynomial::NMR_P_P() {
     NMR = GCF;
   }
   return NMR;
-}
+}*/

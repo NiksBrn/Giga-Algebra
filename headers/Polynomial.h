@@ -14,7 +14,7 @@ typedef std::tuple<char, std::string, std::string, std::string> Term;
 class Polynomial {
  public:
   Polynomial(std::string poly);
-  Polynomial(ListPolynomial& poly);
+  Polynomial(ListPolynomial* poly);
   Polynomial(const Polynomial& other);
   Polynomial& operator=(const Polynomial& other);
   void parsePolynomial(std::string poly);
