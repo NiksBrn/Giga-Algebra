@@ -16,9 +16,17 @@ int main() {
   RationalNumber r('-', "1245232424242", "1352342562356453567724");
   std::cout << r << "\n";
   r = RationalNumber(i, n);
-  std::cout << r;
+  std::cout << r << "\n";
   n.clear();
   i.clear();
+  Polynomial p("2x^12+3x^2");
+  Polynomial p1("2x^12+3x");
+  Polynomial p2("2x");
+  Polynomial p3("2x");
+  std::cout << p2.DIV_PP_P(p3) << "\n";
+  std::cout << p.DIV_PP_P(p1) << "\n";
+  std::cout << p.MOD_PP_P(p1) << "\n";
+  std::cout << p.GCF_PP_P(p1) << "\n";
   return 0;
 }
 // Legion_team_aka_special-unit_GAV

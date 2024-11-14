@@ -31,6 +31,7 @@ std::ostream& operator<<(std::ostream& os, const Polynomial& num) {
     os << "0";
   }
   while (tmp != nullptr) {
+      tmp->coefficient = tmp->coefficient.RED_Q_Q();
     if (tmp->next != nullptr) {
         os << '(' << tmp->coefficient << "x^" << tmp->degree << ')' << " + ";
     } else
@@ -45,6 +46,7 @@ void WriteMD(const Polynomial& num) {
   NodePolynomial* tmp = num.getPolynomial().get_head();
   file << "$";
   while (tmp != nullptr) {
+      tmp->coefficient = tmp->coefficient.RED_Q_Q();
     if (tmp->next != nullptr)
       file << "(\\frac{" << tmp->coefficient.getNumerator() << "}{"
            << tmp->coefficient.getDenominator() << "}" << "x^" << tmp->degree

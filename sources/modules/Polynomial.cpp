@@ -48,3 +48,22 @@ void Polynomial::parsePolynomial(std::string poly) {
 ListPolynomial &Polynomial::getPolynomial() const{
     return *polynomial;
 }
+
+Polynomial Polynomial::MOD_PP_P(const Polynomial &other) {
+    Polynomial MOD = (*this).DIV_PP_P(other);
+    Polynomial ans = (*this).SUB_PP_P(MOD.MUL_PP_P(other));
+    return ans;
+}
+
+Polynomial Polynomial::GCF_PP_P(const Polynomial& other) {
+    Polynomial A = (*this);
+    Polynomial B = other;
+    Polynomial tmp("1");
+    NaturalNumber deg_stop("0");
+    while(B.getPolynomial().get_head() != nullptr && deg_stop.COM_NN_D(B.DEG_P_N()) != EQUAL){
+        tmp = A;
+        A = B;
+        B = tmp.MOD_PP_P(B);
+    }
+    return A;
+}
