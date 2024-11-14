@@ -25,7 +25,7 @@ Polynomial Polynomial::DIV_PP_P(const Polynomial& other) {
   }
   return Polynomial(object);
 }
-/*
+
 Polynomial Polynomial::NMR_P_P() {
   Polynomial Der = (*this).DER_P_P(); // Производная многочлена
   Polynomial GCF = (*this).GCF_PP_P(Der); // НОД многочлена
@@ -35,4 +35,4 @@ Polynomial Polynomial::NMR_P_P() {
 (*this).DIV_PP_P(GCF); } else { NMR = GCF;
   }
   return NMR;
-}*/
+}
