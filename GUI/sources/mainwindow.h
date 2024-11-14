@@ -73,15 +73,40 @@ private slots:
 
     void write_integer_result(IntegerNumber a);
 
+    void write_integer_result(NaturalNumber a);
+
     void write_rational_result(RationalNumber a);
 
     void write_polynomial_result(Polynomial a);
 
     void on_actionOpen_Input2_File_triggered();
 
+    void on_pushButton_16_clicked();
+
+    void on_MUL_ZZ_Z_BUTTON_clicked();
+
+    void on_ADD_ZZ_Z_BUTTON_clicked();
+
+    void on_SUB_ZZ_Z_BUTTON_clicked();
+
+    void on_ABS_Z_N_BUTTON_clicked();
+
+    void on_TRANS_N_Z_BUTTON_clicked();
+
+    void on_TRANS_Z_N_BUTTON_clicked();
+
+    void on_POZ_Z_D_BUTTON_clicked();
+
+    void on_MUL_ZM_Z_BUTTON_clicked();
+
+    void on_DIV_ZZ_Z_BUTTON_clicked();
+
+    void on_MOD_ZZ_Z_BUTTON_clicked();
+
+
 private:
     Ui::MainWindow *ui;
-    int NaturalChose = 0;
+    int NaturalChose = 0, IntegerChose = 0;
     std::string output_file_name_ = "./output.txt";
     std::string input_file_name_ = "./input.txt";
     std::string input2_file_name_ = "./input2.txt";

@@ -518,7 +518,7 @@
      <enum>QTabWidget::North</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <property name="elideMode">
      <enum>Qt::ElideNone</enum>
@@ -2558,6 +2558,13 @@
         <layout class="QHBoxLayout" name="horizontalLayout_7">
          <item>
           <widget class="QTextEdit" name="INTEGER_INPUT1"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="INTEGER_OPERATION">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
          </item>
          <item>
           <spacer name="horizontalSpacer_18">
