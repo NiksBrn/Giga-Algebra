@@ -7,4 +7,6 @@ release/Struct.o
 release/main.o
 release/mainwindow.o
 release/StructPolynomial.o
+release/P_modules_DIV_PP_P.o
+release/all_mdules_P.o
 release/moc_mainwindow.o

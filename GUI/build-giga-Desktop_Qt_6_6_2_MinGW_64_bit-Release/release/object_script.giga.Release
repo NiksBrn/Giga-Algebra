@@ -1,0 +1,10 @@
+release/IntegerNumber.o
+release/NaturalNumber.o
+release/RationalNumber.o
+release/Polynomial.o
+release/Overload.o
+release/Struct.o
+release/main.o
+release/mainwindow.o
+release/StructPolynomial.o
+release/moc_mainwindow.o
