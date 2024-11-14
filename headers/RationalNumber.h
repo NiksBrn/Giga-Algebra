@@ -9,6 +9,8 @@
 
 class RationalNumber {
  public:
+  RationalNumber() = default;
+
   RationalNumber(char sign, std::string numerator, std::string denominator)
       : numerator(new IntegerNumber(sign, numerator)),
         denominator(new NaturalNumber(denominator)) {};

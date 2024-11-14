@@ -77,6 +77,8 @@ private slots:
 
     void write_rational_result(RationalNumber a);
 
+    void write_rational_result(IntegerNumber a);
+
     void write_polynomial_result(Polynomial a);
 
     void on_actionOpen_Input2_File_triggered();
@@ -104,9 +106,61 @@ private slots:
     void on_MOD_ZZ_Z_BUTTON_clicked();
 
 
+    void on_MUL_QQ_Q_BUTTON_clicked();
+
+    void on_INT_Q_B_BUTTON_clicked();
+
+    void on_RED_Q_Q_BUTTON_clicked();
+
+    void on_ADD_QQ_Q_BUTTON_clicked();
+
+    void on_TRANS_Z_Q_BUTTON_clicked();
+
+    void on_DIV_QQ_Q_BUTTON_clicked();
+
+    void on_SUB_QQ_Q_BUTTON_clicked();
+
+    void on_TRANS_Q_Z_BUTTON_clicked();
+
+    void on_pushButton_17_clicked();
+
+    void show_second_rational();
+
+    void show_second_integer();
+
+    void show_second_natural();
+
+    void on_pushButton_18_clicked();
+
+    void on_MUL_PP_P_BUTTON_clicked();
+
+    void on_NMR_P_P_clicked();
+
+    void on_ADD_PP_P_BUTTON_clicked();
+
+    void on_SUB_PP_P_BUTTON_clicked();
+
+    void on_GCF_PP_P_BUTTON_clicked();
+
+    void on_DER_P_P_clicked();
+
+    void on_FAC_P_Q_BUTTON_clicked();
+
+    void on_LED_P_Q_BUTTON_clicked();
+
+    void on_DEG_P_N_BUTTON_clicked();
+
+    void on_MUL_PQ_P_BUTTON_clicked();
+
+    void on_DIV_PP_P_BUTTON_clicked();
+
+    void on_MUL_PXK_BUTTON_clicked();
+
+    void on_MOD_PP_P_BUTTON_clicked();
+
 private:
     Ui::MainWindow *ui;
-    int NaturalChose = 0, IntegerChose = 0;
+    int NaturalChose = 0, IntegerChose = 0, RationalChose = 0, PolynomialChose = 0;
     std::string output_file_name_ = "./output.txt";
     std::string input_file_name_ = "./input.txt";
     std::string input2_file_name_ = "./input2.txt";

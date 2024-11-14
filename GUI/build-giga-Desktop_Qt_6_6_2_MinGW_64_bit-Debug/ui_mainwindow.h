@@ -121,6 +121,7 @@ public:
     QFrame *line;
     QSpacerItem *horizontalSpacer_24;
     QHBoxLayout *horizontalLayout_11;
+    QLabel *RATIONAL_OPERATION;
     QSpacerItem *horizontalSpacer_29;
     QLineEdit *RATIONAL_INPUT_SIGN2;
     QHBoxLayout *horizontalLayout_12;
@@ -164,6 +165,39 @@ public:
     QFrame *line_3;
     QTextBrowser *RATIONAL_OUTPUT_DENOMINATOR;
     QWidget *Polynomialw;
+    QWidget *gridLayoutWidget_6;
+    QGridLayout *gridLayout_10;
+    QHBoxLayout *horizontalLayout_16;
+    QTextEdit *POLYNOMIAL_INPUT1;
+    QLabel *POLYNOMIAL_OPERATOR;
+    QSpacerItem *horizontalSpacer_39;
+    QTextEdit *POLYNOMIAL_INPUT2;
+    QGridLayout *gridLayout_11;
+    QPushButton *pushButton_18;
+    QPushButton *DEG_P_N_BUTTON;
+    QPushButton *GCF_PP_P_BUTTON;
+    QSpacerItem *horizontalSpacer_20;
+    QHBoxLayout *horizontalLayout_9;
+    QPushButton *MUL_PQ_P_BUTTON;
+    QPushButton *SUB_PP_P_BUTTON;
+    QSpacerItem *horizontalSpacer_37;
+    QPushButton *NMR_P_P;
+    QPushButton *MOD_PP_P_BUTTON;
+    QSpacerItem *horizontalSpacer_38;
+    QPushButton *MUL_PP_P_BUTTON;
+    QPushButton *DIV_PP_P_BUTTON;
+    QPushButton *ADD_PP_P_BUTTON;
+    QSpacerItem *horizontalSpacer_36;
+    QPushButton *DER_P_P;
+    QHBoxLayout *horizontalLayout_15;
+    QPushButton *LED_P_Q_BUTTON;
+    QSpacerItem *horizontalSpacer_41;
+    QPushButton *FAC_P_Q_BUTTON;
+    QPushButton *MUL_PXK_BUTTON;
+    QHBoxLayout *horizontalLayout_17;
+    QSpacerItem *horizontalSpacer_40;
+    QLabel *label_4;
+    QTextBrowser *POLYNOMIAL_OUTPUT;
     QStatusBar *statusbar;
     QMenuBar *menubar;
     QMenu *menuOpen_Input_File;
@@ -252,10 +286,15 @@ public:
         MainWindow->setWindowOpacity(1.000000000000000);
         actionOpen_Input_File = new QAction(MainWindow);
         actionOpen_Input_File->setObjectName("actionOpen_Input_File");
+        QIcon icon1(QIcon::fromTheme(QString::fromUtf8("document-open")));
+        actionOpen_Input_File->setIcon(icon1);
         actionChoose_Output_File = new QAction(MainWindow);
         actionChoose_Output_File->setObjectName("actionChoose_Output_File");
+        QIcon icon2(QIcon::fromTheme(QString::fromUtf8("document-save")));
+        actionChoose_Output_File->setIcon(icon2);
         actionOpen_Input2_File = new QAction(MainWindow);
         actionOpen_Input2_File->setObjectName("actionOpen_Input2_File");
+        actionOpen_Input2_File->setIcon(icon1);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         tabWidget = new QTabWidget(centralwidget);
@@ -877,6 +916,11 @@ public:
 
         horizontalLayout_11 = new QHBoxLayout();
         horizontalLayout_11->setObjectName("horizontalLayout_11");
+        RATIONAL_OPERATION = new QLabel(gridLayoutWidget_5);
+        RATIONAL_OPERATION->setObjectName("RATIONAL_OPERATION");
+
+        horizontalLayout_11->addWidget(RATIONAL_OPERATION);
+
         horizontalSpacer_29 = new QSpacerItem(40, 10, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         horizontalLayout_11->addItem(horizontalSpacer_29);
@@ -889,6 +933,7 @@ public:
         sizePolicy1.setHeightForWidth(RATIONAL_INPUT_SIGN2->sizePolicy().hasHeightForWidth());
         RATIONAL_INPUT_SIGN2->setSizePolicy(sizePolicy1);
         RATIONAL_INPUT_SIGN2->setMaximumSize(QSize(20, 16777215));
+        RATIONAL_INPUT_SIGN2->setMaxLength(1);
 
         horizontalLayout_11->addWidget(RATIONAL_INPUT_SIGN2);
 
@@ -906,6 +951,7 @@ public:
         sizePolicy1.setHeightForWidth(RATIONAL_INPUT_SIGN1->sizePolicy().hasHeightForWidth());
         RATIONAL_INPUT_SIGN1->setSizePolicy(sizePolicy1);
         RATIONAL_INPUT_SIGN1->setMaximumSize(QSize(20, 16777215));
+        RATIONAL_INPUT_SIGN1->setMaxLength(1);
 
         horizontalLayout_12->addWidget(RATIONAL_INPUT_SIGN1);
 
@@ -1181,6 +1227,261 @@ public:
         tabWidget->addTab(Rationalw, QString());
         Polynomialw = new QWidget();
         Polynomialw->setObjectName("Polynomialw");
+        gridLayoutWidget_6 = new QWidget(Polynomialw);
+        gridLayoutWidget_6->setObjectName("gridLayoutWidget_6");
+        gridLayoutWidget_6->setGeometry(QRect(0, 0, 711, 511));
+        gridLayout_10 = new QGridLayout(gridLayoutWidget_6);
+        gridLayout_10->setObjectName("gridLayout_10");
+        gridLayout_10->setSizeConstraint(QLayout::SetNoConstraint);
+        gridLayout_10->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout_16 = new QHBoxLayout();
+        horizontalLayout_16->setObjectName("horizontalLayout_16");
+        POLYNOMIAL_INPUT1 = new QTextEdit(gridLayoutWidget_6);
+        POLYNOMIAL_INPUT1->setObjectName("POLYNOMIAL_INPUT1");
+
+        horizontalLayout_16->addWidget(POLYNOMIAL_INPUT1);
+
+        POLYNOMIAL_OPERATOR = new QLabel(gridLayoutWidget_6);
+        POLYNOMIAL_OPERATOR->setObjectName("POLYNOMIAL_OPERATOR");
+
+        horizontalLayout_16->addWidget(POLYNOMIAL_OPERATOR);
+
+        horizontalSpacer_39 = new QSpacerItem(40, 20, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_16->addItem(horizontalSpacer_39);
+
+        POLYNOMIAL_INPUT2 = new QTextEdit(gridLayoutWidget_6);
+        POLYNOMIAL_INPUT2->setObjectName("POLYNOMIAL_INPUT2");
+
+        horizontalLayout_16->addWidget(POLYNOMIAL_INPUT2);
+
+
+        gridLayout_10->addLayout(horizontalLayout_16, 0, 0, 1, 1);
+
+        gridLayout_11 = new QGridLayout();
+        gridLayout_11->setObjectName("gridLayout_11");
+        pushButton_18 = new QPushButton(gridLayoutWidget_6);
+        pushButton_18->setObjectName("pushButton_18");
+        pushButton_18->setMinimumSize(QSize(80, 60));
+        pushButton_18->setMaximumSize(QSize(16777215, 60));
+        QPalette palette4;
+        palette4.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette4.setBrush(QPalette::Active, QPalette::Button, brush7);
+        palette4.setBrush(QPalette::Active, QPalette::Light, brush8);
+        palette4.setBrush(QPalette::Active, QPalette::Midlight, brush9);
+        palette4.setBrush(QPalette::Active, QPalette::Dark, brush10);
+        palette4.setBrush(QPalette::Active, QPalette::Mid, brush11);
+        palette4.setBrush(QPalette::Active, QPalette::Text, brush);
+        palette4.setBrush(QPalette::Active, QPalette::BrightText, brush1);
+        palette4.setBrush(QPalette::Active, QPalette::ButtonText, brush);
+        palette4.setBrush(QPalette::Active, QPalette::Base, brush1);
+        palette4.setBrush(QPalette::Active, QPalette::Window, brush7);
+        palette4.setBrush(QPalette::Active, QPalette::Shadow, brush);
+        palette4.setBrush(QPalette::Active, QPalette::AlternateBase, brush12);
+        palette4.setBrush(QPalette::Active, QPalette::ToolTipBase, brush4);
+        palette4.setBrush(QPalette::Active, QPalette::ToolTipText, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette4.setBrush(QPalette::Active, QPalette::PlaceholderText, brush5);
+#endif
+        palette4.setBrush(QPalette::Active, QPalette::Accent, brush1);
+        palette4.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette4.setBrush(QPalette::Inactive, QPalette::Button, brush7);
+        palette4.setBrush(QPalette::Inactive, QPalette::Light, brush8);
+        palette4.setBrush(QPalette::Inactive, QPalette::Midlight, brush9);
+        palette4.setBrush(QPalette::Inactive, QPalette::Dark, brush10);
+        palette4.setBrush(QPalette::Inactive, QPalette::Mid, brush11);
+        palette4.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        palette4.setBrush(QPalette::Inactive, QPalette::BrightText, brush1);
+        palette4.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
+        palette4.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette4.setBrush(QPalette::Inactive, QPalette::Window, brush7);
+        palette4.setBrush(QPalette::Inactive, QPalette::Shadow, brush);
+        palette4.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush12);
+        palette4.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush4);
+        palette4.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette4.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush5);
+#endif
+        palette4.setBrush(QPalette::Inactive, QPalette::Accent, brush1);
+        palette4.setBrush(QPalette::Disabled, QPalette::WindowText, brush10);
+        palette4.setBrush(QPalette::Disabled, QPalette::Button, brush7);
+        palette4.setBrush(QPalette::Disabled, QPalette::Light, brush8);
+        palette4.setBrush(QPalette::Disabled, QPalette::Midlight, brush9);
+        palette4.setBrush(QPalette::Disabled, QPalette::Dark, brush10);
+        palette4.setBrush(QPalette::Disabled, QPalette::Mid, brush11);
+        palette4.setBrush(QPalette::Disabled, QPalette::Text, brush10);
+        palette4.setBrush(QPalette::Disabled, QPalette::BrightText, brush1);
+        palette4.setBrush(QPalette::Disabled, QPalette::ButtonText, brush10);
+        palette4.setBrush(QPalette::Disabled, QPalette::Base, brush7);
+        palette4.setBrush(QPalette::Disabled, QPalette::Window, brush7);
+        palette4.setBrush(QPalette::Disabled, QPalette::Shadow, brush);
+        palette4.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush7);
+        palette4.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush4);
+        palette4.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette4.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush13);
+#endif
+        palette4.setBrush(QPalette::Disabled, QPalette::Accent, brush14);
+        pushButton_18->setPalette(palette4);
+        pushButton_18->setFont(font2);
+
+        gridLayout_11->addWidget(pushButton_18, 6, 3, 1, 1);
+
+        DEG_P_N_BUTTON = new QPushButton(gridLayoutWidget_6);
+        DEG_P_N_BUTTON->setObjectName("DEG_P_N_BUTTON");
+        DEG_P_N_BUTTON->setMinimumSize(QSize(80, 60));
+        DEG_P_N_BUTTON->setMaximumSize(QSize(16777215, 60));
+        DEG_P_N_BUTTON->setFont(font);
+
+        gridLayout_11->addWidget(DEG_P_N_BUTTON, 6, 2, 1, 1);
+
+        GCF_PP_P_BUTTON = new QPushButton(gridLayoutWidget_6);
+        GCF_PP_P_BUTTON->setObjectName("GCF_PP_P_BUTTON");
+        GCF_PP_P_BUTTON->setMinimumSize(QSize(20, 60));
+        GCF_PP_P_BUTTON->setMaximumSize(QSize(16777215, 60));
+        GCF_PP_P_BUTTON->setFont(font);
+
+        gridLayout_11->addWidget(GCF_PP_P_BUTTON, 2, 2, 1, 1);
+
+        horizontalSpacer_20 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        gridLayout_11->addItem(horizontalSpacer_20, 6, 0, 1, 1);
+
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setObjectName("horizontalLayout_9");
+        MUL_PQ_P_BUTTON = new QPushButton(gridLayoutWidget_6);
+        MUL_PQ_P_BUTTON->setObjectName("MUL_PQ_P_BUTTON");
+        MUL_PQ_P_BUTTON->setMinimumSize(QSize(80, 60));
+        MUL_PQ_P_BUTTON->setMaximumSize(QSize(16777215, 60));
+        MUL_PQ_P_BUTTON->setFont(font2);
+
+        horizontalLayout_9->addWidget(MUL_PQ_P_BUTTON);
+
+
+        gridLayout_11->addLayout(horizontalLayout_9, 2, 3, 1, 1);
+
+        SUB_PP_P_BUTTON = new QPushButton(gridLayoutWidget_6);
+        SUB_PP_P_BUTTON->setObjectName("SUB_PP_P_BUTTON");
+        SUB_PP_P_BUTTON->setMinimumSize(QSize(80, 60));
+        SUB_PP_P_BUTTON->setMaximumSize(QSize(16777215, 60));
+        SUB_PP_P_BUTTON->setFont(font1);
+
+        gridLayout_11->addWidget(SUB_PP_P_BUTTON, 6, 1, 1, 1);
+
+        horizontalSpacer_37 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        gridLayout_11->addItem(horizontalSpacer_37, 3, 0, 1, 1);
+
+        NMR_P_P = new QPushButton(gridLayoutWidget_6);
+        NMR_P_P->setObjectName("NMR_P_P");
+        NMR_P_P->setMinimumSize(QSize(80, 60));
+        NMR_P_P->setFont(font);
+
+        gridLayout_11->addWidget(NMR_P_P, 4, 1, 1, 1);
+
+        MOD_PP_P_BUTTON = new QPushButton(gridLayoutWidget_6);
+        MOD_PP_P_BUTTON->setObjectName("MOD_PP_P_BUTTON");
+        MOD_PP_P_BUTTON->setMinimumSize(QSize(80, 60));
+        MOD_PP_P_BUTTON->setMaximumSize(QSize(16777215, 60));
+        MOD_PP_P_BUTTON->setFont(font);
+
+        gridLayout_11->addWidget(MOD_PP_P_BUTTON, 5, 3, 1, 1);
+
+        horizontalSpacer_38 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        gridLayout_11->addItem(horizontalSpacer_38, 2, 0, 1, 1);
+
+        MUL_PP_P_BUTTON = new QPushButton(gridLayoutWidget_6);
+        MUL_PP_P_BUTTON->setObjectName("MUL_PP_P_BUTTON");
+        MUL_PP_P_BUTTON->setMinimumSize(QSize(80, 60));
+        MUL_PP_P_BUTTON->setMaximumSize(QSize(80, 60));
+        MUL_PP_P_BUTTON->setFont(font2);
+
+        gridLayout_11->addWidget(MUL_PP_P_BUTTON, 3, 1, 1, 1);
+
+        DIV_PP_P_BUTTON = new QPushButton(gridLayoutWidget_6);
+        DIV_PP_P_BUTTON->setObjectName("DIV_PP_P_BUTTON");
+        DIV_PP_P_BUTTON->setMinimumSize(QSize(80, 60));
+        DIV_PP_P_BUTTON->setMaximumSize(QSize(16777215, 60));
+        DIV_PP_P_BUTTON->setFont(font);
+
+        gridLayout_11->addWidget(DIV_PP_P_BUTTON, 3, 3, 1, 1);
+
+        ADD_PP_P_BUTTON = new QPushButton(gridLayoutWidget_6);
+        ADD_PP_P_BUTTON->setObjectName("ADD_PP_P_BUTTON");
+        ADD_PP_P_BUTTON->setMinimumSize(QSize(80, 60));
+        ADD_PP_P_BUTTON->setMaximumSize(QSize(16777215, 60));
+        ADD_PP_P_BUTTON->setFont(font2);
+
+        gridLayout_11->addWidget(ADD_PP_P_BUTTON, 5, 1, 1, 1);
+
+        horizontalSpacer_36 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        gridLayout_11->addItem(horizontalSpacer_36, 5, 0, 1, 1);
+
+        DER_P_P = new QPushButton(gridLayoutWidget_6);
+        DER_P_P->setObjectName("DER_P_P");
+        DER_P_P->setMinimumSize(QSize(20, 60));
+        DER_P_P->setMaximumSize(QSize(16777215, 60));
+        DER_P_P->setFont(font);
+
+        gridLayout_11->addWidget(DER_P_P, 3, 2, 1, 1);
+
+        horizontalLayout_15 = new QHBoxLayout();
+        horizontalLayout_15->setObjectName("horizontalLayout_15");
+        LED_P_Q_BUTTON = new QPushButton(gridLayoutWidget_6);
+        LED_P_Q_BUTTON->setObjectName("LED_P_Q_BUTTON");
+        LED_P_Q_BUTTON->setMinimumSize(QSize(80, 60));
+        LED_P_Q_BUTTON->setMaximumSize(QSize(16777215, 60));
+        LED_P_Q_BUTTON->setFont(font);
+
+        horizontalLayout_15->addWidget(LED_P_Q_BUTTON);
+
+
+        gridLayout_11->addLayout(horizontalLayout_15, 5, 2, 1, 1);
+
+        horizontalSpacer_41 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        gridLayout_11->addItem(horizontalSpacer_41, 4, 0, 1, 1);
+
+        FAC_P_Q_BUTTON = new QPushButton(gridLayoutWidget_6);
+        FAC_P_Q_BUTTON->setObjectName("FAC_P_Q_BUTTON");
+        FAC_P_Q_BUTTON->setMinimumSize(QSize(80, 60));
+        FAC_P_Q_BUTTON->setFont(font);
+
+        gridLayout_11->addWidget(FAC_P_Q_BUTTON, 4, 2, 1, 1);
+
+        MUL_PXK_BUTTON = new QPushButton(gridLayoutWidget_6);
+        MUL_PXK_BUTTON->setObjectName("MUL_PXK_BUTTON");
+        MUL_PXK_BUTTON->setMinimumSize(QSize(80, 60));
+        MUL_PXK_BUTTON->setFont(font);
+
+        gridLayout_11->addWidget(MUL_PXK_BUTTON, 4, 3, 1, 1);
+
+
+        gridLayout_10->addLayout(gridLayout_11, 3, 0, 1, 1);
+
+        horizontalLayout_17 = new QHBoxLayout();
+        horizontalLayout_17->setObjectName("horizontalLayout_17");
+        horizontalSpacer_40 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_17->addItem(horizontalSpacer_40);
+
+        label_4 = new QLabel(gridLayoutWidget_6);
+        label_4->setObjectName("label_4");
+        label_4->setFont(font);
+
+        horizontalLayout_17->addWidget(label_4);
+
+        POLYNOMIAL_OUTPUT = new QTextBrowser(gridLayoutWidget_6);
+        POLYNOMIAL_OUTPUT->setObjectName("POLYNOMIAL_OUTPUT");
+        POLYNOMIAL_OUTPUT->setMinimumSize(QSize(600, 0));
+
+        horizontalLayout_17->addWidget(POLYNOMIAL_OUTPUT);
+
+
+        gridLayout_10->addLayout(horizontalLayout_17, 2, 0, 1, 1);
+
         tabWidget->addTab(Polynomialw, QString());
         MainWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(MainWindow);
@@ -1201,7 +1502,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -1212,6 +1513,9 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         actionOpen_Input_File->setText(QCoreApplication::translate("MainWindow", "Open Input File", nullptr));
         actionChoose_Output_File->setText(QCoreApplication::translate("MainWindow", "Choose Output File", nullptr));
+#if QT_CONFIG(shortcut)
+        actionChoose_Output_File->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+S", nullptr));
+#endif // QT_CONFIG(shortcut)
         actionOpen_Input2_File->setText(QCoreApplication::translate("MainWindow", "Open Input2 File", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "RESULT:", nullptr));
 #if QT_CONFIG(whatsthis)
@@ -1229,7 +1533,7 @@ public:
 #if QT_CONFIG(whatsthis)
         MUL_NN_N_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (MUL_NN_N)", nullptr));
 #endif // QT_CONFIG(whatsthis)
-        MUL_NN_N_BUTTON->setText(QCoreApplication::translate("MainWindow", "*", nullptr));
+        MUL_NN_N_BUTTON->setText(QCoreApplication::translate("MainWindow", "\303\227", nullptr));
 #if QT_CONFIG(whatsthis)
         GCF_NN_N_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (GCF_NN_N)", nullptr));
 #endif // QT_CONFIG(whatsthis)
@@ -1237,11 +1541,11 @@ public:
 #if QT_CONFIG(whatsthis)
         DIV_NN_Dk_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (DIV_NN_Dk)", nullptr));
 #endif // QT_CONFIG(whatsthis)
-        DIV_NN_Dk_BUTTON->setText(QCoreApplication::translate("MainWindow", "FIRST // DIGIT *10^k", nullptr));
+        DIV_NN_Dk_BUTTON->setText(QCoreApplication::translate("MainWindow", "FIRST // DIGIT \303\22710^k", nullptr));
 #if QT_CONFIG(whatsthis)
         SUB_NDN_N_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (SUB_NDN_N)", nullptr));
 #endif // QT_CONFIG(whatsthis)
-        SUB_NDN_N_BUTTON->setText(QCoreApplication::translate("MainWindow", "- (N*D)", nullptr));
+        SUB_NDN_N_BUTTON->setText(QCoreApplication::translate("MainWindow", "- (N\303\227D)", nullptr));
 #if QT_CONFIG(whatsthis)
         NZER_N_B_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (NZER_N_B)", nullptr));
 #endif // QT_CONFIG(whatsthis)
@@ -1270,13 +1574,13 @@ public:
 #if QT_CONFIG(whatsthis)
         MUL_ND_N_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", "D (MUL_ND_N)", nullptr));
 #endif // QT_CONFIG(whatsthis)
-        MUL_ND_N_BUTTON->setText(QCoreApplication::translate("MainWindow", "*", nullptr));
+        MUL_ND_N_BUTTON->setText(QCoreApplication::translate("MainWindow", "\303\227", nullptr));
         NaturalOperation->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(Naturalw), QCoreApplication::translate("MainWindow", "Natural Numbers", nullptr));
 #if QT_CONFIG(whatsthis)
         TRANS_N_Z_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (COM_NN_D)", nullptr));
 #endif // QT_CONFIG(whatsthis)
-        TRANS_N_Z_BUTTON->setText(QCoreApplication::translate("MainWindow", "N -> Z", nullptr));
+        TRANS_N_Z_BUTTON->setText(QCoreApplication::translate("MainWindow", "N \342\206\222 Z", nullptr));
 #if QT_CONFIG(whatsthis)
         ADD_ZZ_Z_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (ADD_NN_N)", nullptr));
 #endif // QT_CONFIG(whatsthis)
@@ -1285,15 +1589,15 @@ public:
 #if QT_CONFIG(whatsthis)
         MUL_ZM_Z_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", "D (MUL_ND_N)", nullptr));
 #endif // QT_CONFIG(whatsthis)
-        MUL_ZM_Z_BUTTON->setText(QCoreApplication::translate("MainWindow", "*", nullptr));
+        MUL_ZM_Z_BUTTON->setText(QCoreApplication::translate("MainWindow", "\303\227", nullptr));
 #if QT_CONFIG(whatsthis)
         POZ_Z_D_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (DIV_NN_Dk)", nullptr));
 #endif // QT_CONFIG(whatsthis)
-        POZ_Z_D_BUTTON->setText(QCoreApplication::translate("MainWindow", "IS POSITIVE?", nullptr));
+        POZ_Z_D_BUTTON->setText(QCoreApplication::translate("MainWindow", "sgn", nullptr));
 #if QT_CONFIG(whatsthis)
         TRANS_Z_N_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (NZER_N_B)", nullptr));
 #endif // QT_CONFIG(whatsthis)
-        TRANS_Z_N_BUTTON->setText(QCoreApplication::translate("MainWindow", "Z -> N", nullptr));
+        TRANS_Z_N_BUTTON->setText(QCoreApplication::translate("MainWindow", "Z \342\206\222 N", nullptr));
 #if QT_CONFIG(whatsthis)
         DIV_ZZ_Z_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (DIV_NN_N)", nullptr));
 #endif // QT_CONFIG(whatsthis)
@@ -1305,7 +1609,7 @@ public:
 #if QT_CONFIG(whatsthis)
         MUL_ZZ_Z_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (MUL_NN_N)", nullptr));
 #endif // QT_CONFIG(whatsthis)
-        MUL_ZZ_Z_BUTTON->setText(QCoreApplication::translate("MainWindow", "*", nullptr));
+        MUL_ZZ_Z_BUTTON->setText(QCoreApplication::translate("MainWindow", "\303\227", nullptr));
 #if QT_CONFIG(whatsthis)
         MOD_ZZ_Z_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (MOD_NN_N)", nullptr));
 #endif // QT_CONFIG(whatsthis)
@@ -1317,6 +1621,7 @@ public:
         INTEGER_OPERATION->setText(QString());
         label_2->setText(QCoreApplication::translate("MainWindow", "RESULT:", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(Integerw), QCoreApplication::translate("MainWindow", "Integer Numbers", nullptr));
+        RATIONAL_OPERATION->setText(QString());
 #if QT_CONFIG(whatsthis)
         SUB_QQ_Q_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (SUB_NN_N)", nullptr));
 #endif // QT_CONFIG(whatsthis)
@@ -1337,15 +1642,15 @@ public:
 #if QT_CONFIG(whatsthis)
         TRANS_Z_Q_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (NZER_N_B)", nullptr));
 #endif // QT_CONFIG(whatsthis)
-        TRANS_Z_Q_BUTTON->setText(QCoreApplication::translate("MainWindow", "Z -> Q", nullptr));
+        TRANS_Z_Q_BUTTON->setText(QCoreApplication::translate("MainWindow", "Z \342\206\222 Q", nullptr));
 #if QT_CONFIG(whatsthis)
         TRANS_Q_Z_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (DIV_NN_Dk)", nullptr));
 #endif // QT_CONFIG(whatsthis)
-        TRANS_Q_Z_BUTTON->setText(QCoreApplication::translate("MainWindow", "Q -> Z", nullptr));
+        TRANS_Q_Z_BUTTON->setText(QCoreApplication::translate("MainWindow", "Q \342\206\222 Z", nullptr));
 #if QT_CONFIG(whatsthis)
         MUL_QQ_Q_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (MUL_NN_N)", nullptr));
 #endif // QT_CONFIG(whatsthis)
-        MUL_QQ_Q_BUTTON->setText(QCoreApplication::translate("MainWindow", "*", nullptr));
+        MUL_QQ_Q_BUTTON->setText(QCoreApplication::translate("MainWindow", "\303\227", nullptr));
 #if QT_CONFIG(whatsthis)
         ADD_QQ_Q_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (ADD_NN_N)", nullptr));
 #endif // QT_CONFIG(whatsthis)
@@ -1353,6 +1658,52 @@ public:
         label_3->setText(QCoreApplication::translate("MainWindow", "RESULT:", nullptr));
         RATIONAL_OUTPUT_SIGN->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(Rationalw), QCoreApplication::translate("MainWindow", "Rational Numbers", nullptr));
+        POLYNOMIAL_OPERATOR->setText(QString());
+        pushButton_18->setText(QCoreApplication::translate("MainWindow", "=", nullptr));
+#if QT_CONFIG(whatsthis)
+        DEG_P_N_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (DIV_NN_Dk)", nullptr));
+#endif // QT_CONFIG(whatsthis)
+        DEG_P_N_BUTTON->setText(QCoreApplication::translate("MainWindow", "DEG", nullptr));
+#if QT_CONFIG(whatsthis)
+        GCF_PP_P_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (COM_NN_D)", nullptr));
+#endif // QT_CONFIG(whatsthis)
+        GCF_PP_P_BUTTON->setText(QCoreApplication::translate("MainWindow", "GCF", nullptr));
+#if QT_CONFIG(whatsthis)
+        MUL_PQ_P_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", "D (MUL_ND_N)", nullptr));
+#endif // QT_CONFIG(whatsthis)
+        MUL_PQ_P_BUTTON->setText(QCoreApplication::translate("MainWindow", "\303\227Q", nullptr));
+#if QT_CONFIG(whatsthis)
+        SUB_PP_P_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (SUB_NN_N)", nullptr));
+#endif // QT_CONFIG(whatsthis)
+        SUB_PP_P_BUTTON->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
+        NMR_P_P->setText(QCoreApplication::translate("MainWindow", "NMR", nullptr));
+#if QT_CONFIG(whatsthis)
+        MOD_PP_P_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (MOD_NN_N)", nullptr));
+#endif // QT_CONFIG(whatsthis)
+        MOD_PP_P_BUTTON->setText(QCoreApplication::translate("MainWindow", "mod", nullptr));
+#if QT_CONFIG(whatsthis)
+        MUL_PP_P_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (MUL_NN_N)", nullptr));
+#endif // QT_CONFIG(whatsthis)
+        MUL_PP_P_BUTTON->setText(QCoreApplication::translate("MainWindow", "\303\227", nullptr));
+#if QT_CONFIG(whatsthis)
+        DIV_PP_P_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (DIV_NN_N)", nullptr));
+#endif // QT_CONFIG(whatsthis)
+        DIV_PP_P_BUTTON->setText(QCoreApplication::translate("MainWindow", "div", nullptr));
+#if QT_CONFIG(whatsthis)
+        ADD_PP_P_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (ADD_NN_N)", nullptr));
+#endif // QT_CONFIG(whatsthis)
+        ADD_PP_P_BUTTON->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
+#if QT_CONFIG(whatsthis)
+        DER_P_P->setWhatsThis(QCoreApplication::translate("MainWindow", " (COM_NN_D)", nullptr));
+#endif // QT_CONFIG(whatsthis)
+        DER_P_P->setText(QCoreApplication::translate("MainWindow", "DER", nullptr));
+#if QT_CONFIG(whatsthis)
+        LED_P_Q_BUTTON->setWhatsThis(QCoreApplication::translate("MainWindow", " (NZER_N_B)", nullptr));
+#endif // QT_CONFIG(whatsthis)
+        LED_P_Q_BUTTON->setText(QCoreApplication::translate("MainWindow", "LED", nullptr));
+        FAC_P_Q_BUTTON->setText(QCoreApplication::translate("MainWindow", "FAC", nullptr));
+        MUL_PXK_BUTTON->setText(QCoreApplication::translate("MainWindow", "\303\227x^k", nullptr));
+        label_4->setText(QCoreApplication::translate("MainWindow", "RESULT:", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(Polynomialw), QCoreApplication::translate("MainWindow", "Polynomial", nullptr));
         menuOpen_Input_File->setTitle(QCoreApplication::translate("MainWindow", "Choose files", nullptr));
     } // retranslateUi
