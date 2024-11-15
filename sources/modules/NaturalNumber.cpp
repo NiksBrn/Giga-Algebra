@@ -189,11 +189,11 @@ NaturalNumber NaturalNumber::SUB_NN_N(const NaturalNumber& num) {
     Node *greater_node;
     Node *lower_node;
     if (*this > num) {
-        greater_node = (*this).get_num().get_first();  // отвечает за сдвиг на следующий разряд первого числа
-        lower_node = num.get_num().get_first();  // отвечает за сдвиг на следующий разряд второго числа
+      greater_node = (*this).get_num().get_first();  // отвечает за сдвиг на следующий разряд первого числа
+      lower_node = num.get_num().get_first();  // отвечает за сдвиг на следующий разряд второго числа
     } else {
-        greater_node = num.get_num().get_first();  // отвечает за сдвиг на следующий разряд первого числа
-        lower_node = (*this).get_num().get_first();  // отвечает за сдвиг на следующий разряд второго числа
+      greater_node = num.get_num().get_first();  // отвечает за сдвиг на следующий разряд первого числа
+      lower_node = (*this).get_num().get_first();  // отвечает за сдвиг на следующий разряд второго числа
     }
 
     int take_one_digit = 0; // Берем единицу из старшего разряда
