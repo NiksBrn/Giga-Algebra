@@ -18,6 +18,7 @@ RationalNumber& RationalNumber::operator=(const RationalNumber& other){
 //architect Nikita Skobelev
 //struct end
 
+// Сокращение дроби
 RationalNumber RationalNumber::RED_Q_Q(){
     NaturalNumber gcf_n = denominator->GCF_NN_N(numerator->ABS_Z_Z());
     IntegerNumber gcf_i(gcf_n);
@@ -27,6 +28,7 @@ RationalNumber RationalNumber::RED_Q_Q(){
     return reducedRationalNumber;
 }
 
+// Проверка сокращенного дробного на целое, если рациональное число является целым, то «да», иначе «нет»
 bool RationalNumber::INT_Q_B(){
     if (denominator->COM_NN_D(NaturalNumber("1")) == Compare::EQUAL) {
         return true;
@@ -34,11 +36,13 @@ bool RationalNumber::INT_Q_B(){
     return false;
 }
 
+// Преобразование целого в дробное
 RationalNumber RationalNumber::Trans_Z_Q(IntegerNumber &z){
     RationalNumber rational(z, NaturalNumber("1"));
     return rational;
 }
 
+// Преобразование сокращенного дробного в целое (если знаменатель равен 1)
 IntegerNumber RationalNumber::Trans_Q_Z(){
     if (denominator->COM_NN_D(NaturalNumber("1")) == Compare::EQUAL) {
         return *numerator;
@@ -46,6 +50,7 @@ IntegerNumber RationalNumber::Trans_Q_Z(){
     throw "not integer";
 }
 
+// Сложение дробей
 RationalNumber RationalNumber::ADD_QQ_Q(RationalNumber &other) {
     //std:: cout << *numerator << ' '<< *other.numerator << std::endl;
     NaturalNumber commonDenominator = denominator->LCM_NN_N(*other.denominator);
@@ -58,6 +63,7 @@ RationalNumber RationalNumber::ADD_QQ_Q(RationalNumber &other) {
     return newRationalNumber;
 }
 
+// Вычитание дробей
 RationalNumber RationalNumber::SUB_QQ_Q(RationalNumber &other) {
     NaturalNumber commonDenominator = denominator->LCM_NN_N(*other.denominator);
     NaturalNumber kn_1 = commonDenominator.DIV_NN_N(*denominator);
@@ -69,6 +75,7 @@ RationalNumber RationalNumber::SUB_QQ_Q(RationalNumber &other) {
     return newRationalNumber;
 }
 
+// Умножение дробей
 RationalNumber RationalNumber::MUL_QQ_Q(RationalNumber &other){
     IntegerNumber newNumerator = numerator->MUL_ZZ_Z(*other.numerator);
     NaturalNumber newDenominator = denominator->MUL_NN_N(*other.denominator);
@@ -76,6 +83,7 @@ RationalNumber RationalNumber::MUL_QQ_Q(RationalNumber &other){
     return newRationalNumber;
 }
 
+// Деление дробей
 RationalNumber RationalNumber::DIV_QQ_Q(RationalNumber &other){
     IntegerNumber otherDenominator(*other.denominator);
     IntegerNumber newNumerator = numerator->MUL_ZZ_Z(otherDenominator);
