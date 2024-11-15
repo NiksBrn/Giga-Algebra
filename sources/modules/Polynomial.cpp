@@ -49,6 +49,7 @@ ListPolynomial &Polynomial::getPolynomial() const{
     return *polynomial;
 }
 
+// Сложение многочленов
 Polynomial Polynomial::ADD_PP_P(const Polynomial& other) {
     ListPolynomial* newPol = new ListPolynomial();
     NodePolynomial* tmp1 = polynomial->get_tail();
@@ -76,6 +77,7 @@ Polynomial Polynomial::ADD_PP_P(const Polynomial& other) {
     return newPolynomial;
 }
 
+// Вычитание многочленов
 Polynomial Polynomial::SUB_PP_P(const Polynomial& other) {
     ListPolynomial* newPol = new ListPolynomial();
     NodePolynomial* tmp1 = polynomial->get_tail();
@@ -105,6 +107,7 @@ Polynomial Polynomial::SUB_PP_P(const Polynomial& other) {
     return newPolynomial;
 }
 
+// Умножение многочлена на рациональное число
 Polynomial Polynomial::MUL_PQ_P(const RationalNumber& other) {
     ListPolynomial* newPol = new ListPolynomial();
     NodePolynomial* tmp = polynomial->get_tail();
@@ -118,6 +121,7 @@ Polynomial Polynomial::MUL_PQ_P(const RationalNumber& other) {
     return newPolynomial;
 }
 
+// Умножение многочлена на x^k, k-натуральное или 0
 Polynomial Polynomial::MUL_Pxk_P(const NaturalNumber& other) {
     ListPolynomial* newPol = new ListPolynomial();
     NodePolynomial* tmp = polynomial->get_tail();
@@ -130,11 +134,13 @@ Polynomial Polynomial::MUL_Pxk_P(const NaturalNumber& other) {
     return newPolynomial;
 }
 
+// Старший коэффициент многочлена
 RationalNumber Polynomial::LED_P_Q() {
     NodePolynomial* tmp = polynomial->get_head();
     return tmp->coefficient;
 }
 
+// Вынесение из многочлена НОК знаменателей коэффициентов и НОД числителей
 RationalNumber Polynomial::FAC_P_Q() {
     NodePolynomial* tmp = polynomial->get_tail();
     NaturalNumber nok("1");
@@ -154,6 +160,7 @@ RationalNumber Polynomial::FAC_P_Q() {
     return answer;
 }
 
+// Производная многочлена
 Polynomial Polynomial::DER_P_P() {
     ListPolynomial* newPol = new ListPolynomial();
     RationalNumber k('+', "0", "1");
@@ -173,6 +180,7 @@ Polynomial Polynomial::DER_P_P() {
     return newPolynomial;
 }
 
+// Частное от деления многочлена на многочлен при делении с остатком
 Polynomial Polynomial::DIV_PP_P(const Polynomial& other) {
     ListPolynomial* object = new ListPolynomial();
     Polynomial temp_poly = *this;
@@ -201,6 +209,7 @@ Polynomial Polynomial::DIV_PP_P(const Polynomial& other) {
     return Polynomial(object);
 }
 
+// Преобразование многочлена — кратные корни в простые
 Polynomial Polynomial::NMR_P_P() {
     Polynomial Der = (*this).DER_P_P();  // Производная многочлена
     Polynomial GCF = (*this).GCF_PP_P(Der);  // НОД многочлена
@@ -215,6 +224,7 @@ Polynomial Polynomial::NMR_P_P() {
     return NMR;
 }
 
+// Умножение многочленов
 Polynomial Polynomial::MUL_PP_P(const Polynomial& other) {
     NodePolynomial* tmp = other.polynomial->get_head();
     ListPolynomial* newPol = new ListPolynomial();
@@ -234,13 +244,14 @@ Polynomial Polynomial::MUL_PP_P(const Polynomial& other) {
 
 
 
-
+// Остаток от деление многочлена на многочлен при делении с остатком
 Polynomial Polynomial::MOD_PP_P(const Polynomial &other) {
     Polynomial MOD = (*this).DIV_PP_P(other);
     Polynomial ans = (*this).SUB_PP_P(MOD.MUL_PP_P(other));
     return ans;
 }
 
+// НОД многочленов
 Polynomial Polynomial::GCF_PP_P(const Polynomial& other) {
     Polynomial A = (*this);
     Polynomial B = other;
