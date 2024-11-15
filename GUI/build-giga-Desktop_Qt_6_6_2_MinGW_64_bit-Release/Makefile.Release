@@ -770,7 +770,73 @@ release/mainwindow.o: ../sources/mainwindow.cpp ../sources/mainwindow.h \
 		E:/Qt/6.6.2/mingw_64/include/QtCore/qlocale.h \
 		E:/Qt/6.6.2/mingw_64/include/QtCore/qtimezone.h \
 		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qdialog.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		E:/Qt/6.6.2/mingw_64/include/QtCore/QVariant \
+		E:/Qt/6.6.2/mingw_64/include/QtGui/QAction \
+		E:/Qt/6.6.2/mingw_64/include/QtGui/QIcon \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/QApplication \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qapplication.h \
+		E:/Qt/6.6.2/mingw_64/include/QtCore/qcoreapplication.h \
+		E:/Qt/6.6.2/mingw_64/include/QtCore/qeventloop.h \
+		E:/Qt/6.6.2/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		E:/Qt/6.6.2/mingw_64/include/QtCore/qfuture.h \
+		E:/Qt/6.6.2/mingw_64/include/QtCore/qfutureinterface.h \
+		E:/Qt/6.6.2/mingw_64/include/QtCore/qmutex.h \
+		E:/Qt/6.6.2/mingw_64/include/QtCore/qdeadlinetimer.h \
+		E:/Qt/6.6.2/mingw_64/include/QtCore/qelapsedtimer.h \
+		E:/Qt/6.6.2/mingw_64/include/QtCore/qtsan_impl.h \
+		E:/Qt/6.6.2/mingw_64/include/QtCore/qresultstore.h \
+		E:/Qt/6.6.2/mingw_64/include/QtCore/qfuture_impl.h \
+		E:/Qt/6.6.2/mingw_64/include/QtCore/qthreadpool.h \
+		E:/Qt/6.6.2/mingw_64/include/QtCore/qthread.h \
+		E:/Qt/6.6.2/mingw_64/include/QtCore/qrunnable.h \
+		E:/Qt/6.6.2/mingw_64/include/QtCore/qexception.h \
+		E:/Qt/6.6.2/mingw_64/include/QtCore/qpromise.h \
+		E:/Qt/6.6.2/mingw_64/include/QtGui/qguiapplication.h \
+		E:/Qt/6.6.2/mingw_64/include/QtGui/qinputmethod.h \
+		E:/Qt/6.6.2/mingw_64/include/QtGui/qguiapplication_platform.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/QFrame \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qframe.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/QGridLayout \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qgridlayout.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qlayout.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qlayoutitem.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qboxlayout.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/QHBoxLayout \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/QLCDNumber \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qlcdnumber.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/QLabel \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qlabel.h \
+		E:/Qt/6.6.2/mingw_64/include/QtGui/qpicture.h \
+		E:/Qt/6.6.2/mingw_64/include/QtGui/qtextdocument.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/QLineEdit \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qlineedit.h \
+		E:/Qt/6.6.2/mingw_64/include/QtGui/qtextcursor.h \
+		E:/Qt/6.6.2/mingw_64/include/QtGui/qtextformat.h \
+		E:/Qt/6.6.2/mingw_64/include/QtGui/qpen.h \
+		E:/Qt/6.6.2/mingw_64/include/QtGui/qtextoption.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/QMenu \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qmenu.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/QMenuBar \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qmenubar.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/QPushButton \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qpushbutton.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qabstractbutton.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/QSpacerItem \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/QSpinBox \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qspinbox.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		E:/Qt/6.6.2/mingw_64/include/QtGui/qvalidator.h \
+		E:/Qt/6.6.2/mingw_64/include/QtCore/qregularexpression.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/QStatusBar \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qstatusbar.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/QTabWidget \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/QTextBrowser \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qtextbrowser.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qtextedit.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/QTextEdit \
+		E:/Qt/6.6.2/mingw_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\sources\mainwindow.cpp
 
 release/StructPolynomial.o: ../../sources/struct/StructPolynomial.cpp ../../headers/StructPolynomial.h \

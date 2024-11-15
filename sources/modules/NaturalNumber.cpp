@@ -13,6 +13,7 @@ NaturalNumber::NaturalNumber(std::string s) {
   for (int i = s.size() - 1; i >= 0; i--) {
     Big_int->push_back(s[i] - '0');
   }
+  Big_int->del_zero();
 }
 
 NaturalNumber::NaturalNumber(const NaturalNumber& other) {
