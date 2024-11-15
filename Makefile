@@ -25,7 +25,7 @@ TEST_SRC_FILES := $(wildcard $(SRC_DIR)/**/*.cpp) $(wildcard $(GEN_DIR)/*.cpp) $
 TEST_OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(patsubst $(GEN_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(patsubst $(TEST_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(TEST_SRC_FILES))))
 
 # Правило по умолчанию — сборка основного исполняемого файла
-all: $(TARGET) $(TEST_TARGET)
+all: $(TARGET)
 
 # Сборка основного исполняемого файла
 $(TARGET): $(OBJ_FILES)
